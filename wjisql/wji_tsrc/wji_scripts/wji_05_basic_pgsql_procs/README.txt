@@ -1,0 +1,1 @@
+Kept blank purposefully as there is no specific procedure concept in postgresql.

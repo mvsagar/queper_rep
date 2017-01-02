@@ -1,0 +1,1 @@
+This directory contains very basic manual tests that must pass before a release.

@@ -1,0 +1,37 @@
+wjISQL
+
+Copyright 2006-2017 Vidyasagar Mundroy
+
+This product includes the following third party software 
+
+	- JDBC driver of MySQL owned by Oracle Corporation 
+	- JDBC driver of Oracle Database developed by Oracle Corporation
+	- JDBC driver of SQLite
+	- JDBC druver of PostgreSQL
+	- JDBC driver of Microsoft SQL Server
+	- fabtabulous.js
+	- prototype.js of prototype (http://prototypejs.org)
+	- tablekit.js of Millstream (http://www.millstream.com.au)
+	
+and you need to agree to licensing terms of the companies as listed below
+in order to use them along with wjISQL:
+
+Mysql Connector J (JDBC driver) licensing terms as per license:
+    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html 
+Oracle's licensing terms as per license: 
+	http://www.oracle.com/technetwork/licenses/distribution-license-152002.html
+Apache License of SQLite as per license:
+	http://www.apache.org/licenses/LICENSE-2.0
+BSD license of ProtgreSQL JDBC driver as per license:
+	https://jdbc.postgresql.org/about/license.htm
+Microsoft licensing terms for the JDBC driver as specified in license41.txt available at 
+	https://www.microsoft.com/en-in/download/details.aspx?id=11774
+fabtabulous.js as per license: 
+ 	http://creativecommons.org/licenses/by-sa/2.5/
+Protype Javascript framework as per license:
+	https://github.com/sstephenson/prototype/blob/master/LICENSE   	
+MIT License of Millstream to use TableKit as per license:
+	http://www.millstream.com.au/view/code/open-source-license
+
+
+
