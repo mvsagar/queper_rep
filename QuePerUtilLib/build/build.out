@@ -1,0 +1,30 @@
+Note: /home/mvsagar/eclipse_ws_queper/QueperLib/src/com/queper/util/common/License.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+added manifest
+adding: com/queper/util/common/ConvNumber.class(in = 5625) (out= 2917)(deflated 48%)
+adding: com/queper/util/common/Crypt.class(in = 2143) (out= 1046)(deflated 51%)
+adding: com/queper/util/common/DateTime.class(in = 1127) (out= 677)(deflated 39%)
+adding: com/queper/util/common/FileOps.class(in = 2365) (out= 1368)(deflated 42%)
+adding: com/queper/util/common/License.class(in = 8451) (out= 4265)(deflated 49%)
+adding: com/queper/util/common/LogFormatter.class(in = 562) (out= 333)(deflated 40%)
+adding: com/queper/util/common/LogHandler.class(in = 521) (out= 323)(deflated 38%)
+adding: com/queper/util/common/Product.class(in = 20927) (out= 10471)(deflated 49%)
+adding: com/queper/util/common/QprErrors.class(in = 2012) (out= 1012)(deflated 49%)
+adding: com/queper/util/common/QprException.class(in = 935) (out= 480)(deflated 48%)
+adding: com/queper/util/common/RandomInt.class(in = 1802) (out= 1117)(deflated 38%)
+adding: com/queper/util/common/StringOps.class(in = 10699) (out= 5973)(deflated 44%)
+adding: com/queper/util/common/WinRegistry.class(in = 7513) (out= 3107)(deflated 58%)
+adding: com/queper/util/db/DbNames.class(in = 2203) (out= 1252)(deflated 43%)
+adding: com/queper/util/db/MdColumn.class(in = 1244) (out= 622)(deflated 50%)
+adding: com/queper/util/db/MdParameter.class(in = 1240) (out= 572)(deflated 53%)
+adding: com/queper/util/db/MetaData.class(in = 6730) (out= 3000)(deflated 55%)
+adding: com/queper/util/tomcat/FormFields.class(in = 1245) (out= 697)(deflated 44%)
+adding: com/queper/util/tomcat/TomcatSessionListener.class(in = 1071) (out= 618)(deflated 42%)
+added manifest
+adding: com/queper/qpps/auth/AuthPrivileges.class(in = 22783) (out= 6290)(deflated 72%)
+adding: com/queper/qpps/names/CommonNames.class(in = 3768) (out= 1677)(deflated 55%)
+adding: com/queper/qpps/names/ScreenFields.class(in = 3724) (out= 1906)(deflated 48%)
+adding: com/queper/qpps/names/TableNames.class(in = 6775) (out= 2739)(deflated 59%)
+adding: com/queper/qpps/schema/DbSchema.class(in = 39023) (out= 11501)(deflated 70%)
+./com/queper/qpps/tools/*.class : no such file or directory
+added manifest
