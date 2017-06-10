@@ -13,4 +13,5 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<H3>(December 21, 2015)</H3>
+<!-- Modify the following date before releasing wjISQL -->
+<H3>(Jun 10, 2017)</H3>
