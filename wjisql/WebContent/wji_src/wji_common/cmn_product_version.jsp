@@ -13,12 +13,25 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<!--
+    Past main releases:
+    
+    Version        Release Date
+    -------        ------------
+    1.10.0(169)    ???
+    1.13.17(381)   2015-DEC-15
+ -->
 <TABLE>
 <TR>
 <TD><IMG SRC="../wji_images/wji32.png"></IMG></TD>
 <!-- 
-<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.10.0(169)</TD>
--->
-<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.13.17(381)</TD>
+  -- Version number format x.y.z(b)
+  -- x - major version number.
+  -- y - minor version number (increase by one for each feature)
+  -- z - bug number (increase by one for each bug)
+  -- b - build number (increase by 1 for each build)
+  -- Final responsibility of changing these lies with admin developer.
+ -->
+<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.13.18(382)</TD>
 </TR>
 </TABLE>
