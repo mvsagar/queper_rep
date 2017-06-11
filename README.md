@@ -1,2 +1,2 @@
-# Overview blabla
+# Overview of development of wjISQL
 
