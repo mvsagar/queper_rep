@@ -1,6 +1,4 @@
 # ignore any .war file from tracking.
 wji_dist/*.war
-# ignore all jar files of lib from tracking.
-WebContent/WEB-INF/lib/*.jar
 # ignore traccking .docx files
 *.docx
