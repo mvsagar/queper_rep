@@ -20,7 +20,16 @@ Either you can download ready to use webapp from website http://www.queper.in or
 1. Click on the wjISQL repository queper_rep
 2. Fork a copy of the repository
 3. Start Eclipse
-4. Import the repository through git (Use default actions)
+4. Import the repository through git (Use default actions). 
+
+The last step imports the following two projects into Eclipse:
+
+    - QuePerUtilLib
+    - wjisql
+
+The first project QuePerUtilLib is used to generate a library used 
+by the second project wjisql that contains main source for the tool
+wjISQL.
 
 ## Building QuePer utility library
 
