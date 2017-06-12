@@ -28,9 +28,9 @@ This library is a jar file needed for wjISQL.
 
 1.  Select the following java packages of Eclipse project QuePerUtilLib:
 
-	com.queper.util.common
-	com.queper.util.db
-	com.queper.util.tomcat
+	- com.queper.util.common
+	- com.queper.util.db
+	- com.queper.util.tomcat
 
 2.  Export them as jar file into lib directory with the following name
 
