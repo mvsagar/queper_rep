@@ -1,6 +1,6 @@
 # Using and Contributing to wjISQL
 
-## What wjISQL is
+## What is wjISQL ?
 
 wjISQL is an Internet browser based interactive SQL webapp tool that can be used to execute SQL statements and browse data in tables of databases managed by relational database management systems. The tool  can be used with any database management system that has a JDBC driver. It can work with any web server that supports Java Server Page(JSP)s and any browser that supports JavaScript.
 
