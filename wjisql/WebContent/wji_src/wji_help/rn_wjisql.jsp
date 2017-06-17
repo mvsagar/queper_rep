@@ -93,6 +93,8 @@ instead of PROCEDURE.
 Dropping of functions using
 button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page does
 not work.
+<LI><B>W_B_20160811_33</B>: All columns  of primary key of SQLite tables are not displayed sometimes.
+This is a problem with SQLite. Filed the bug at SQLite repository at https://bitbucket.org/xerial/sqlite-jdbc/issues/228/getprimarykeys-does-not-return-all-columns
 </OL>
 
 <BR><BR>
