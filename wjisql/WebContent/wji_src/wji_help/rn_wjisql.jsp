@@ -32,6 +32,74 @@
 <H1>wjISQL</H1>
 </CENTER> 
 
+<H2>wjISQL Version 1.14.0</H2>
+<H3>(mmm dd, 2017)</H3>
+<P>
+This version has a few enhancements and bug fixes. The version has been tested with the following RDBMSs and browsers:
+</P>
+<P>Relational Database Management Systems:</P>
+<TABLE BORDER="1">
+<TR><TH>SNO</TH><TH>OS</TH><TH>RDBMS</TH><TH>JDBC Driver</TH></TR>
+<TR><TD>1</TD><TD>Ubuntu 16.04 LTS</TD><TD>MySQL 5.7.16-0ubuntu0.16.04.1</TD><TD>mysql-connector-java-5.1.25</TD></TR>
+<TR><TD>2</TD><TD>Ubuntu 16.04 LTS</TD><TD>SQLite 3.8.11</TD><TD>3.8.11</TD></TR>
+<TR><TD>3</TD><TD>Ubuntu 16.04 LTS</TD><TD>PostgreSQL 9.5.5</TD><TD>PostgreSQL 9.4.1212.jre7</TD></TR>
+<TR><TD>4</TD><TD>Windows 7.0</TD><TD>Oracle Database 11.2.0.1.0</TD><TD>11.2.0.2.0</TD></TR>
+<TR><TD>5</TD><TD>Windows 7.0</TD><TD>SQLite 3.8.11</TD><TD>3.8.11</TD></TR>
+<TR><TD>6</TD><TD>Windows 7.0</TD><TD>MS SQL Server 12.00.2000</TD><TD>4.0.4621.201</TD></TR>
+</TABLE>
+
+<P>Browsers:</P>
+<TABLE BORDER="1">
+<TR><TH>SNO</TH><TH>OS</TH><TH>Browser</TH></TR>
+<TR><TD>1</TD><TD>Ubuntu 16.04 LTS</TD><TD>Google Chrome 54.0<TD></TR>
+<TR><TD>2</TD><TD>Ubuntu 16.04 LTS</TD><TD>Mozilla Firefox 50.0.2<TD></TR>
+<TR><TD>3</TD><TD>Windows 7.0</TD><TD>Google Chrome 55.0<TD></TR>
+<TR><TD>4</TD><TD>Windows 7.0</TD><TD>Mozilla Firefox 50.1.0<TD></TR>
+<TR><TD>5</TD><TD>Windows 7.0</TD><TD>Internet Explorer 11<TD></TR>
+</TABLE>
+
+
+<P> List of enhancements:</P>
+<OL>
+<LI><B>On Git</B>: Made the source of wjISQL available on repository. Use the link
+https://github.com/mvsagar/queper_rep to access the repository.  
+</OL>
+
+<P> List of bugs fixed:</P>
+<OL>
+<LI><B></B>: None
+
+</OL>
+
+<BR>
+
+<P> List of known issues:</P>
+<OL>
+<LI><B>W_B_20161231_64</B>: Data transfer from MS SQL server (source) table  to Oracle (destination) 
+table  fails if the destination table does not have all columns of the source table and/or it has 
+more columns.</LI>
+<LI><B>Creation of procedure/function</B>: A create procedure/function 
+statement can not be executed if it is followed by other SQL statements in
+text box of SQL Statement window. 
+<LI><B>Procedure Type in MS SQL Server Databases</B>: Each procedure type is returned as function by SQL Server. 
+<LI><B>Dropping of procedures in SQL Server does not work</B>: 
+Dropping of procedures using
+button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page 
+does not work because procedure type returned by its JDBC driver is FUNCTION
+instead of PROCEDURE.
+<LI><B>Dropping of functions in PostgreSQL does not work</B>: 
+Dropping of functions using
+button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page does
+not work.
+</OL>
+
+<BR><BR>
+
+<CENTER>
+<H2>Release Notes</H2>
+<H1>wjISQL</H1>
+</CENTER> 
+
 <H2>wjISQL Version 1.13.17</H2>
 <H3>(January 01, 2017)</H3>
 <P>
