@@ -39,6 +39,11 @@
      they are visible. -->
 <TD ALIGN=RIGHT WIDTH="35%"  STYLE="FONT-SIZE:8pt;">
 <!-- W_20151210_26 END -->
+
+<!-- W_F_20170617_73 BEGIN: Added current URL info -->
+<TABLE>
+<TR>
+<TD ALIGN=RIGHT>
 <%  String dbProductName = "", dbProductVersion = "", dbUserName = ""; 
     if (conn == null) {
         out.print("Not connected");
@@ -51,8 +56,20 @@
     }
 %>
 </TD>
-
+</TR>
 <TR>
+<TD ALIGN=RIGHT>
+<%
+    if (conn != null) {
+        out.print(conn.getMetaData().getURL());
+    }
+%>
+</TD>
+</TR>
+</TABLE>
+<!-- W_F_20170617_73 END -->
+</TD>
+</TR>
 </TABLE>
 <%
   } catch (java.sql.SQLException se) { 

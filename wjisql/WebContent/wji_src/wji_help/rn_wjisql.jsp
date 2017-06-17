@@ -61,8 +61,10 @@ This version has a few enhancements and bug fixes. The version has been tested w
 
 <P> List of enhancements:</P>
 <OL>
-<LI><B>On Git</B>: Made the source of wjISQL available on repository. Use the link
+<LI><B>W_F_20170617_72</B>: Made the source of wjISQL available on repository. Use the link
 https://github.com/mvsagar/queper_rep to access the repository.  
+<LI><B>W_F_20170617_73</B>: Added current URL at the top right corner of
+the wjISQL screen so that you know which database and RDBMS you are using!
 </OL>
 
 <P> List of bugs fixed:</P>

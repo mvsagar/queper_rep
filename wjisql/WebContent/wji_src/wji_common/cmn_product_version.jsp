@@ -32,6 +32,6 @@
   -- b - build number (increase by 1 for each build)
   -- Final responsibility of changing these lies with admin developer.
  -->
-<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.14.0(382)</TD>
+<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.15.0(383)</TD>
 </TR>
 </TABLE>
