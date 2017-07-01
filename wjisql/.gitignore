@@ -1,4 +1,2 @@
 # ignore any .war file from tracking.
 wji_dist/*.war
-# ignore traccking .docx files
-*.docx

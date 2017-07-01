@@ -69,7 +69,8 @@ the wjISQL screen so that you know which database and RDBMS you are using!
 
 <P> List of bugs fixed:</P>
 <OL>
-<LI><B></B>: None
+<LI><B>W_B_20170617_74</B>: PostgreSQL gives permission error for each public table while displaying tables 
+created by other users.
 
 </OL>
 

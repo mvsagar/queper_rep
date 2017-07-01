@@ -74,6 +74,7 @@
 <BODY>
 <%-- Get database connection --%>
 <%@include file="../wji_common/imports.jsp"%>
+<%@include file="../wji_common/cmn_const.jsp" %>
 <%@include file="../wji_common/connvars.jsp" %>
 <SCRIPT LANGUAGE="JavaScript">
     <%@include file="../wji_common/cmn_js_funcs.jsp" %>
@@ -96,6 +97,11 @@
    String tblType = null;
 
    String stmtStr = "";
+   // W_B_20170617_74 BEGIN
+   String sqlState = "";
+   boolean errorOccurred = false;
+   // W_B_20170617_74 END
+   
 %>
 <%
     String schemaNameStrs[] = request.getParameterValues("schema_name");
@@ -169,7 +175,8 @@
     md = conn.getMetaData(); 
     rs = md.getTables(null, schemaName, "%", null); 
     while (rs.next()) { 
-             tblCatalog = rs.getString(1); 
+         errorOccurred = false;
+         tblCatalog = rs.getString(1); 
 	     if (rs.wasNull()) {
 	         tblCatalog = "";
 	     }
@@ -192,7 +199,7 @@
 		         continue;
              }
 	     stmtStr = "SELECT COUNT(*) FROM " + (tblSchema.equals("")  ? "" : tblSchema + ".") +
-	     tableName;
+	                       tableName;
              // out.print(stmtStr);
              /*
               * Added the following try/catch block to prevent stopping listing of tables 
@@ -201,44 +208,57 @@
               * execution of the above stmt fails because table name in the stmt is not quoted.
               */
  	     try {
+	         nRowsTbl = 0;
 	         pStmt1 = conn.prepareStatement(stmtStr);
 	         rs1 = pStmt1.executeQuery();
-	         nRowsTbl = 0;
 	         if (rs1 != null && rs1.next()) {
 	             nRowsTbl = rs1.getInt(1);
 	         }
 	         pStmt1.close();
-             } catch (java.sql.SQLException se) { 
+          } catch (java.sql.SQLException se) { 
+              // W_B_20170617_74 BEGIN: Many permission errors.    
+              errorOccurred = true;
+              // Display the error message only if it is different from
+              // previous error.
+              if (!se.getSQLState().equals(sqlState) && !se.getSQLState().equals(SQLSTATE_SUCCESS)) {
+                  sqlState = se.getSQLState();
 %>
                   <SCRIPT Language="JavaScript">
 	              displayMessage("Error", "<%=se.getSQLState()%>", 
-	                   "<%=StringOps.xForm4JS(se.toString())%>"); 
+	                   "<%=StringOps.xForm4JS(se.toString() + ";\n\n Could not get details of table data.")%>"); 
                   </SCRIPT>
 <%
-             }	 
+              }
+              // W_B_20170617_74 END
+          }	 
 %>
-         <TR STYLE="BACKGROUND:IVORY;">	
+         <!-- W_B_20170617_74 BEGIN -->
+         <TR STYLE="BACKGROUND:<%=(errorOccurred ? "RED" : "IVORY")%>;">
+         <!-- W_B_20170617_74 END -->	
 	     <TD STYLE="BACKGROUND:LIGHTGRAY;font-size:10pt"><%=(nRows+1)%></TD>
              <TD STYLE="font-size:10pt">
 		     <A HREF="br_tblprop.jsp?table_name=<%=tableName%>&schema_name=<%=rs.getString(2)%>&obj_type=<%=tblType%>" 
 	             TARGET="rightdatafr"><%=tableName%></A>
 	     </TD>
-	     <TD STYLE="font-size:10pt;BACKGROUND:<%=(nRowsTbl > 0 ? "LIMEGREEN" : "WHITE")%>"><%=nRowsTbl%></TD>
+         <!-- W_B_20170617_74 BEGIN -->
+	     <TD STYLE="font-size:10pt;BACKGROUND:<%=(nRowsTbl > 0 ? "LIMEGREEN" : (errorOccurred ? "RED" : "WHITE"))%>"><%=(errorOccurred ? "?" : Integer.toString(nRowsTbl))%></TD>
+         <!-- W_B_20170617_74 END -->	
 	     <TD STYLE="font-size:10pt"><%=tblType%></TD>
 	     <TD STYLE="font-size:10pt"><%=tblSchema%></TD>
 	     <TD STYLE="font-size:10pt"><%=tblCatalog%></TD>
 	     </TR>
 <% 
 	     ++nRows;
-	} 
+	   } // while
         rs.close();
    } catch (java.sql.SQLException se) { 
         // out.print(se.toString());
 %>
-        <SCRIPT Language="JavaScript">
-	    displayMessage("Error", "<%=se.getSQLState()%>", 
-	         "<%=StringOps.xForm4JS(se.toString())%>"); 
-        </SCRIPT><%
+            <SCRIPT Language="JavaScript">
+	            displayMessage("Error", "<%=se.getSQLState()%>", 
+	                "<%=StringOps.xForm4JS(se.toString())%>"); 
+            </SCRIPT>
+<%
         return;
    }	 
 %>
