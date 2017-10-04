@@ -500,12 +500,14 @@ function toggle_all_for_delete(form, conn_no) {
 
 function transfer_data(form)
 {
-    if (confirm("Please confirm for the data transfer.")) {
-        form.action = "tr_data.jsp?nrows1=<%=nRows1%>&nrows2=<%=nRows2%>" +
+    if (<%=nRows1%> != 0) {
+        if (confirm("Please confirm for the data transfer.")) {
+            form.action = "tr_data.jsp?nrows1=<%=nRows1%>&nrows2=<%=nRows2%>" +
 	              "&schema_name1=<%=(schemaName1 == null ? "" : schemaName1)%>" +
 	              "&schema_name2=<%=(schemaName2 == null ? "" : schemaName2)%>";
-	form.target="_blank";
-        form.submit();   
+	        form.target="_blank";
+            form.submit();   
+        }
     }
 }
 
@@ -521,9 +523,9 @@ function refresh_data(form, conn_no)
 {
     form.action = "tr_tbllist.jsp?conn_no=" + conn_no;
     if (conn_no == 1) {
-	form.target = "leftdatafr1";
+	   form.target = "leftdatafr1";
     } else {
-	form.target = "leftdatafr2";
+	   form.target = "leftdatafr2";
     }
     form.submit();   
 }    

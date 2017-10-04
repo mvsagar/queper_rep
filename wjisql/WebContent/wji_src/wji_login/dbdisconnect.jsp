@@ -55,21 +55,37 @@
                 out.print("<P ALIGN=CENTER>No database is active.</P>");
             } else { 
                 conn1.close();
-	        theSession.setAttribute(CONN_OBJ_NAME, null); 
-	        theSession.setAttribute("userid1", null); 
-	        out.print("<BR><BR><BR>");
+	            theSession.setAttribute(CONN_OBJ_NAME, null); 
+	            theSession.setAttribute("userid1", null); 
+	            out.print("<BR><BR><BR>");
                 out.print("<P ALIGN=CENTER>Disconnected database successfully.</P>");
+                // W_B_20161226_60 BEGIN: 2019-10-04 - Table lists do not disappear after closing connections 
+%>
+                <SCRIPT LANGUAGE="JavaSCRIPT">
+                    disconn_form.action="../wji_transfer/tr_clear.jsp";
+                    disconn_form.target="leftdatafr<%=connNo%>";
+                    disconn_form.submit();
+                </SCRIPT>
+<%              // W_B_20161226_60 END
             }
         } else if (connNo == 2) {
             if (conn2 == null) {
-	        out.print("<BR><BR><BR>");
+	            out.print("<BR><BR><BR>");
                 out.print("<P ALIGN=CENTER>No database is active.</P>");
             } else {
                 conn2.close();
-	        theSession.setAttribute(CONN_OBJ_NAME, null); 
-	        theSession.setAttribute("userid2", null); 
-	         out.print("<BR><BR><BR>");
-                 out.print("<P ALIGN=CENTER>Disconnected database successfully.</P>");
+	            theSession.setAttribute(CONN_OBJ_NAME, null); 
+	            theSession.setAttribute("userid2", null); 
+	            out.print("<BR><BR><BR>");
+                out.print("<P ALIGN=CENTER>Disconnected database successfully.</P>");
+                // W_B_20161226_60 BEGIN: 2019-10-04 - Table lists do not disappear after closing connections 
+%>
+                <SCRIPT LANGUAGE="JavaSCRIPT">
+                    disconn_form.action="../wji_transfer/tr_clear.jsp";
+                    disconn_form.target="leftdatafr<%=connNo%>";
+                    disconn_form.submit();
+                </SCRIPT>
+<%              // W_B_20161226_60 END
             }
         } else if (connNo == 0) {
 	    if (conn == null ) {

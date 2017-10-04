@@ -611,7 +611,16 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 			      STYLE="BACKGROUND:SEAGREEN;COLOR:WHITE;BORDER-STYLE:NONE;FONT:BOLD;FONT-SIZE:14pt;"
 	    >
     </TH>
-    <TH class="sortfirstasc" >
+    
+    <!-- W_B_20170728_76 2017-10-02 BEGIN: 
+      -- Removed default sort class from the SNO column 
+      -- as this results in sorting values of SNO which is an integer as strings 
+      -- and hence value 10 comes after 1 instead of 9. Because of this, result 
+      -- looks as if it does not correspond to order specified in SELECT statement.
+      -->
+    <!-- TH class="sortfirstasc" --> 
+    <TH>
+    <!-- W_B_20170728_76 END --> 
 	    <!-- W_20151211_27: Display size is too big. -->
 	    <INPUT TYPE="TEXT" NAME= "vsnor0c0" VALUE="SNO" SIZE=4 READONLY
 	    STYLE="BACKGROUND:SEAGREEN;COLOR:WHITE;BORDER-STYLE:NONE;FONT:BOLD;FONT-SIZE:12pt;"> 

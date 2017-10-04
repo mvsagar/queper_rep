@@ -62,19 +62,17 @@
 <INPUT TYPE=HIDDEN NAME="sqlstmt" VALUE=""> 
 
 <TABLE>
-<TR>
-<TD><TEXTAREA NAME="user_sqlstmt" ID="user_sqlstmt" COLS=70 ROWS=5><%=userSqlStmt%></TEXTAREA></TD>
-</TR>
-<!-- W_20161213_42 BEGIN: SQL script file -->
-<TR>
-<TD>Script file:
-<!-- Commented the following to avoid using NAME which will cause error: POST is missing and hence
-  -- file will not be submitted.
-<INPUT TYPE=FILE NAME="script_files" ID="script_files"  ONCHANGE="read_script_file()">
--->   
-<INPUT TYPE=FILE ID="script_files"  ONCHANGE="read_script_file()">
-</TD>
-</TR>
+    <TR>
+        <TD><TEXTAREA NAME="user_sqlstmt" ID="user_sqlstmt" COLS=70 ROWS=5><%=userSqlStmt%></TEXTAREA></TD>
+    </TR>
+    <!-- W_20161213_42 BEGIN: SQL script file -->
+    <TR>
+        <TD>Script file:
+            <!-- W_B_20170711_75 BEGIN: 2017-10-04: SQL Script loading second time fails. --> 
+            <INPUT TYPE=FILE NAME="script_files" ID="script_files"  ONCHANGE="read_script_file()">
+            <!-- W_B_20170711_75 END -->
+        </TD>
+    </TR>
 <!-- W_20161213_42 END: SQL script file -->
 <TABLE>
 
@@ -142,12 +140,15 @@ function cancel_stmt(form)
     alert("Sorry. Operation not yet implemented.");
 }
 
+
 function clear_stmt(form)
 {
-	
     form.sqlstmt.value = "";
     // W_20161216_47 BEGIN: Clear button causes browser unresponsive.
-    document.getElementById("user_sqlstmt").value = "";
+    // W_B_20170711_75 BEGIN: 2017-10-04: SQL Script loading second time fails. 
+    form.user_sqlstmt.value = "";
+    form.script_files.value = "";
+    // W_B_20170711_75 END
     // W_20161216_47 END
     form.target ="rightdatafr";
     form.action = "ss_clear_results.jsp";
@@ -161,6 +162,7 @@ function display_help(form) {
     form.submit();
 }
 
+
 // W_20161213_42 BEGIN: SQL script file
 /*
  * Read SQL script file into SQL statement window (form field: user_sqlstmt)
@@ -168,15 +170,16 @@ function display_help(form) {
 function read_script_file() {
     var files = document.getElementById("script_files").files;
     if (!files.length) {
+        alert("file not selected");
       	return;
     }
     
     var reader = new FileReader();
-    var stmts = "";
-    reader.onload = function (event) {
-    	stmts = event.target.result;
-      	document.getElementById("user_sqlstmt").value = stmts;
-    }
+    // W_B_20170711_75 BEGIN: 2017-10-04: SQL Script loading second time fails. 
+    reader.onload = function(){
+      	document.getElementById("user_sqlstmt").value = reader.result;;
+       };    
+    // W_B_20170711_75 END
     reader.readAsText(files[0]);
 }
 //W_20161213_42 END: SQL script file

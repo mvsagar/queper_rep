@@ -130,7 +130,7 @@
    
 %>
 
-<FORM METHOD="POST">
+<FORM NAME="tr_result_form" METHOD="POST">
 
 <%-- @include file="tr_data_buttons.jsp" --%>
 
@@ -909,6 +909,13 @@
 </TABLE>
 
 </FORM>
-
+<!-- W_B_20161226_58 BEGIN: 2017-10-04 - Destination database table list not updated. -->
+<SCRIPT LANGUAGE="JavaSCRIPT">
+     // Refresh destination table list after the transfer. 
+     tr_result_form.action="../wji_transfer/tr_tbllist.jsp?conn_no=2";
+     tr_result_form.target="leftdatafr2";
+     tr_result_form.submit();
+</SCRIPT>
+<!-- W_B_20161226_58 END -->
 </BODY>
 </HTML>

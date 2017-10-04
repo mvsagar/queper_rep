@@ -32,7 +32,7 @@
 <H1>wjISQL</H1>
 </CENTER> 
 
-<H2>wjISQL Version 1.14.0</H2>
+<H2>wjISQL Version 1.15.5</H2>
 <H3>(mmm dd, 2017)</H3>
 <P>
 This version has a few enhancements and bug fixes. The version has been tested with the following RDBMSs and browsers:
@@ -69,9 +69,12 @@ the wjISQL screen so that you know which database and RDBMS you are using!
 
 <P> List of bugs fixed:</P>
 <OL>
-<LI><B>W_B_20170617_74</B>: PostgreSQL gives permission error for each public table while displaying tables 
-created by other users.
-
+<LI><B>W_B_20161226_58</B>: Destination database table list is not updated after data transfer.
+<LI><B>W_B_20161226_60</B>: Table lists do not disappear after closing connections. 
+<LI><B>W_B_20170617_74</B>: PostgreSQL gives permission error for each public table 
+while displaying tables created by other users.
+<LI><B>W_B_20170711_75</B>: SQL Script loading second time fails.
+<LI><B>W_B_20170728_76</B>: Order of rows of a result set is not as per ORDER BY clause. 
 </OL>
 
 <BR>
