@@ -38,9 +38,14 @@
 	ONCLICK="update_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Delete" STYLE="BACKGROUND:ORANGERED" 
+<INPUT TYPE=BUTTON VALUE="Delete" STYLE="BACKGROUND:ORANGERED;" 
     <%=(!oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="delete_rows(this.form)">
+</TD>
+<TD>
+<INPUT TYPE=BUTTON VALUE="Delete All" STYLE="BACKGROUND:RED;" 
+    <%=(!oper.equals("select") ? " DISABLED " : " " )%>
+	ONCLICK="delete_all_rows(this.form)">
 </TD>
 <TD>
 <INPUT TYPE=BUTTON VALUE="Confirm" STYLE="BACKGROUND:AQUA" 
@@ -48,7 +53,7 @@
 	ONCLICK="save_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Cancel" STYLE="BACKGROUND:ORANGERED" 
+<INPUT TYPE=BUTTON VALUE="Cancel" STYLE="BACKGROUND:ORANGERED;" 
     <%=(oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="cancel_rows(this.form)">
 </TD>

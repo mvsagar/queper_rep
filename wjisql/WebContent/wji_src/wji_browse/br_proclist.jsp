@@ -176,7 +176,9 @@
 	  if (typeNum == md.procedureNoResult) {
               type = "PROCEDURE";
 	   } else  if (typeNum == md.procedureReturnsResult) {
-	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)) {
+	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
+	           || dbmsName.equalsIgnoreCase(DBMS_MARIADB)
+	       ) {
                    /*
                     * Ignore displaying functions becauses
                     * getFunctions() will retrieve them.
@@ -186,7 +188,9 @@
 	            type = "FUNCTION";
 	       }
            } else {
-	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)) {
+	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
+	           || dbmsName.equalsIgnoreCase(DBMS_MARIADB)
+	       ) {
 	           type = "PROCEDURE";
 	       } else {
                    type = "UNKNOWN";

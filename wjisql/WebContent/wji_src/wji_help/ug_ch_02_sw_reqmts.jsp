@@ -77,7 +77,7 @@ on your computer system before you can use <B>wjISQL</B>:
 <P>It is easy to setup a JDBC driver to connect to a database using 
 <B>wjISQL</B>. Here are the steps:
 <OL>
-<LI>First, you identify and locate or download the JDBC driver file for 
+<LI>First, you identify, locate and download the JDBC driver file for 
 the database 
 management system you want to use. Almost all JDBC driver files will have 
 <B>.jar</B> 
@@ -89,16 +89,13 @@ the database management system itself and find out its JDBC driver file.
 <BR><BR>
 
 <LI>Make the JDBC driver file available to Tomcat web server by copying
-the jar file into "lib" directory of Tomcat home directory.
- For example, if Tomcat 7.0 was installed in Program Files directory of 
-Windows, the <B>lib</B> directory path would be: 
-<BR><BR>
-C:\Program Files\Apache Software Foundation\Tomcat 7.0\<B>lib</B>
+the jar file into "webapps/wjisql/WEB-INF/lib" directory of Tomcat installation
+directory.  
 
 <BR><BR>
 
 <LI> <B>Restart</B> Tomcat service using Windows Services program or 
-using programs of Tomcat itself.
+using programs/shell scripts of Tomcat itself.
 </OL>
 
 <P>Once these steps are executed, the JDBC driver is ready to be used.</P>

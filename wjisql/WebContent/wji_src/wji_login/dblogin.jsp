@@ -23,6 +23,7 @@
  ---					3. Oracle
  ---					4. MS SQL Server
  ---					5. PostgreSQL 
+ --- 					6. MariaDB
  ---				You need to modify this file to support another RDBMS. 
  --- 				You can connect to any other RDBMS as long as you make its JDBC driver 
  ---				available to the web server you use.
@@ -50,6 +51,13 @@
    final String mysqlJDBCDriverURL      = "jdbc:mysql://localhost/testdb"; 
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
    final String mysqlJDBCDriverURLFmt   = "jdbc:mysql://[<host1>][:<port1>][,[<host2>][:<port2>]]...[/[<database>]]"
+		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]"; 
+
+   // W_F_20171006_77: 2017-10-06: Support for MariaDB is needed.
+   final String mariadbJDBCDriverName     = "MariaDB JDBC Driver"; 
+   final String mariadbJDBCDriverClass    = "org.mariadb.jdbc.Driver"; 
+   final String mariadbJDBCDriverURL      = "jdbc:mariadb://localhost:3307/testdb"; 
+   final String mariadbJDBCDriverURLFmt   = "jdbc:mariadb://[<host1>[:<port1>]][,[<host2>[:<port2>]]]...[/[<database>]]"
 		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]"; 
 
 
@@ -120,6 +128,10 @@
 			dbURLFmt = mssqlJDBCDriverURLFmt;
 		} else	if (jDriverName.equalsIgnoreCase(mysqlJDBCDriverName)) {
 			dbURLFmt = mysqlJDBCDriverURLFmt;
+		}
+		// W_F_20171006_77: 2017-10-06: Support for MariaDB is needed. 
+		else	if (jDriverName.equalsIgnoreCase(mariadbJDBCDriverName)) {
+			dbURLFmt = mariadbJDBCDriverURLFmt;
 		} else	if (jDriverName.equalsIgnoreCase(oracleJDBCDriverName)) {
 			dbURLFmt = oracleJDBCDriverURLFmt;
 		} else	if (jDriverName.equalsIgnoreCase(postgresJDBCDriverName)) {
@@ -180,6 +192,8 @@
 <!-- Keep the drivers in Ascending order. -->
 <SELECT TYPE=TEXT NAME="jdriver_name"  ONCHANGE="react(this.form)">
 <OPTION>select a database system
+<!-- W_F_20171006_77: 2017-10-06: Support for MariaDB is needed. -->
+<OPTION <%=(jDriverName.equals(mariadbJDBCDriverName) ? "SELECTED" : "")%> ><%=mariadbJDBCDriverName%>
 <OPTION <%=(jDriverName.equals(mssqlJDBCDriverName) ? "SELECTED" : "")%> ><%=mssqlJDBCDriverName%>
 <OPTION <%=(jDriverName.equals(mysqlJDBCDriverName) ? "SELECTED" : "")%> ><%=mysqlJDBCDriverName%>
 <OPTION <%=(jDriverName.equals(oracleJDBCDriverName) ? "SELECTED" : "")%> ><%=oracleJDBCDriverName%>
@@ -332,7 +346,20 @@ function react(form)
 {
    var ck = "";
    
-   if (form.jdriver_name.selectedIndex == 1) /* mssql */
+   // W_F_20171006_77: 2017-10-06: Support for MariaDB is needed.
+   if (form.jdriver_name.selectedIndex == 1) /* mariadb */
+   {
+      	if (form.jdriver_name.value != null)
+        	form.jdriver_name.value = "<%=mariadbJDBCDriverName%>";
+      	if (form.jdriver_class.value != null)
+	 		form.jdriver_class.value = "<%=mariadbJDBCDriverClass%>";
+      	if (form.dburl.value != null)
+	 		form.dburl.value = "<%=mariadbJDBCDriverURL%>";
+		if (form.dburlfmt.value != null)
+	 		form.dburlfmt.value = "<%=mariadbJDBCDriverURLFmt%>";
+      	form.jdriver_class.enabled = false;
+   }
+   else if (form.jdriver_name.selectedIndex == 2) /* mssql */
    {
 		if (form.jdriver_name.value != null)
         	form.jdriver_name.value = "<%=mssqlJDBCDriverName%>";
@@ -346,7 +373,7 @@ function react(form)
 	 	// W_B_20161221_52 END
       	form.jdriver_class.enabled = false;
    }
-   else if (form.jdriver_name.selectedIndex == 2) /* mysql */
+   else if (form.jdriver_name.selectedIndex == 3) /* mysql */
    {
       	if (form.jdriver_name.value != null)
         	form.jdriver_name.value = "<%=mysqlJDBCDriverName%>";
@@ -360,7 +387,7 @@ function react(form)
 	 	// W_B_20161221_52 END
       	form.jdriver_class.enabled = false;
    }
-   else if (form.jdriver_name.selectedIndex == 3) /* oracle */
+   else if (form.jdriver_name.selectedIndex == 4) /* oracle */
    {
       	if (form.jdriver_name.value != null)
         	form.jdriver_name.value = "<%=oracleJDBCDriverName%>";
@@ -374,7 +401,7 @@ function react(form)
     	// W_B_20161221_52 END
       	form.jdriver_class.enabled = false;
    }
-   else if (form.jdriver_name.selectedIndex == 4) /* PostgreSQL */
+   else if (form.jdriver_name.selectedIndex == 5) /* PostgreSQL */
    {
       if (form.jdriver_name.value != null)
          form.jdriver_name.value = "<%=postgresJDBCDriverName%>";
@@ -388,7 +415,7 @@ function react(form)
       // W_B_20161221_52 END
       form.jdriver_class.enabled = false;
    }
-   else if (form.jdriver_name.selectedIndex == 5) /* sqlite */
+   else if (form.jdriver_name.selectedIndex == 6) /* sqlite */
    {
       if (form.jdriver_name.value != null)
          form.jdriver_name.value = "<%=sqliteJDBCDriverName%>";
@@ -406,7 +433,7 @@ function react(form)
       // W_B_20161221_52 END
       form.jdriver_class.enabled = true;
    }
-   else if (form.jdriver_name.selectedIndex == 6) /* other */
+   else if (form.jdriver_name.selectedIndex == 7) /* other */
    {
       if (form.jdriver_name.value != null)
          form.jdriver_name.value = "<%=otherJDBCDriverName%>";

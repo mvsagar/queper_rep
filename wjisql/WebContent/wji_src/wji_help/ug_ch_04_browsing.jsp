@@ -92,8 +92,8 @@ displayed, set the column window size and even execute any SQL statement.
 
 <A NAME="oper"><H3>4.5 Operations on a Table</H3></A>
 <P>Once you display rows from a table, you can  <B>insert</B> new rows into the 
-table, <B>update</B> an existing row,  <B>delete</B> a row from the table 
-or <B>select</B> rows once again using the 
+table, <B>update</B> an existing row,  <B>delete</B> a row, <B>delete all</B> rows 
+from the table or <B>select</B> rows once again using the 
 buttons present for the operations at the top and bottom of the displayed
 rows. Note that you can update or delete a row only if the table has a
 <B>primary key</B>. Of course, you can always update or delete rows by

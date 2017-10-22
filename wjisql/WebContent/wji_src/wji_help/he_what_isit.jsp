@@ -25,9 +25,9 @@
 
 <P>
 You can <B>connect</B> to a database, <B>browse</B> its tables and 
-perform <B>insert</B>, <B>update</B> 
-and <B>delete</B> operations on the tables,  <B>execute any SQL statement
-or command</B>
+perform <B>select</B>, <B>insert</B>, <B>update</B> 
+and <B>delete</B> operations on the tables,  <B>execute any SQL statement</B>
+(command)
 supported by the database management system hosting the database and 
 <B>transfer data</B> between databases.
 </P>

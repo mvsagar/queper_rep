@@ -22,6 +22,8 @@
 
    // DBMS specific constants.
    String DBMS_MYSQL = "MySQL";
+   String DBMS_MARIADB = "MySQL"; // As of 10.2.9, JDBC returns this instead of
+                                  // something like "MariaDB"
    String DBMS_MSSQLSERVER = "Microsoft SQL Server";
    String DBMS_SQLITE = "SQLite";
    String DBMS_ORACLE = "Oracle";

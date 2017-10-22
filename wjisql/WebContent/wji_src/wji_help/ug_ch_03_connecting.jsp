@@ -45,14 +45,14 @@ More often that not, the very first connection may fail for many reasons:
 </P>
 <UL>
 <LI>JDBC driver is not found by Tomcat
-<LI>Tomcat server is not in a running state
+<LI>Tomcat server is not in running state
 <LI>JDBC URL is incorrect
 <LI>Database does not exist
 <LI>You do not have a user ID and password yet!
 <LI>...
 </UL>
 </P>
-This chapters tries to help you resolving database connection issues
+This chapter tries to help you resolving database connection issues
 and make the connection successful.
 </P>
 

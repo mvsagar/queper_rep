@@ -156,6 +156,8 @@
    String BG_COLOR_FIELD_KEY = "SANDYBROWN"; 	// Color of Key fields .
    String bgColorCell = "IVORY"; 
    String bgColorField = "IVORY"; 
+   String UPDATED_ROW_STYLE = "font-weight:bold;";
+   String DELETED_ROW_STYLE = "font-style:italic;color:red;";
    // W_B_20161230_62 END 
    String readOnly = "";
 
@@ -709,19 +711,20 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
       String chkVal = null;
 	
       while (rs.next() && nRows < maxRowLimit) { %>
-        <TR STYLE="BACKGROUND:SEAGREEN;">
+        <TR STYLE="BACKGROUND:SEAGREEN;<%=(oper.equals("delete_all") ? DELETED_ROW_STYLE : " ")%>" >
 	    <% ++nRows;
 	       chkVal = request.getParameter("vr" + nRows + "c0");
 	    %>
 	    <%-- Initialize modify/delete selection column value. --%>
             <TD BGCOLOR="MOCCASIN">
 	        <INPUT TYPE="CHECKBOX" NAME=<%= "vr" + Integer.toString(nRows) +
-		             "c0"%> VALUE="" <%=(chkVal == null ? " " : " CHECKED ")%>>
+		             "c0"%> VALUE="" <%=(chkVal == null ? " " : " CHECKED ")%>
+		             STYLE="<%=(chkVal != null && oper.equals("delete") ? DELETED_ROW_STYLE : " ")%>">
 	    </TD>
         <TD BGCOLOR="LIGHTGRAY">
 	        <INPUT TYPE="HIDDEN" NAME=<%= "vsnor" + Integer.toString(nRows) +
 		"c0"%> VALUE="<%=nRows%>" SIZE=4 READONLY STYLE="BACKGROUND:LIGHTSTEELBLUE;BORDER-STYLE:NONE;">
-	    <%=nRows%>
+	    <span STYLE="<%=(chkVal != null && oper.equals("delete") ? DELETED_ROW_STYLE : " ")%>"><%=nRows%></span>
 	    </TD>
 	    <%-- Display column values in a row. --%> 
 	    <% 
@@ -739,7 +742,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 		    	bgColorCell = BG_COLOR_CELL_KEY;
 		    	// W_B_20161230_63 BEGIN: Delete operation on a Result set row  displays columns for updating 
 		    	// as if user can modify them.
-		    	if (oper.equals("delete")) {
+		    	if (oper.equals("delete") || oper.equals("delete_all")) {
 		    		bgColorField = bgColorCell;
 		    		readOnly = "READONLY";
 		    	} else {
@@ -755,7 +758,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 		    	// W_B_20161230_63 BEGIN: Delete operation on a Result set row  displays columns for updating 
 		    	// as if user can modify them.
 		    	bgColorCell = BG_COLOR_CELL_NONKEY;
-		    	if (oper.equals("delete")) {
+		    	if (oper.equals("delete") || oper.equals("delete_all")) {
 		    		bgColorField = bgColorCell;
 		    		readOnly = "READONLY";
 		    	} else {
@@ -791,11 +794,18 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                   	String blobFilePath =  request.getRealPath("/") + 
                          "wji_src/wji_tmp/" + blobFile  ;
                   	if (binStrm == null) {
-						if (oper.equals("update") || oper.equals("delete")) {                       		
+						if (oper.equals("update")) {                       		
 %>
 	                  		<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) +
 		                    	"c" + Integer.toString(i)%>
-				      			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;" <%=readOnly%>
+				      			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>" <%=readOnly%>
+				      			>
+<%				      			
+						} else if (oper.equals("delete")) {                       		
+%>
+	                  		<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) +
+		                    	"c" + Integer.toString(i)%>
+				      			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>" <%=readOnly%>
 				      			>
 <%
 						} else {
@@ -838,11 +848,18 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                         fos.flush();
                         fos.close();
                         
-						if (oper.equals("update") || oper.equals("delete")) {                       		                        
+						if (oper.equals("update")) {                       		                        
 %>
 		                 	<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) 
 		                 		+ "c" + Integer.toString(i)%>
-				 				VALUE="<%=hexStr%>" STYLE="BACKGROUND:<%=bgColorField%>;" <%=readOnly%>>
+				 				VALUE="<%=hexStr%>" STYLE="BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>" <%=readOnly%>>
+                                 <IMG SRC="../wji_tmp/<%=blobFile%>"> 
+<%
+						} else if (oper.equals("delete")) {                       		                        
+%>
+		                 	<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) 
+		                 		+ "c" + Integer.toString(i)%>
+				 				VALUE="<%=hexStr%>" STYLE="BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>" <%=readOnly%>>
                                  <IMG SRC="../wji_tmp/<%=blobFile%>"> 
 <%
 						} else {
@@ -874,11 +891,18 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                case Types.VARBINARY:
 		      			byte ba[] = rs.getBytes(i);
                        	if (rs.wasNull()) {
-							if (oper.equals("update")  || oper.equals("delete")) {                       		
+                       
+							if (oper.equals("update")) {                       		
 %>
 		               			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows)
 		                      		+ "c" + Integer.toString(i)%>  SIZE=<%=colSize%>
-		                   			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;">
+		                   			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>">
+<%
+							} else if (oper.equals("delete")) {                       		
+%>
+		               			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows)
+		                      		+ "c" + Integer.toString(i)%>  SIZE=<%=colSize%>
+		                   			VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;	<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>">
 <%
 							} else {
 %>
@@ -892,12 +916,21 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 <%
                        } else {
                             strVal = StringOps.bytesToHex(ba);
-							if (oper.equals("update") || oper.equals("delete")) {                       		
+                            	
+							if (oper.equals("update")) {                       		
 %>
 		            			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) 
 		            				+ "c" + Integer.toString(i)%>  SIZE=<%=colSize%>
 		                   			VALUE="<%=strVal%>" <%=readOnly%>
-                                   	STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;"
+                                   	STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>"
+                            		>
+<%
+							} else if (oper.equals("delete")) {                       		
+%>
+		            			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) 
+		            				+ "c" + Integer.toString(i)%>  SIZE=<%=colSize%>
+		                   			VALUE="<%=strVal%>" <%=readOnly%>
+                                   	STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>"
                             		>
 <%
 							} else {
@@ -923,11 +956,17 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                    case Types.LONGNVARCHAR:
 		       			strVal = rs.getString(i);
                        	if (rs.wasNull()) {
-							if (oper.equals("update") || oper.equals("delete")) {                       		
+							if (oper.equals("update")) {                       		
 %>
 		               		<TEXTAREA  NAME=<%= "vr" + Integer.toString(nRows) + "c" +
 		                      Integer.toString(i)%>  COLS=<%=colSize%> ROWS=1 <%=readOnly%>
-		                    	STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;"><%=NULL_STR%></TEXTAREA>
+		                    	STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>"><%=NULL_STR%></TEXTAREA>
+<%
+							} else if (oper.equals("delete")) {                       		
+%>
+		               		<TEXTAREA  NAME=<%= "vr" + Integer.toString(nRows) + "c" +
+		                      Integer.toString(i)%>  COLS=<%=colSize%> ROWS=1 <%=readOnly%>
+		                    	STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>"><%=NULL_STR%></TEXTAREA>
 <%
 							} else {
 %>
@@ -946,12 +985,19 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 			       			out.print("<BR>3:" + StringOps.bytesToHex(val));
 			       			out.print("<BR>");
 			       			*/
-							if (oper.equals("update") || oper.equals("delete")) {                       		
+							if (oper.equals("update")) {                       		
 %>
 		           			 <TEXTAREA NAME=<%= "vr" + Integer.toString(nRows) 
 		           			 	+ "c" + Integer.toString(i)%> COLS=<%=colSize%> 
                                   ROWS=1 <%=readOnly%> 
-                              STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;"><%=StringOps.getHTMLString(strVal).trim()%></TEXTAREA>
+                              STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>"><%=StringOps.getHTMLString(strVal).trim()%></TEXTAREA>
+<%
+							} else if (oper.equals("delete")) {                       		
+%>
+		           			 <TEXTAREA NAME=<%= "vr" + Integer.toString(nRows) 
+		           			 	+ "c" + Integer.toString(i)%> COLS=<%=colSize%> 
+                                  ROWS=1 <%=readOnly%> 
+                              STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>"><%=StringOps.getHTMLString(strVal).trim()%></TEXTAREA>
 <%
 							} else {
 %>
@@ -971,11 +1017,18 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                    default:
 		       			strVal = rs.getString(i);
                        	if (rs.wasNull()) {
-                    		if (oper.equals("update") || oper.equals("delete")) {
+                       	
+                    		if (oper.equals("update")) {
 %>
 				               <INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) + "c" + 
 				                      Integer.toString(i)%>  SIZE=<%=colSize%>
-				                   VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;">
+				                   VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>">
+<%
+                    		} else if (oper.equals("delete")) {
+%>
+				               <INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) + "c" + 
+				                      Integer.toString(i)%>  SIZE=<%=colSize%>
+				                   VALUE="<%=NULL_STR%>" STYLE="BACKGROUND:<%=bgColorField%>;BORDER-STYLE:NONE;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>">
 <%
                     		} else {
 %>
@@ -983,12 +1036,21 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 <%
                     		}
                        } else {
-                   			if (oper.equals("update")  || oper.equals("delete")) {                          
+                     
+                   			if (oper.equals("update")) {                          
 %>
 		            			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) + "c" +
 		                     	Integer.toString(i)%>  SIZE=<%=colSize%>
 		                   		VALUE="<%=StringOps.getHTMLString(strVal)%>" <%=readOnly%>
-                                   STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;"
+                                   STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? UPDATED_ROW_STYLE : " ")%>"
+                           		>
+<%                            
+                   			} else if (oper.equals("delete")) {                          
+%>
+		            			<INPUT TYPE=TEXT NAME=<%= "vr" + Integer.toString(nRows) + "c" +
+		                     	Integer.toString(i)%>  SIZE=<%=colSize%>
+		                   		VALUE="<%=StringOps.getHTMLString(strVal)%>" <%=readOnly%>
+                                   STYLE="BORDER-STYLE:NONE;BACKGROUND:<%=bgColorField%>;<%=(chkVal != null ? DELETED_ROW_STYLE : " ")%>"
                            		>
 <%                            
                    			} else {
@@ -1283,6 +1345,24 @@ function delete_rows(form)
     form.submit();
 }
 
+function delete_all_rows(form)
+{
+    var sch = "<%=(schemaName == null ? "" : schemaName)%>";
+    var tbl = "<%=(tableName == null ? "" : tableName)%>";
+    var sel_row_no = 0;
+
+    form.action = "../wji_sqlstmts/ss_results.jsp?oper=delete_all&schema_name=" + sch + "&table_name=" + tbl 
+              + "&max_row_limit=<%=maxRowLimit%>&max_col_size=<%=maxColSize%>&sqlstmt=<%=sqlStmt%>"
+              + "&sel_row_no=" + sel_row_no
+		      + "&conn_no=<%=connNo%>"
+              ;
+    // alert(form.action);
+    form.target = "_self";
+    form.submit();
+}
+
+
+
 function save_rows(form)
 {
     var sch = "<%=(schemaName ==  null ? "" : schemaName)%>";
@@ -1301,10 +1381,22 @@ function save_rows(form)
         				+ "&noofrows=<%=nRows%>&noofcolumns=<%=nCols%>&conn_no=<%=connNo%>"
     			        + "&conn_no=<%=connNo%>"
         				;
-    }
-    else if ("<%=oper%>" == "delete") {
+    } else if ("<%=oper%>" == "delete") {
         if (confirm("Confirm for deletion.")) { 
     		form.action = "../wji_tables/tbl_data_delete.jsp?schema_name=" + sch 
+    					+ "&table_name=" + tbl 
+    					+ "&noofrows=<%=nRows%>&noofcolumns=<%=nCols%>&conn_no=<%=connNo%>";
+        } else {
+            form.action = "../wji_sqlstmts/ss_results.jsp?oper=select&schema_name=" + sch + "&table_name=" + tbl 
+            + "&max_row_limit=<%=maxRowLimit%>&max_col_size=<%=maxColSize%>&sqlstmt=<%=sqlStmt%>"
+	        + "&conn_no=<%=connNo%>"            
+            ;
+        }
+    } else if ("<%=oper%>" == "delete_all") {
+        if (confirm("Action 'Delete All' will delete all rows from the table."
+                + "\nDeleted data can not be retrieved once you confirm."
+                + "\n\nConfirm or cancel the deletion.")) { 
+    		form.action = "../wji_tables/tbl_data_delete_all.jsp?schema_name=" + sch 
     					+ "&table_name=" + tbl 
     					+ "&noofrows=<%=nRows%>&noofcolumns=<%=nCols%>&conn_no=<%=connNo%>";
         } else {

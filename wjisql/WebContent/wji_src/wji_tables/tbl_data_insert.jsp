@@ -138,7 +138,10 @@
         /*
          * getParameterData() of MySQL and Oracle do not to work.
          */
-        if (dbmsName.equals(DBMS_MYSQL) || dbmsName.equals(DBMS_ORACLE) )  {
+        if (dbmsName.equals(DBMS_MYSQL) 
+            || dbmsName.equals(DBMS_MARIADB) 
+            || dbmsName.equals(DBMS_ORACLE) 
+            )  {
             pmd = null;
         } else {
             pmd = pStmt.getParameterMetaData();

@@ -179,7 +179,7 @@ any tick marks/selection in check boxes present in front of rows.
 <P>Note that you can use almost all data types specific to your DBMS  
  in <B>SQL Statement</B> window.</p>
 <TABLE BORDER=1>
-<TR><TH>Datatype</TH><TH>MySQL</TH><TH>Oracle</TH><TH>PostgreSQL</TH><TH>SQLite</TH><TH>SQL Server</TH></TR>
+<TR><TH>Datatype</TH><TH>MySQL</TH><TH>MariaDB</TH><TH>Oracle</TH><TH>PostgreSQL</TH><TH>SQLite</TH><TH>SQL Server</TH></TR>
 
 
 <TR>
@@ -189,6 +189,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>CHAR</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -198,6 +199,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>VARCHAR</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -207,6 +209,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NCHAR</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -217,6 +220,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NVARCHAR</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -226,6 +230,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>CLOB</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -236,6 +241,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NCLOB</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -249,6 +255,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>SMALLINT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -258,6 +265,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>INTEGER</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -267,6 +275,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>BIGINT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -277,6 +286,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>DECIMAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -286,6 +296,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NUMERIC</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -299,6 +310,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>REAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -308,6 +320,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>FLOAT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -317,6 +330,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>DOUBLE PRECISION</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -330,6 +344,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>DATE</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -339,6 +354,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>INTERVAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -349,6 +365,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>TIME</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -359,6 +376,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>TIMESTAMP</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -373,6 +391,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>BINARY</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -383,6 +402,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>VARBINARY</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -393,6 +413,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>BLOB</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -406,6 +427,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>BOOLEAN</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -420,6 +442,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>BIGSERIAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -428,7 +451,8 @@ any tick marks/selection in check boxes present in front of rows.
 
 <TR>
 <TD>BIT</TD>
-<TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MySQL --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -437,7 +461,8 @@ any tick marks/selection in check boxes present in front of rows.
 
 <TR>
 <TD>BYTEA</TD>
-<TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MySQL --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -446,17 +471,19 @@ any tick marks/selection in check boxes present in front of rows.
 
 <TR>
 <TD>DATETIME</TD>
-<TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
-<TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
-<TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
-<TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
-<TD ALIGN=CENTER><!--SQL Server--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!-- MySQL --><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!-- Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- SQL Server--><INPUT TYPE=CHECKBOX CHECKED></TD>
 </TR>
 
 
 <TR>
 <TD>DATETIME2</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -467,6 +494,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>DATETIMEOFFSET</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -477,6 +505,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>IMAGE</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -486,6 +515,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>MEDIUMINT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -497,6 +527,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>MONEY</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -507,6 +538,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NTEXT</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -516,6 +548,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NUMBER</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!-- MariaDB --><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -525,6 +558,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>NVARCHAR2</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -534,6 +568,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>SMALLDATETIME</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -544,6 +579,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>SMALLMONEY</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -553,6 +589,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>SERIAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -563,6 +600,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>SMALLSERIAL</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -572,6 +610,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>TEXT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><INPUT TYPE=CHECKBOX CHECKED ></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -581,6 +620,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>TINYINT</TD>
 <TD ALIGN=CENTER><!--MySQL--><INPUT TYPE=CHECKBOX CHECKED></TD>
+<TD ALIGN=CENTER><!--MariaDB--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!-- Does not support --></TD>
 <TD ALIGN=CENTER><!--SQLite--><INPUT TYPE=CHECKBOX CHECKED></TD>
@@ -591,6 +631,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>VARCHAR2</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><INPUT TYPE=CHECKBOX CHECKED></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -601,6 +642,7 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>VARCHAR(MAX)</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
@@ -610,12 +652,13 @@ any tick marks/selection in check boxes present in front of rows.
 <TR>
 <TD>VARBINARY(MAX)</TD>
 <TD ALIGN=CENTER><!--MySQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
+<TD ALIGN=CENTER><!--MariaDB--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--Oracle--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--PostgreSQL--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQLite--><!--INPUT TYPE=CHECKBOX CHECKED--></TD>
 <TD ALIGN=CENTER><!--SQL Server--><INPUT TYPE=CHECKBOX CHECKED></TD>
 </TR>
-<TR><TH>Datatype</TH><TH>MySQL</TH><TH>Oracle</TH><TH>PostgreSQL</TH><TH>SQLite</TH><TH>SQL Server</TH></TR>
+<TR><TH>Datatype</TH><TH>MySQL</TH><TH>MariaDB</TH><TH>Oracle</TH><TH>PostgreSQL</TH><TH>SQLite</TH><TH>SQL Server</TH></TR>
 </TABLE>
 
 <BR>

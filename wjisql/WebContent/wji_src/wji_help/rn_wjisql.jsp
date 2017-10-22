@@ -32,42 +32,43 @@
 <H1>wjISQL</H1>
 </CENTER> 
 
-<H2>wjISQL Version 1.15.5</H2>
-<H3>(mmm dd, 2017)</H3>
+<H2>wjISQL 1.19.5(439)</H2>
+<H3>(Nov 1, 2017)</H3>
 <P>
-This version has a few enhancements and bug fixes. The version has been tested with the following RDBMSs and browsers:
+This version has enhancements and important bug fixes.
 </P>
-<P>Relational Database Management Systems:</P>
-<TABLE BORDER="1">
-<TR><TH>SNO</TH><TH>OS</TH><TH>RDBMS</TH><TH>JDBC Driver</TH></TR>
-<TR><TD>1</TD><TD>Ubuntu 16.04 LTS</TD><TD>MySQL 5.7.16-0ubuntu0.16.04.1</TD><TD>mysql-connector-java-5.1.25</TD></TR>
-<TR><TD>2</TD><TD>Ubuntu 16.04 LTS</TD><TD>SQLite 3.8.11</TD><TD>3.8.11</TD></TR>
-<TR><TD>3</TD><TD>Ubuntu 16.04 LTS</TD><TD>PostgreSQL 9.5.5</TD><TD>PostgreSQL 9.4.1212.jre7</TD></TR>
-<TR><TD>4</TD><TD>Windows 7.0</TD><TD>Oracle Database 11.2.0.1.0</TD><TD>11.2.0.2.0</TD></TR>
-<TR><TD>5</TD><TD>Windows 7.0</TD><TD>SQLite 3.8.11</TD><TD>3.8.11</TD></TR>
-<TR><TD>6</TD><TD>Windows 7.0</TD><TD>MS SQL Server 12.00.2000</TD><TD>4.0.4621.201</TD></TR>
-</TABLE>
 
-<P>Browsers:</P>
-<TABLE BORDER="1">
-<TR><TH>SNO</TH><TH>OS</TH><TH>Browser</TH></TR>
-<TR><TD>1</TD><TD>Ubuntu 16.04 LTS</TD><TD>Google Chrome 54.0<TD></TR>
-<TR><TD>2</TD><TD>Ubuntu 16.04 LTS</TD><TD>Mozilla Firefox 50.0.2<TD></TR>
-<TR><TD>3</TD><TD>Windows 7.0</TD><TD>Google Chrome 55.0<TD></TR>
-<TR><TD>4</TD><TD>Windows 7.0</TD><TD>Mozilla Firefox 50.1.0<TD></TR>
-<TR><TD>5</TD><TD>Windows 7.0</TD><TD>Internet Explorer 11<TD></TR>
-</TABLE>
+<%@include file="../wji_help/he_req_sw.html" %>
+
+<%@include file="../wji_help/he_req_dbms.html" %>
+
+<%@include file="../wji_help/he_req_jdbc.html" %>
+
+<%@include file="../wji_help/he_req_os_rdbms_comb.html" %>
+
+<%@include file="../wji_help/he_req_browsers.html" %>
 
 
-<P> List of enhancements:</P>
+<H4> List of Enhancements:</H4>
 <OL>
-<LI><B>W_F_20170617_72</B>: Made the source of wjISQL available on repository. Use the link
+<LI><B>W_F_20170617_72</B>: Made the source of wjISQL available as a repository on <b>github</B>. Use the link
 https://github.com/mvsagar/queper_rep to access the repository.  
 <LI><B>W_F_20170617_73</B>: Added current URL at the top right corner of
 the wjISQL screen so that you know which database and RDBMS you are using!
+<LI><B>W_F_20171006_77</B>: Added support for MariaDB.
+<LI><B>W_F_20171008_78</B>: Modified Login screen functionality to display actual 
+error message returned by JDBC driver for database connection failures. 
+<LI><B>W_F_20171013_80</B>: Added support for deleting all rows from a table. 
+Result page displayed when button <INPUT TYPE="BUTTON" VALUE="Data" /> for the table 
+is clicked contains button  <INPUT TYPE="BUTTON" VALUE="Delete All" /> beside  
+button <INPUT TYPE="BUTTON" VALUE="Delete" /> for this purpose.
+<LI><B>W_F_20171015_81</B>: Added support for visual cue of rows selected for Update or 
+Delete. Values of rows selected by you for the update are shown in bold where as the 
+rows for deletion are shown in italic style with red color.
+
 </OL>
 
-<P> List of bugs fixed:</P>
+<H4> List of Bugs Fixed:</H4>
 <OL>
 <LI><B>W_B_20161226_58</B>: Destination database table list is not updated after data transfer.
 <LI><B>W_B_20161226_60</B>: Table lists do not disappear after closing connections. 
@@ -77,9 +78,7 @@ while displaying tables created by other users.
 <LI><B>W_B_20170728_76</B>: Order of rows of a result set is not as per ORDER BY clause. 
 </OL>
 
-<BR>
-
-<P> List of known issues:</P>
+<H4> List of Major Known Issues:</H4>
 <OL>
 <LI><B>W_B_20161231_64</B>: Data transfer from MS SQL server (source) table  to Oracle (destination) 
 table  fails if the destination table does not have all columns of the source table and/or it has 
@@ -99,6 +98,9 @@ button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page does
 not work.
 <LI><B>W_B_20160811_33</B>: All columns  of primary key of SQLite tables are not displayed sometimes.
 This is a problem with SQLite. Filed the bug at SQLite repository at https://bitbucket.org/xerial/sqlite-jdbc/issues/228/getprimarykeys-does-not-return-all-columns
+<Li><B>W_B_20171009_79</B>: Stored procedure and function creation fails in MariaDB.<br>
+<i>Note:- This may pass in your version of MariaDB as the problem seems to be MariaDB setup as 
+the feature works as expected in MySQL.</i>
 </OL>
 
 <BR><BR>

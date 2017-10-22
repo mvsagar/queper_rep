@@ -49,13 +49,15 @@
 
    String jDriverNameStrs[] = request.getParameterValues("jdriver_name"); 
    String jDriverName = null;
-   if (jDriverNameStrs != null)
-	jDriverName = jDriverNameStrs[0];
+   if (jDriverNameStrs != null) {
+	  jDriverName = jDriverNameStrs[0];
+   }
   
    String jDriverClassStr = request.getParameter("jdriver_class"); 
    String jDriverClass = null;
-   if (jDriverClassStr != null)
-	jDriverClass = jDriverClassStr;
+   if (jDriverClassStr != null) {
+	  jDriverClass = jDriverClassStr;
+   }
 
     // For SQLite only
 	String dbFolder = request.getParameter("db_folder"); 
@@ -64,58 +66,40 @@
 	}
 	
    boolean freshConn = false;
-
+   String jdbcErrMsg = null;
   %>
-
-<%-- For debugging 
-<SCRIPT LANGUAGE="JavaScript">
-alert("1. driver class:<%=jDriverClass%>");
-</SCRIPT>
---%>
+<%@include file="../wji_common/imports.jsp"%>
 <%@include file="../wji_common/connvars.jsp" %>
 
-<%-- For debugging 
-<SCRIPT LANGUAGE="JavaScript">
-alert("2. userId after getattr=<%=(userId == null ? "null" : userId+"---")%>");
-// alert("dbconnect:conn_no=<%=connNo%>, connobjname=<%=CONN_OBJ_NAME%>, conn1= <%=conn1%>");
-</SCRIPT>
---%>
 <%
     if ( (connNo == 0 && conn == null) || (connNo == 1 && conn1 == null) ||
           (connNo == 2 && conn2 == null)
        ) { 
-           freshConn = true;
+		    freshConn = true;
+	        if (jDriverClass == null) { 
+				/*  This means there is no connection and came to the jsp that included
+			    this jsp without going thru login dialog box. Hence ask user
+			    to login again.
+	            */
 %>
-   <%-- Debuuging info.
-	   <P> First time connection </P> 
-	   <P> conn obj name=<%=CONN_OBJ_NAME%> </P>
-   --%>
-<%
-        if (jDriverClass == null) { 
-            /*This means there is no connection and came to the jsp that included
-	    this jsp without going thru login dialog box. Hence ask user
-	    to login again.
-            */
-%>
-            <SCRIPT LANGUAGE="JavaScript">
-                 alert("Database connection is not active.\n\n" +
-	          			"Please Connect to the database first." 
-	          );
-            </SCRIPT>
-            <!--
-            <META http-equiv="refresh" content="2;url=../wji_login/dblogin.jsp?targetfr_name=<%=targetFrName%>&next_page=<%=nextPage0%>">
-            -->
+	            <SCRIPT type="text/javascript">
+	                 alert("Database connection is not active.\n\n" 
+                		 + "Please Connect to the database first.");
+	            </SCRIPT>
+	            <!-- 
+	            <META http-equiv="refresh" content="2;url=../wji_login/dblogin.jsp?targetfr_name=<%=targetFrName%>&next_page=<%=nextPage0%>">
+	            -->
 <% 
             return; 
         } else { 
-	    if (jDriverClass == null || dbURL == null ||
-	          userId == null || password == null) { 
+		    if (jDriverClass == null || dbURL == null ||
+		          userId == null || password == null) { 
 %>
                 <P>Connect to database first.</P>
 <%          } else {
-	        try {
-		   Class.forName(jDriverClass); 
-		  } catch (Exception e) { 
+		        try {
+				   Class.forName(jDriverClass); 
+				} catch (Exception e) { 
 %>
 	              <SCRIPT LANGUAGE="JavaScript">
 	                   alert("Error: Could not load the JDBC driver class " +
@@ -145,35 +129,38 @@ alert("2. userId after getattr=<%=(userId == null ? "null" : userId+"---")%>");
                           			userId,
 			  						password); 
                  } catch (java.sql.SQLException e) {
+                     jdbcErrMsg = e.getSQLState() + ":" + e.getMessage();
                  } 
                  if (tmpConn == null) { 
 %>
-        	    <BR><BR><BR><BR><BR>		   
-	            <SCRIPT LANGUAGE="JavaScript">
-                    alert("Error: Connection to database URL '<%=dbURLStrs[0]%>' failed." + 
-                             "\n\nTry again with correct connection information after making sure your database server is running.");
-	            conn_form.action="../wji_login/dblogin.jsp?jdriver_name=<%=jDriverName%>" 
+	        	    <BR><BR><BR><BR><BR>		   
+		            <SCRIPT LANGUAGE="JavaScript">
+                    alert("Error: Connection to database URL '<%=dbURLStrs[0]%>' failed." 
+                    		+ "\n\n<%=StringOps.xForm4JS(jdbcErrMsg)%>"  
+                            + "\n\nTry again with correct connection information after making sure your database server is running."
+                            );
+		            conn_form.action="../wji_login/dblogin.jsp?jdriver_name=<%=jDriverName%>" 
 	            						+ "&jdriver_class=<%=jDriverClass%>&dburl=<%=dbURL%>" 
 	            						+ "&userid=<%=userId%>"
 	            						+ "&db_folder=<%=dbFolder%>" // Only for SQLite.  W_B_20161219_50
 	            						+ "&targetfr_name=<%=targetFrName%>" 
 	            						+ "&next_page=<%=nextPage0%>";
-	            // W_B_20161219_50 BEGIN: When connection fails, control does not come back to login screen 
-	            // and info entered by the user not restored.
-                conn_form.target="<%=targetFrName%>";
-                conn_form.submit(); 
-	            // W_B_20161219_50 END 
-		   </SCRIPT>
+		            // W_B_20161219_50 BEGIN: When connection fails, control does not come back to login screen 
+		            // and info entered by the user not restored.
+	                conn_form.target="<%=targetFrName%>";
+	                conn_form.submit(); 
+		            // W_B_20161219_50 END 
+				   </SCRIPT>
                <% } else { 
                      if (connNo == 1) {
                          conn1 = tmpConn;
                          theSession.setAttribute(CONN_OBJ_NAME, conn1); 
                          theSession.setAttribute("userid1", userId); 
-			 %>
-	            <SCRIPT LANGUAGE="JavaScript">
-	                 //alert("dbconnect:conn_no=<%=connNo%>, connobjname=<%=CONN_OBJ_NAME%>, conn1= <%=conn1%>");
-		    </SCRIPT>
-		    <%
+				%>
+		            <SCRIPT LANGUAGE="JavaScript">
+		                 //alert("dbconnect:conn_no=<%=connNo%>, connobjname=<%=CONN_OBJ_NAME%>, conn1= <%=conn1%>");
+				    </SCRIPT>
+			    <%
                      } else if (connNo == 2) {
                          conn2 = tmpConn;
                          theSession.setAttribute(CONN_OBJ_NAME, conn2); 
@@ -185,7 +172,7 @@ alert("2. userId after getattr=<%=(userId == null ? "null" : userId+"---")%>");
                      }
 
                   } 
-	     } 
+		     } 
          } // end of else of if drivStrs[] == null
     }  // of if conn == null
 

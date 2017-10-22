@@ -43,7 +43,7 @@ This chapter tells you how to execute SQL statements.
 <P>
 
 <P> After all, the purpose of <B>wjISQL</B> is to execute SQL statements! It gives
-uniform interface for the popular database management systems and hopefully
+uniform interface for popular database management systems and hopefully
 distances you from the idiosyncrasies of client tools of the database management
 systems thus making you more productive.
 </P>
@@ -128,7 +128,24 @@ C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps\wjisql\wji_src\wj
 your computer if version of Tomacat you installed is not 7.0</P>
 
 
-<A NAME="tl"><H3>5.3 Comments</H3></A>
+<A NAME="essf"><H3>5.3 Executing SQL Script File</H3></A>
+User can execute SQL statements of a file by loading them into text box
+<B>SQL Statement(s)</b> and clicking execute button
+<INPUT TYPE="BUTTON" VALUE="Execute" />. All SQL statements of the file displayed
+in the text box are executed one after the other. 
+
+
+<A NAME="esss"><H3>5.4 Executing Selected SQL statements</H3></A>
+User can execute one or more consecutive SQL statements present in  text box
+<B>SQL Statement(s)</b> 
+by selecting text of the statements and clicking execute button 
+<INPUT TYPE="BUTTON" VALUE="Execute" />. 
+This feature, along with the feature of executing SQL script file, is particularly 
+useful to execute one or more SQL statements after loading the text box 
+with contents of required SQL script file.
+
+
+<A NAME="tl"><H3>5.5 Comments</H3></A>
 Each SQL statement can be preceded or followed by comments using 
 <PRE>
 <B>/*</B> and <B>*/</B> (bracketed comments).

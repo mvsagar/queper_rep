@@ -181,7 +181,9 @@
         stmt = conn2.createStatement();
 	if (destDBMS.equalsIgnoreCase(DBMS_SQLITE) == true) {
             stmt.executeUpdate("PRAGMA foreign_keys=OFF");
-	} else if (destDBMS.equalsIgnoreCase(DBMS_MYSQL) == true) {
+	} else if (destDBMS.equalsIgnoreCase(DBMS_MYSQL) == true
+                  || destDBMS.equalsIgnoreCase(DBMS_MARIADB) == true
+	              ) {
             stmt.executeUpdate("SET FOREIGN_KEY_CHECKS=0");
 	} else if (destDBMS.equalsIgnoreCase(DBMS_MSSQLSERVER) == true) {
             stmt.executeUpdate("EXEC sp_msforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"");
@@ -482,7 +484,10 @@
                  *
                  * getParameterData() of MySQL and Oracle do not to work.
                  */
-                if (destDBMS.equals(DBMS_MYSQL) || destDBMS.equals(DBMS_ORACLE) )  {
+                if (destDBMS.equals(DBMS_MYSQL) 
+                    || destDBMS.equals(DBMS_MARIADB) 
+                    || destDBMS.equals(DBMS_ORACLE) 
+                    )  {
                     pmd = null;
                 } else {
                     pmd = pInsStmt.getParameterMetaData();
@@ -511,7 +516,7 @@
                     ct = rsmd.getColumnType(j);
                     tn = rsmd.getColumnTypeName(j);
                     cn = commonColList.get(j-1).getColName();
-		    isNull = false;
+		            isNull = false;
 
 	            /*
 	             * getParameterData() of MySQL and Oracle do not seem to work.
@@ -839,7 +844,9 @@
         stmt = conn2.createStatement();
 	if (destDBMS.equalsIgnoreCase(DBMS_SQLITE) == true) {
 	    // Nothing is reqd.
-	} else if (destDBMS.equalsIgnoreCase(DBMS_MYSQL) == true) {
+	} else if (destDBMS.equalsIgnoreCase(DBMS_MYSQL) == true
+	           || destDBMS.equalsIgnoreCase(DBMS_MARIADB) == true
+	    ) {
 	    // Nothing is reqd.
 	} else if (destDBMS.equalsIgnoreCase(DBMS_MSSQLSERVER) == true) {
             stmt.executeUpdate("EXEC sp_msforeachtable \"ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all\"");

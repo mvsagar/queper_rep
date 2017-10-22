@@ -44,26 +44,25 @@
 <TABLE>
 <TR>
 <TD ALIGN=RIGHT>
-<%  String dbProductName = "", dbProductVersion = "", dbUserName = ""; 
+<%  String dbProductName = "", dbProductVersion = "", dbUserName = ""
+        , dbStatusInfo = ""; 
     if (conn == null) {
-        out.print("Not connected");
+        dbStatusInfo = "Not connected";
     } else {
         dbProductName =  conn.getMetaData().getDatabaseProductName();
 	dbProductVersion = conn.getMetaData().getDatabaseProductVersion();
         dbUserName = conn.getMetaData().getUserName();
-        out.print(dbProductName + "&nbsp;" + dbProductVersion + 
-            (dbUserName == null ? "" : ":" + dbUserName));  
+        dbStatusInfo = dbProductName + "&nbsp;" + dbProductVersion + 
+            (dbUserName == null ? "" : ":" + dbUserName);  
     }
 %>
+	<INPUT TYPE="TEXT" SIZE="50" VALUE="<%=dbStatusInfo%>" STYLE="BORDER:NONE;text-align:right;" READONLY />
 </TD>
 </TR>
 <TR>
 <TD ALIGN=RIGHT>
-<%
-    if (conn != null) {
-        out.print(conn.getMetaData().getURL());
-    }
-%>
+	<INPUT TYPE="TEXT" SIZE="50" VALUE="<%=(conn != null ?  conn.getMetaData().getURL() : "" )%>" 
+	STYLE="BORDER:NONE;text-align:right;" READONLY />
 </TD>
 </TR>
 </TABLE>

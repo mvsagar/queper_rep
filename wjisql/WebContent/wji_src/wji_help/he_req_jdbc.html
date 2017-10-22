@@ -18,8 +18,7 @@
  --- Function: Displays list of supported JDBC drivers. 
  -->
  
-<P>List of supported JDBC drivers:</P>
-<BR>
+<H4>List of Supported JDBC Drivers:</H4>
 <TABLE BORDER=1>
 	<TR>
 		<TH>SNO</TH>
@@ -29,15 +28,15 @@
 	</TR>
 	<TR>
 		<TD>1</TD>
-		<TD>Microsoft JDBC Driver 4.0 for SQL Server</TD>
-		<TD>4.0.2206.100</TD>
-		<TD>sqljdbc4.jar</TD>
-	</TR>
-	<TR>
-		<TD>2</TD>
 		<TD>MySQL Connector Java</TD>
 		<TD>5.1.25</TD>
 		<TD>mysql-connector-java-5.1.25-bin.jar</TD>
+	</TR>
+	<TR>
+		<TD>2</TD>
+		<TD>MariaDB Connector J/1.6.5</TD>
+		<TD>1.6.5</TD>
+		<TD>mariadb-java-client-1.6.5.jar</TD>
 	</TR>
 	<TR>
 		<TD>3</TD>
@@ -48,14 +47,28 @@
 	<TR>
 		<TD>4</TD>
 		<TD>PostgreSQL Native Driver</TD>
-		<TD>9.3 JDBC4 (build 1101)</TD>
-		<TD>postgresql-9.3-1101.jdbc4.jar</TD>
+		<TD>9.4.1212.jre7</TD>
+		<TD>postgresql-9.4-1212.jre7.jar</TD>
 	</TR>
 	<TR>
 		<TD>5</TD>
 		<TD>SQLiteJDBC</TD>
-		<TD>pure</TD>
-		<TD>sqlite-jdbc-3.7.2.jar</TD>
+		<TD>3.8.11</TD>
+		<TD>sqlite-jdbc-3.8.11.jar</TD>
+	</TR>
+	<TR>
+		<TD>6</TD>
+		<TD>Microsoft JDBC Driver 4.0 for SQL Server</TD>
+		<TD>4.0.4621.201</TD>
+		<TD>sqljdbc41.jar</TD>
 	</TR>
 </TABLE>
-<BR>
+
+
+<i>
+<p>Notes:-</p>
+<OL>
+<LI>Though not tested, wjISQL may work on other versions of JDBC driver 
+provided they are compatible with corresponding database management system.
+</OL>
+</i>
