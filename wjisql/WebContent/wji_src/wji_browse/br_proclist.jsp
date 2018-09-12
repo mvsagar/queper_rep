@@ -160,42 +160,53 @@
       String name = "";
       int index = -1;
 
-      	rs = md.getProcedures(null, schemaName, "%"); 
+      rs = md.getProcedures(null, schemaName, "%"); 
       
-      	while (rs.next()) { 
-        catalog = rs.getString(1); 
-	  if (rs.wasNull()) {
-	      catalog = "";
-	  }
+      while (rs.next()) { 
+          catalog = rs.getString(1); 
+	      if (rs.wasNull()) {
+	          catalog = "";
+	      }
           schema = rs.getString(2); 
-	  if (rs.wasNull()) {
-	      schema = "";
-	  }
+	      if (rs.wasNull()) {
+	          schema = "";
+	      }
           name = rs.getString(3); 
-          typeNum = rs.getShort(8); 
-	  if (typeNum == md.procedureNoResult) {
+          
+          // W_B_20180911_87:BEGIN:2018-09-11
+          // As the getShort() for column 8 throws error
+          // for MariaDB jdbc driver, embedded the call in try/catch block
+          // to ignore the error.
+          try {
+              typeNum = rs.getShort(8);
+          } catch (SQLException e) {
+              typeNum = DatabaseMetaData.procedureResultUnknown;
+          } 
+          // W_B_20180911_87:END:2018-09-11
+          
+	      if (typeNum == DatabaseMetaData.procedureNoResult) {
               type = "PROCEDURE";
-	   } else  if (typeNum == md.procedureReturnsResult) {
-	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
-	           || dbmsName.equalsIgnoreCase(DBMS_MARIADB)
-	       ) {
+	      } else  if (typeNum == DatabaseMetaData.procedureReturnsResult) {
+	          if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
+	             || dbmsName.equalsIgnoreCase(DBMS_MARIADB)
+	          ) {
                    /*
-                    * Ignore displaying functions becauses
+                    * Ignore displaying functions because
                     * getFunctions() will retrieve them.
                     */
                    continue;
-	       } else {
-	            type = "FUNCTION";
-	       }
-           } else {
-	       if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
+	          } else {
+	              type = "FUNCTION";
+	          }
+          } else {
+	      if (dbmsName.equalsIgnoreCase(DBMS_MYSQL)
 	           || dbmsName.equalsIgnoreCase(DBMS_MARIADB)
-	       ) {
+	          ) {
 	           type = "PROCEDURE";
 	       } else {
                    type = "UNKNOWN";
 	       }
-           }
+       }
 
           /*
            * MS JDBC Driver returns names with a grouping number starting with 

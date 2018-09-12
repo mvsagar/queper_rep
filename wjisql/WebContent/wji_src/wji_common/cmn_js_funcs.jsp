@@ -252,7 +252,7 @@ function getImageFilePath(in_path) {
     return out_path;
 }
 
-function displayMessage(type, errCode, errMsg)
+function displayMessageConfirm(type, errCode, errMsg, doConfirm)
 {
     var errMsg1 = "";
     var errType = "";
@@ -269,13 +269,39 @@ function displayMessage(type, errCode, errMsg)
       	    errMsg1 = errCode + ".";
    	}
         if (errMsg != null && errMsg != "") {
-           alert(errType + errMsg1 + "\n\n"  + errMsg);
+           if (doConfirm) {
+               return confirm(errType + errMsg1 + "\n\n"  + errMsg 
+                   + "\n\n" + "Do you want to skip seeing further error messages?"
+                   );
+           } else {
+               alert(errType + errMsg1 + "\n\n"  + errMsg);
+               return false;
+           }
         } else {
-           alert(errType + errMsg1);
+           if (doConfirm) {
+               return confirm(errType + errMsg1
+                   + "\n\n" + "Do you want to skip seeing further error messages?"
+                   );
+           } else {
+               alert(errType + errMsg1);
+               return false;
+           }
         }
     } else {
-        alert(errType +  errMsg);
+        if (doConfirm) {
+            return confirm(errType +  errMsg
+                   + "\n\n" + "Do you want to skip seeing further error messages?"
+                );
+        } else {
+            alert(errType +  errMsg);
+            return false;
+        }
     }
+}
+
+function displayMessage(type, errCode, errMsg)
+{
+    displayMessageConfirm(type, errCode, errMsg, false);
 }
 
 

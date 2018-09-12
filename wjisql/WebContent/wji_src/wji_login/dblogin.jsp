@@ -40,38 +40,39 @@
 
 <%
 
+   // W_B_20180911_86:BEGIN:2018-09-11.
+   // Added URL encoding for URL fmt to make login screen display when driver is selected.
    final String mssqlJDBCDriverName     = "Microsoft SQL Server JDBC Driver"; 
    final String mssqlJDBCDriverClass    = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
    final String mssqlJDBCDriverURL      = "jdbc:sqlserver://localhost:1433;databaseName=testdb;"; 
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
-   final String mssqlJDBCDriverURLFmt   = "jdbc:sqlserver://[<host>[\\<instance>][:<port>]][;<>property>=<value>[;<property>=<value>]...]"; 
+   final String mssqlJDBCDriverURLFmt   =  URLEncoder.encode("jdbc:sqlserver://[<host>[\\<instance>][:<port>]][;<>property>=<value>[;<property>=<value>]...]", "UTF-8"); 
 
    final String mysqlJDBCDriverName     = "MySQL JDBC Driver"; 
    final String mysqlJDBCDriverClass    = "com.mysql.jdbc.Driver"; 
    final String mysqlJDBCDriverURL      = "jdbc:mysql://localhost/testdb"; 
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
-   final String mysqlJDBCDriverURLFmt   = "jdbc:mysql://[<host1>][:<port1>][,[<host2>][:<port2>]]...[/[<database>]]"
-		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]"; 
+   final String mysqlJDBCDriverURLFmt   = URLEncoder.encode("jdbc:mysql://[<host1>][:<port1>][,[<host2>][:<port2>]]...[/[<database>]]"
+		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]", "UTF-8"); 
 
    // W_F_20171006_77: 2017-10-06: Support for MariaDB is needed.
    final String mariadbJDBCDriverName     = "MariaDB JDBC Driver"; 
    final String mariadbJDBCDriverClass    = "org.mariadb.jdbc.Driver"; 
-   final String mariadbJDBCDriverURL      = "jdbc:mariadb://localhost:3307/testdb"; 
-   final String mariadbJDBCDriverURLFmt   = "jdbc:mariadb://[<host1>[:<port1>]][,[<host2>[:<port2>]]]...[/[<database>]]"
-		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]"; 
-
+   final String mariadbJDBCDriverURL      = "jdbc:mariadb://localhost:3306/testdb"; 
+   final String mariadbJDBCDriverURLFmt   = URLEncoder.encode("jdbc:mariadb://[<host1>[:<port1>]][,[<host2>[:<port2>]]]...[/[<database>]]"
+		   							+ "[?<propertyName1>=<propertyValue1>[&<propertyName2>=<propertyValue2>]...]", "UTF-8");
 
    final String oracleJDBCDriverName    = "Oracle JDBC Driver"; 
    final String oracleJDBCDriverClass   = "oracle.jdbc.driver.OracleDriver"; 
    final String oracleJDBCDriverURL     = "jdbc:oracle:thin:@localhost:1521:XE"; 
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
-   final String oracleJDBCDriverURLFmt  = "jdbc:oracle:<driver-type>:@<host>:<port>:<database>"; 
+   final String oracleJDBCDriverURLFmt  =  URLEncoder.encode("jdbc:oracle:<driver-type>:@<host>:<port>:<database>", "UTF-8"); 
    
    final String postgresJDBCDriverName  = "PostgreSQL JDBC Driver"; 
    final String postgresJDBCDriverClass = "org.postgresql.Driver"; 
    final String postgresJDBCDriverURL   = "jdbc:postgresql://localhost:5432/testdb"; 
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
-   final String postgresJDBCDriverURLFmt   = "jdbc:postgresql:[//<host>[:<port>]/]<database>"; 
+   final String postgresJDBCDriverURLFmt   = URLEncoder.encode("jdbc:postgresql:[//<host>[:<port>]/]<database>", "UTF-8"); 
 
    final String sqliteJDBCDriverName     = "SQLite JDBC Driver"; 
    final String sqliteJDBCDriverClass    = "org.sqlite.JDBC"; 
@@ -82,6 +83,7 @@
    // W_20161213_43 END: Browse for database file
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
    final String sqliteJDBCDriverURLFmt     =  sqliteJDBCDriverURLPrefix + "<database file with path>";
+   // W_B_20180911_86:END:2018-09-11.
 
 
    final String otherJDBCDriverName     = "(Other JDBC Driver)"; 

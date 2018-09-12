@@ -317,9 +317,16 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 <%
     md = connX.getMetaData(); 
     dbmsName = md.getDatabaseProductName();
+    
+    // W_F_20171201_84: 2018-09-11: Skip execution of further statements.
+    boolean skipExec = false;
+    // W_B_20180911_88: 2018-09-12. This is to refresh table list 
+    // only if statements such as CREATE TABLE or PROCEDURE is executed.
+    boolean refreshTblProcList = false;
 
     // Execute each stmt.
     stmtNo = 0;
+    
     boolean spfFound = false; // Found a stored procedure/function stmt.
 	for (stmtNo = 0; stmtNo < nStmts; ++stmtNo) {
 
@@ -363,8 +370,8 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 		        ((tmpArr.length > 3 && tmpArr[0].equalsIgnoreCase("CREATE") &&
 		                (tmpArr[1].equalsIgnoreCase("PROCEDURE") ||
 			         tmpArr[1].equalsIgnoreCase("FUNCTION"))
-	                 ) ||
-		         (tmpArr.length > 5 && tmpArr[0].equalsIgnoreCase("CREATE") &&
+	                 ) 
+		        || (tmpArr.length > 5 && tmpArr[0].equalsIgnoreCase("CREATE") &&
 	                        tmpArr[1].equalsIgnoreCase("OR") &&
 	                        tmpArr[2].equalsIgnoreCase("REPLACE") &&
 		                (tmpArr[3].equalsIgnoreCase("PROCEDURE") ||
@@ -372,6 +379,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 	                 )
 			)) {
              spfFound = true;
+             refreshTblProcList = true;   // W_B_20180911_88:2018-09-12.
              
              if (tmpArr[1].equalsIgnoreCase("PROCEDURE") || tmpArr[1].equalsIgnoreCase("FUNCTION")) {
                  nameProcFunc = tmpArr[2];
@@ -404,6 +412,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
              --stmtNo; // As for increments.
              continue;
         }	// if
+        
 		if (tmpArr[0].equalsIgnoreCase("CALL")) {
 	            /* Case of : CALL proc... */
 		    isCallStmt = true;
@@ -422,7 +431,37 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 	             */
 		    isCallStmt = true;
 		    nameProcFunc = tmpArr[3];
-	        }
+	    } 
+	    // W_B_20180911_88:BEGIN:2018-08-12
+	    // Refresh table/procedure/function list only if create table/procedure/function
+	    // statements are executed.
+	    else if ((tmpArr.length >= 2 && tmpArr[0].equalsIgnoreCase("CREATE")
+	                  && (tmpArr[1].equalsIgnoreCase("TABLE")
+	                      || tmpArr[1].equalsIgnoreCase("PROCEUDRE")
+	                      || tmpArr[1].equalsIgnoreCase("FUNCTION")
+	                      )
+	              )
+	             ||  // Oracle specific
+	                 (tmpArr.length > 5 && tmpArr[0].equalsIgnoreCase("CREATE") 
+	                    && tmpArr[1].equalsIgnoreCase("OR") 
+	                    && tmpArr[2].equalsIgnoreCase("REPLACE") 
+		                && (tmpArr[3].equalsIgnoreCase("PROCEDURE") 
+			                || tmpArr[3].equalsIgnoreCase("FUNCTION")
+			                || tmpArr[3].equalsIgnoreCase("PACKAGE")
+			                || tmpArr[3].equalsIgnoreCase("TRIGGER")
+			                || tmpArr[3].equalsIgnoreCase("SYNONYM")
+			                || tmpArr[3].equalsIgnoreCase("VIEW")
+			                || tmpArr[3].equalsIgnoreCase("TYPE")
+			               )
+	                 )
+	            ) {
+	       refreshTblProcList = true;
+	    } 
+	    
+	    
+	    
+	    // W_B_20180911_88:END:2018-08-12
+	    
 	        /* DEBUG 
 	           out.print("<BR>isCallStmt=" + isCallStmt);
 	         */
@@ -549,7 +588,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 			    // out.print("exec st=" + execStatus + ", isCallStmt=" + isCallStmt);
 			        
 			    if (execStatus == false) {
-			            // No result set
+			        // No result set
 				    int updCount;
 			        if (isCallStmt) {
 				        updCount = callStmt.getUpdateCount(); 
@@ -1189,12 +1228,19 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
         }
 %>
         <SCRIPT Language="JavaScript">
-	    displayMessage("Error", "<%=se.getSQLState()%>", 
-	         "<%=StringOps.xForm4JS(se.toString())%>"); 
-	 </SCRIPT>
+	         displayMessage("Error", "<%=se.getSQLState()%>", 
+	              "<%=StringOps.xForm4JS(se.toString())%>");
+	    </SCRIPT>
 
 <%
-    		} // catch	   
+                // W_F_20171201_84: 2018-09-11: Skip execution of other statements 
+                // on first error to avoid giving errors on each and every statement
+                // for which user has to keep on cliking error message window
+                skipExec = true;                	         
+    		} // catch	
+    	 if (skipExec) {
+    	     break;
+    	 }   
 	} // For each stmt.
 %>
 </TABLE>
@@ -1464,21 +1510,33 @@ function display_help(form) {
 }
 
 // Refresh left data frame for cases such as create or drop table. 
-if (<%=connNo%> == 1) {
-    ss_results_form.action = "../wji_transfer/tr_tbllist.jsp?conn_no=1";
-    ss_results_form.target = "leftdatafr1";
-} else if (<%=connNo%> == 2) {
-    ss_results_form.action = "../wji_transfer/tr_tbllist.jsp?conn_no=2";
-    ss_results_form.target = "leftdatafr2";
-} else {
-    if ("<%=nameProcFunc%>" == "") {
-        ss_results_form.action = "../wji_browse/br_tbllist.jsp?conn_no=0";
-    } else {
-        ss_results_form.action = "../wji_browse/br_proclist.jsp?conn_no=0";
+// W_B_20180911_88:BEGIN:2018-09-12
+<%
+    if (refreshTblProcList) {
+%>
+// W_B_20180911_88:END:2018-09-12
+		if (<%=connNo%> == 1) {
+		    ss_results_form.action = "../wji_transfer/tr_tbllist.jsp?conn_no=1";
+		    ss_results_form.target = "leftdatafr1";
+		} else if (<%=connNo%> == 2) {
+		    ss_results_form.action = "../wji_transfer/tr_tbllist.jsp?conn_no=2";
+		    ss_results_form.target = "leftdatafr2";
+		} else {
+		    if ("<%=nameProcFunc%>" == "") {
+		        ss_results_form.action = "../wji_browse/br_tbllist.jsp?conn_no=0";
+		    } else {
+		        ss_results_form.action = "../wji_browse/br_proclist.jsp?conn_no=0";
+		    }
+		    ss_results_form.target = "leftdatafr";
+		}
+		
+		ss_results_form.submit();
+// W_B_20180911_88:BEGIN:2018-09-12
+<%
     }
-    ss_results_form.target = "leftdatafr";
-}
-ss_results_form.submit();
+%>
+// W_B_20180911_88:END:2018-09-12
+
 </SCRIPT>
 </FORM>
 </BODY>

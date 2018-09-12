@@ -14,4 +14,4 @@
      limitations under the License.
 -->
 <!-- Modify the following date before releasing wjISQL -->
-<H3>(Nov 1, 2017)</H3>
+<H3>(Sep 12, 2018)</H3>

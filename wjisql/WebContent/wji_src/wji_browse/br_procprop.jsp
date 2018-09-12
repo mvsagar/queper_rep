@@ -163,12 +163,23 @@
        procCatalog = rs.getString(1);
        procSchema = rs.getString(2);
        procRemarks = rs.getString(7);
-       procType = rs.getShort(8);
-       if (procType == java.sql.DatabaseMetaData.procedureResultUnknown)
+       
+       // W_B_20180911_87:BEGIN:2018-09-11
+       // As the getShort() for column 8 throws error
+       // for MariaDB jdbc driver, embedded the call in try/catch block
+       // to ignore the error.
+       try {
+           procType = rs.getShort(8);
+       } catch (SQLException e) {
+           procType = DatabaseMetaData.procedureResultUnknown;
+       } 
+       // W_B_20180911_87:END:2018-09-11
+       
+       if (procType == DatabaseMetaData.procedureResultUnknown)
 	   		procTypeInfo = new String("The procedure/function result is unknown.");
-       else if (procType == java.sql.DatabaseMetaData.procedureNoResult)
-	   		procTypeInfo = new String("The procedur/functione does not return result.");
-       else if (procType == java.sql.DatabaseMetaData.procedureReturnsResult)
+       else if (procType == DatabaseMetaData.procedureNoResult)
+	   		procTypeInfo = new String("The procedure/function does not return result.");
+       else if (procType == DatabaseMetaData.procedureReturnsResult)
 	   		procTypeInfo = new String("The procedure/function returns result.");
    }
    %>

@@ -1,5 +1,5 @@
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2018 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -31,6 +31,66 @@
 <H2>Release Notes</H2>
 <H1>wjISQL</H1>
 </CENTER> 
+
+<H2>wjISQL 1.20.4(456)<H2>
+<H3>(Sep 12, 2018)</H3>
+<P>
+This version has enhancements and important bug fixes.
+</P>
+
+<%@include file="../wji_help/he_req_sw.html" %>
+
+<%@include file="../wji_help/he_req_dbms.html" %>
+
+<%@include file="../wji_help/he_req_jdbc.html" %>
+
+<%@include file="../wji_help/he_req_os_rdbms_comb.html" %>
+
+<%@include file="../wji_help/he_req_browsers.html" %>
+
+
+<H4> List of Enhancements:</H4>
+<OL>
+<LI><B>W_F_20171201_84</B>: Made script execution to stop on first error to avoid user keep on
+closing error message windows displayed for each error on executing SQL statements of the 
+script.
+</OL>
+
+<H4> List of Bugs Fixed:</H4>
+<OL>
+<Li><B>W_B_20171009_79</B>: Stored procedure and function creation fails in MariaDB.<br>
+You may have to execute statement 'SET GLOBAL log_bin_trust_function_creators = 1;' 
+or add 'log_bin_trust_function_creators = 1' to MariaDB configuration file
+before creating functions.
+<LI><B>W_B_20180911_86</B>: Selection of MariaDB in login screen makes the login screen stuck and wjISQL unusable.
+<LI><B>W_B_20180911_87</B>: Switching to "Procedures" in MariaDB results in error 
+"Out of range value for column 'REMARKS': value is not Short range".
+<LI><B>W_B_20180911_88</B>: Table list scroll position disturbs even  when a SELECT statement is executed.
+</OL>
+
+<H4> List of Major Known Issues:</H4>
+<OL>
+<LI><B>W_B_20161231_64</B>: Data transfer from MS SQL server (source) table  to Oracle (destination) 
+table  fails if the destination table does not have all columns of the source table and/or it has 
+more columns.</LI>
+<LI><B>Creation of procedure/function</B>: A create procedure/function 
+statement can not be executed if it is followed by other SQL statements in
+text box of SQL Statement window. 
+<LI><B>Procedure Type in MS SQL Server Databases</B>: Each procedure type is returned as function by SQL Server. 
+<LI><B>Dropping of procedures in SQL Server does not work</B>: 
+Dropping of procedures using
+button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page 
+does not work because procedure type returned by its JDBC driver is FUNCTION
+instead of PROCEDURE.
+<LI><B>Dropping of functions in PostgreSQL does not work</B>: 
+Dropping of functions using
+button <INPUT TYPE=BUTTON VALUE="Drop"> in Procedure/Function property page does
+not work.
+<LI><B>W_B_20160811_33</B>: All columns  of primary key of SQLite tables are not displayed sometimes.
+This is a problem with SQLite. Filed the bug at SQLite repository at https://bitbucket.org/xerial/sqlite-jdbc/issues/228/getprimarykeys-does-not-return-all-columns
+</OL>
+
+<BR><BR>
 
 <H2>wjISQL 1.19.5(439)</H2>
 <H3>(Nov 1, 2017)</H3>
