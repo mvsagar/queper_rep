@@ -1,7 +1,7 @@
 -- Sample table to demonstrate wjISQL features on keys and indexes.
 
 -- Drop tables.
-DROP TABLE questions;
+DROP TABLE IF EXISTS questions;
 
 -- Create tables.
 CREATE TABLE questions (book_id INT NOT NULL, part_num INT NOT NULL, ch_num INT NOT NULL
@@ -16,3 +16,5 @@ CREATE INDEX xqtncmplx ON questions(qtn_complexity, qtn_marks);
 INSERT INTO questions VALUES(1001, 1, 1, 1, 1, 'What is a Java interface?', 1, 1);
 INSERT INTO questions VALUES(1001, 1, 1, 1, 2, 'Give an example for Java interface', 2, 2);
 INSERT INTO questions VALUES(1001, 1, 1, 1, 3, 'Why does one need interfaces in Java', 5, 3);
+
+SELECT * FROM questions;

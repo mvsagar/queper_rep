@@ -1,0 +1,12 @@
+wji_0201_main_screen
+wji_0202_menuitem_home
+wji_0203_menuitem_connect
+wji_0204_menuitem_disconnect
+wji_0205_menuitem_browse
+wji_0206_menuitem_sql
+wji_0207_menuitem_transfer
+wji_0208_menuitem_dbmsinfo
+wji_0209_menuitem_help
+wji_0210_menuitem_relnotes
+wji_0211_menuitem_userguide
+wji_0212_menuitem_about

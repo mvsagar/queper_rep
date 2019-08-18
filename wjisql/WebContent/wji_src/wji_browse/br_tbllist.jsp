@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -84,10 +84,12 @@
    // out.print("<BR>conn_no="+connNo);
    // out.print("<BR>conn_obj="+CONN_OBJ_NAME);
    // out.print("<BR>conn="+conn);
-   if (conn == null) return;
-   java.sql.PreparedStatement pStmt1;
-   java.sql.ResultSet rs, rs1;
-   java.sql.DatabaseMetaData md; 
+   if (conn == null) {
+       return;
+   }
+   java.sql.PreparedStatement pStmt1 = null;
+   java.sql.ResultSet rs = null, rs1 = null;
+   java.sql.DatabaseMetaData md = null; 
    String dbmsName = "";
 
    int nRows = 0, nRowsTbl = 0;
@@ -102,6 +104,13 @@
    boolean errorOccurred = false;
    // W_B_20170617_74 END
    
+   // W_B_20190816_93:BEGIN:2019-08-16: wjISQL displays tables/procedures/functions owned by root user instead of current user.
+   String jdbcDriverName = null;
+   int jdbcDriverMajorVersion = -1;
+   String dbProductName = null;
+   String dbName = null;
+   // W_B_20190816_93:END
+   
 %>
 <%
     String schemaNameStrs[] = request.getParameterValues("schema_name");
@@ -114,7 +123,7 @@
     if (schemaName == null) {
         try {
             if (conn.getMetaData().getDatabaseProductName().equalsIgnoreCase(DBMS_POSTGRESQL)) {
-	        schemaName = "public";
+	            schemaName = "public";
             } else if (conn.getMetaData().getDatabaseProductName().equalsIgnoreCase(DBMS_SQLITE)) {
 	        schemaName = null;
             } else if (conn.getMetaData().getDatabaseProductName().equalsIgnoreCase(DBMS_ORACLE)) {
@@ -132,12 +141,12 @@
             return;
         }	      
     } 
-   dbmsName = conn.getMetaData().getDatabaseProductName();
-
-   if (dbmsName.equals(DBMS_ORACLE)) {
-      schemaName = schemaName.toUpperCase();
-   }    
+	dbmsName = conn.getMetaData().getDatabaseProductName();
+	if (dbmsName.equals(DBMS_ORACLE)) {
+	    schemaName = schemaName.toUpperCase();
+    }    
     theSession.setAttribute("schema_name", schemaName); 
+    // out.print("Schema=" + schemaName);
 %>
 
 <FORM METHOD="POST">
@@ -158,7 +167,7 @@
 
 <BR>
 <B>List of Tables:</B>
-<TABLE  class="sortable resizable">
+<TABLE  class="sortable resizable" id='tbl-tbls'>
 	<thead>
 	<TR STYLE="BACKGROUND:SEAGREEN;">
 		<TH VALIGN=TOP class="sortfirstasc" >SNO</TH>
@@ -173,7 +182,41 @@
 <% try {
     conn.setAutoCommit(true); 
     md = conn.getMetaData(); 
-    rs = md.getTables(null, schemaName, "%", null); 
+    // W_B_20190816_93:BEGIN:2019-08-16: wjISQL displays tables/procedures/functions owned by root user instead of current user.
+    jdbcDriverName = md.getDriverName();
+    jdbcDriverMajorVersion = md.getDriverMajorVersion();
+    dbProductName = md.getDatabaseProductName();
+    dbName = null;
+    // out.println("product=" + dbProductName + ", driver=" + jdbcDriverName + ", ver=" + dbMajorVersion);
+    if (dbProductName.equalsIgnoreCase(DBMS_MYSQL)
+            && jdbcDriverName.contains(MYSQL_TERM)
+            && jdbcDriverMajorVersion >= 8
+        ) {
+        stmtStr = "SELECT database()";
+ 		try {
+		  pStmt1 = conn.prepareStatement(stmtStr);
+		  rs1 = pStmt1.executeQuery();
+		  if (rs1 != null && rs1.next()) {
+		      dbName = rs1.getString(1);
+		  }
+		} catch (java.sql.SQLException se) { 
+		%>
+           <SCRIPT Language="JavaScript">
+		       displayMessage("Error", "<%=se.getSQLState()%>", 
+		            "<%=StringOps.xForm4JS(se.getMessage())%>"); 
+	       </SCRIPT>
+		<%
+		} finally {
+            if (rs1 != null) rs1.close();
+            if (pStmt1 != null) pStmt1.close();
+		}
+        rs = md.getTables(dbName, null, "%", null);    
+    } else {
+	    rs = md.getTables(null, schemaName, "%", null); 
+    }
+    // out.println("dbname=" + dbName);
+	// W_B_20190816_93:END
+	
     while (rs.next()) { 
          errorOccurred = false;
          tblCatalog = rs.getString(1); 
@@ -190,15 +233,18 @@
 	     if (rs.wasNull()) {
 	         tblType = "";
 	     }
-             if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_SQLITE) == true) {
+         if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_SQLITE) == true) {
                  /* 2013-04-07: Fix to ignore all indexes coming as tables in SQLite */
-		 if (tableName.startsWith("sqlite_autoindex") || tableName.startsWith("ix_")  || 
-		         tableName.contains("_idx_")) continue;
-	     } else if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_POSTGRESQL) == true) {
-		 if (tblType.equalsIgnoreCase("INDEX") || tblType.equalsIgnoreCase("SEQUENCE")) 
+			 if (tableName.startsWith("sqlite_autoindex") || tableName.startsWith("ix_")  || 
+			         tableName.contains("_idx_")) {
+			     continue;
+			 }
+		 } else if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_POSTGRESQL) == true) {
+			 if (tblType.equalsIgnoreCase("INDEX") || tblType.equalsIgnoreCase("SEQUENCE")) {
 		         continue;
-             }
-	     stmtStr = "SELECT COUNT(*) FROM " + (tblSchema.equals("")  ? "" : tblSchema + ".") +
+			 }
+         }
+		 stmtStr = "SELECT COUNT(*) FROM " + (tblSchema.equals("")  ? "" : tblSchema + ".") +
 	                       tableName;
              // out.print(stmtStr);
              /*
@@ -207,6 +253,8 @@
               * For example, if a table is created with quoted name in PostgreSQL, 
               * execution of the above stmt fails because table name in the stmt is not quoted.
               */
+         rs1 = null;
+         pStmt1 = null;            
  	     try {
 	         nRowsTbl = 0;
 	         pStmt1 = conn.prepareStatement(stmtStr);
@@ -214,7 +262,6 @@
 	         if (rs1 != null && rs1.next()) {
 	             nRowsTbl = rs1.getInt(1);
 	         }
-	         pStmt1.close();
           } catch (java.sql.SQLException se) { 
               // W_B_20170617_74 BEGIN: Many permission errors.    
               errorOccurred = true;
@@ -230,7 +277,10 @@
 <%
               }
               // W_B_20170617_74 END
-          }	 
+          }	 finally {
+              if (rs1 != null) rs1.close();
+              if (pStmt1 != null) pStmt1.close();
+          }
 %>
          <!-- W_B_20170617_74 BEGIN -->
          <TR STYLE="BACKGROUND:<%=(errorOccurred ? "RED" : "IVORY")%>;">

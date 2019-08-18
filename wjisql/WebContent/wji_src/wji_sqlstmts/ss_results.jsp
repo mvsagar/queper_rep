@@ -136,7 +136,7 @@
 	   oper = "select";
    }
 %>
-
+<%! static Logger logger = LogManager.getLogger("wjisql"); %>
 <%!
    // 
    // Constants
@@ -288,9 +288,9 @@
     int stmtNo = 0;
     int index = 0;
 
-    /* DEBUG: Print stmts split based on semicolon.
-    for (int k = 0; k < nStmts; ++k) out.print("<BR>Stmt # " + k + ") [" + stmtArr[k] + "]");
-    */
+    for (int k = 0; k < nStmts; ++k) {
+        logger.debug("Stmt # " + k + ") " + stmtArr[k]);
+    }
 %>
 
 <INPUT TYPE=HIDDEN NAME="sqlstmt" VALUE="<%=sqlStmt%>">
@@ -472,15 +472,15 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 <TR STYLE="BACKGROUND:LIGHTBLUE;">
 <TD>
 <B><%=(stmtNo+1)%>) SQL Statement: </B> 
-<TEXTAREA NAME="sqlstmt<%=stmtNo%>" ROWS=2 COLS=65><%=stmtStr%></TEXTAREA>
-<INPUT TYPE=BUTTON VALUE="Execute" STYLE="BACKGROUND:AQUA;"
+<TEXTAREA NAME="sqlstmt<%=stmtNo%>" ID="text-stmt-<%=stmtNo%>" ROWS=2 COLS=65><%=stmtStr%></TEXTAREA>
+<INPUT TYPE=BUTTON ID="btn-exec-<%=stmtNo%>" VALUE="Execute" STYLE="BACKGROUND:AQUA;"
    ONCLICK="select_rows(this.form, <%=stmtNo%>)">
 </TD>
 </TR>
 
 <%
+				logger.debug("stmtNo=" + stmtNo);        
 
-        
 	        /* Get primary key columns if user clicked one of the tables
 	         * in the list of tables on the left frame so that primary key
 	         * columns can be shown in different color.
@@ -556,9 +556,11 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 	            
 	     		execStatus = callStmt.execute();
 			} else {
-			    prepStmt = connX.prepareStatement(stmtStr); 
+			    prepStmt = connX.prepareStatement(stmtStr);
+                logger.debug("stmtNo=" + stmtNo + ", stmt=" + stmtStr + ", exec st=" + execStatus 
+                        + ", isCallStmt=" + isCallStmt
+                        + ", prepStmt=" + prepStmt);
 			    execStatus = prepStmt.execute();
-			    // out.print("stmt=" + stmtStr + ", exec st=" + execStatus + ", isCallStmt=" + isCallStmt);
 		
 		            /* 
 		             * CREATE Procedure/function stmt in Oracle gives
@@ -585,7 +587,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 			    	}
 				}
 		
-			    // out.print("exec st=" + execStatus + ", isCallStmt=" + isCallStmt);
+			    logger.debug("exec st=" + execStatus + ", isCallStmt=" + isCallStmt);
 			        
 			    if (execStatus == false) {
 			        // No result set
@@ -595,6 +597,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 				    } else {
 				        updCount = prepStmt.getUpdateCount(); 
 				    }
+			        logger.debug("updCount=" + updCount);
 %>	
 <TR><TD><I>Number of rows inserted/updated/deleted = <%=updCount%></I></TD></TR> 
 <%	    
@@ -643,7 +646,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 <!--  Do not add 'editable' in the list of classes. 
       Otherwise OK, Cancel will appear when a cell is clicked. 
  	-->
-<TABLE  class="sortable resizable">
+<TABLE  class="sortable resizable" id="tbl-rs-<%=stmtNo%>">
 	<thead>     
     <TR STYLE="BACKGROUND:SEAGREEN;">
     <%-- Output row selection header. --%>
@@ -810,7 +813,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
            <TD STYLE="BACKGROUND:<%=bgColorCell%>">
 <%
            ct = rsmd.getColumnType(i);
-			// out.print("<BR>" + ct + "(" + rsmd.getColumnTypeName(i) + ")" );
+		   // out.print("<BR>" + ct + "(" + rsmd.getColumnTypeName(i) + ")" );
            switch (ct) {
            case Types.BLOB :
            case Types.LONGVARBINARY : {
@@ -875,11 +878,14 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
 					     String hexStr = StringOps.bytesToHex(ba);
 					     // end
                          */
-
+						// out.println("bytearead=" + bytesRead);
 			     		StringBuffer hexStr = new StringBuffer("");
                         while (bytesRead > 0) {
                             bos.write(byteArray, 0, bytesRead);
-			         		hexStr.append(StringOps.bytesToHex(byteArray));
+                            // W_B_20190817_94:BEGIN:2019-08-17:wjISQL adds 0s to the end of BLOB columns.
+                            // To fix this used two argument bytestoHex function and passed current byte array size.
+			         		hexStr.append(StringOps.bytesToHex(byteArray, bytesRead));
+				         	// W_B_20190817_94:END:
 	                        bytesRead = binStrm.read(byteArray);
                         }
                         bos.flush();
@@ -989,6 +995,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                        break;
                    case Types.CHAR:
                    case Types.VARCHAR:
+                   case Types.CLOB:
                    case Types.LONGVARCHAR:
                    case Types.NCHAR:
                    case Types.NVARCHAR:
@@ -1151,7 +1158,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
             if (isCallStmt) {
                 out.print("<TR><TD STYLE=\"FONT-SIZE:14pt;FONT-WEIGHT:BOLD;\">" +
                       "Output (OUT/INOUT/RETURN) Parameter Values</TD></TR>"); 
-                out.print("<TR><TD><TABLE BORDER=1><TR><TH>Parameter #</TH><TH>Type</TH><TH>Value</TH></TR>");
+                out.print("<TR><TD><TABLE BORDER=1 id='tbl-proc-result-" + stmtNo + "'><THEAD><TR><TH>Parameter #</TH><TH>Type</TH><TH>Value</TH></TR></THEAD><TBODY>");
                 markerNo = 0;
                 boolean outputArgsExist = false;
                 for (int k = 1; k <= nParams; ++k) {
@@ -1184,7 +1191,7 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                     out.print("<TR><TD COLSPAN=3 STYLE=\"COLOR:BLUE;FONT-STYLE:ITALIC;\">" +
                       "No OUT/INOUT/RETURN parameters exist for the procedure.</TD><TR>"); 
                 }
-                out.print("</TABLE></TR></TD>");
+                out.print("</TBODY></TABLE></TR></TD>");
             }
 %>
 <TR><TD><HR><TD></TR> 
@@ -1226,10 +1233,11 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                  out.print("<BR>" + se1.toString());
              }
         }
+        logger.error("Error: " + se.getErrorCode() + ":" + se.getMessage());
 %>
         <SCRIPT Language="JavaScript">
 	         displayMessage("Error", "<%=se.getSQLState()%>", 
-	              "<%=StringOps.xForm4JS(se.toString())%>");
+	              "<%=StringOps.xForm4JS(se.getMessage())%>");
 	    </SCRIPT>
 
 <%
@@ -1237,10 +1245,10 @@ Max column size: <INPUT TYPE=TEXT NAME="max_col_size" VALUE="<%=maxColSize%>"
                 // on first error to avoid giving errors on each and every statement
                 // for which user has to keep on cliking error message window
                 skipExec = true;                	         
-    		} // catch	
-    	 if (skipExec) {
+    	} // catch	
+    	if (skipExec) {
     	     break;
-    	 }   
+    	}   
 	} // For each stmt.
 %>
 </TABLE>

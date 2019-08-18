@@ -1,5 +1,5 @@
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,4 +14,4 @@
      limitations under the License.
 -->
 <!-- Modify the following date before releasing wjISQL -->
-<H3>(Sep 12, 2018)</H3>
+<h3>(Aug 19, 2019(</H3>

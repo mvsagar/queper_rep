@@ -1,0 +1,8 @@
+-------------------------- TC 08/3.6.1/1 ----------------------
+Tests clearing of row selection
+
+No rows before deletion: 3
+Selection status of row 1: true
+Selection status of row 3: true
+Selection status of row 1 after clear: false
+Selection status of row 3 after clear: false

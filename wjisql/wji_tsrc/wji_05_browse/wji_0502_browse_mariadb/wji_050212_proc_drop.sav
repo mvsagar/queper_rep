@@ -1,0 +1,8 @@
+-------------------------- TC 05/3.11.1/1 ----------------------
+Tests procedure/functions properties button 'Drop' for procedures
+
+No of html tbl rows: 6
+Number of procedures before dropping: 6
+Alert message:Do you really want drop the PROCEDURE 'proc_5_1_multi_stmt'?
+No of html tbl rows: 5
+Number of procedures after dropping: 5

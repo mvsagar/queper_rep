@@ -1,0 +1,18 @@
+
+Test functionality of clicking of Connect link on main screen
+
+Connect link click passed
+Field type, name and values:
+button::Login
+button::Reset URL
+button::Help
+text:jdriver_class:
+text:dburl:
+text::URL Format
+text:dburlfmt:
+hidden:db_folder:
+hidden:db_file:
+text:userid:
+password:password:
+submit:login:Login
+Each screen component verification Passed

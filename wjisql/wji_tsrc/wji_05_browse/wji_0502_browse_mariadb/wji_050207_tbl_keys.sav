@@ -1,0 +1,75 @@
+-------------------------- TC 05/3.6.1/1 ----------------------
+Tests table properties button 'Keys'
+
+Table=t1_1_std_data_types_basic
+No of html tbl columns: 2
+No of html tbl rows: 1
+No of primary key columns: 1
+List of primary key columns:
+COLUMN_NAME,	KEY_SEQ
+int_col,	1
+
+1. Index Name: t1_1_cns1
+Index properties...
+No of html tbl columns: 2
+No of html tbl rows: 6
+No of index properties: 6
+List of index properties:
+Name,	Value
+Qualifier:,	mariadb
+
+Is unique?:,	false
+
+Organization?:,	(Other than Clustered or Hashed)
+
+Unique values:,	4
+
+Number of pages:,	0
+
+Filter Condition:,	null
+
+Index columns...
+No of html tbl columns: 3
+No of html tbl rows: 4
+No of index columns: 4
+List of index columns:
+ORDINAL_POSITION,	COLUMN_NAME,	ASC_OR_DESC
+1,	sint_col,	A
+
+2,	bint_col,	A
+
+3,	dec_col,	A
+
+4,	num_col,	A
+
+2. Index Name: t1_1_cns2
+Index properties...
+No of html tbl columns: 2
+No of html tbl rows: 6
+No of index properties: 6
+List of index properties:
+Name,	Value
+Qualifier:,	mariadb
+
+Is unique?:,	false
+
+Organization?:,	(Other than Clustered or Hashed)
+
+Unique values:,	4
+
+Number of pages:,	0
+
+Filter Condition:,	null
+
+Index columns...
+No of html tbl columns: 3
+No of html tbl rows: 3
+No of index columns: 3
+List of index columns:
+ORDINAL_POSITION,	COLUMN_NAME,	ASC_OR_DESC
+1,	flt_col,	A
+
+2,	real_col,	A
+
+3,	dbl_col,	A
+

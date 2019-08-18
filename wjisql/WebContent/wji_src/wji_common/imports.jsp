@@ -20,3 +20,5 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.queper.util.common.*"%>
 <%@page import="com.queper.util.db.*"%>
+<%@page import="org.apache.logging.log4j.Logger"%>
+<%@page import="org.apache.logging.log4j.LogManager"%>

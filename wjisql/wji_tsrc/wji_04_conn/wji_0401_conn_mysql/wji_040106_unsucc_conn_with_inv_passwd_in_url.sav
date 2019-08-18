@@ -1,0 +1,11 @@
+
+Tests Unsuccessful connection with invalid password in url
+
+Alert error message:
+Error: Connection to database URL 'jdbc:mysql://localhost:3307/mysqldb' failed.
+
+28000:Access denied for user 'mysqlusr'@'localhost' (using password: NO)
+
+Try again with correct connection information after making sure your database server is running.
+
+Connect: Unsuccessful login with invalid password in url test passed.

@@ -28,6 +28,10 @@
    String DBMS_SQLITE = "SQLite";
    String DBMS_ORACLE = "Oracle";
    String DBMS_POSTGRESQL = "PostgreSQL";
+   
+   /* W_B_20190816_92: wjISQL does not work with MySQL 8.x */
+   String MARIADB_TERM = "MariaDB";
+   String MYSQL_TERM = "MySQL";
 
    HttpSession theSession = request.getSession(true); 
    String connNoStr = request.getParameter("conn_no"); 

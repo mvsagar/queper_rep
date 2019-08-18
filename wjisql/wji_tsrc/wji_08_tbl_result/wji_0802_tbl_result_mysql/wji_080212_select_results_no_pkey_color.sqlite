@@ -1,0 +1,21 @@
+-------------------------- TC 08/3.8.1/1 ----------------------
+Tests select button results in no color for primary key columns
+
+No of html tbl columns: 10
+No of html table rows: 4
+book_id,	part_num,	ch_num,	secn_num,	qtn_num
+
+Columns and color before clicking button Select.
+(1001,orange),	(1,orange),	(1,orange),	(1,orange),	(1,orange)
+(1001,orange),	(1,orange),	(1,orange),	(1,orange),	(3,orange)
+(1001,orange),	(1,orange),	(1,orange),	(2,orange),	(1,orange)
+(1001,orange),	(xyz,orange),	(1,orange),	(2,orange),	(1,orange)
+No of html tbl columns: 10
+No of html table rows: 4
+book_id,	part_num,	ch_num,	secn_num,	qtn_num
+
+Columns and color after clicking button Select.
+(1001,ivory),	(1,ivory),	(1,ivory),	(1,ivory),	(1,ivory)
+(1001,ivory),	(1,ivory),	(1,ivory),	(1,ivory),	(3,ivory)
+(1001,ivory),	(1,ivory),	(1,ivory),	(2,ivory),	(1,ivory)
+(1001,ivory),	(xyz,ivory),	(1,ivory),	(2,ivory),	(1,ivory)

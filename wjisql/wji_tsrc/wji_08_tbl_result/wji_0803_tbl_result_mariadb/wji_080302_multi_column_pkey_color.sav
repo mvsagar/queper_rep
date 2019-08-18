@@ -1,0 +1,9 @@
+-------------------------- TC 08/3.2.1/2 ----------------------
+Tests  multi-column primary key  color.
+
+No of html tbl columns: 10
+No of html table rows: 3
+book_id,	part_num,	ch_num,	secn_num,	qtn_num
+(1001,orange),	(1,orange),	(1,orange),	(1,orange),	(1,orange)
+(1001,orange),	(1,orange),	(1,orange),	(1,orange),	(2,orange)
+(1001,orange),	(1,orange),	(1,orange),	(1,orange),	(3,orange)

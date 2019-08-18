@@ -1,0 +1,13 @@
+-------------------------- TC 05/3.7.1/1 ----------------------
+Tests table properties button 'Drop'
+
+No of html tbl rows: 4
+Number of tables before dropping: 4
+Table=t1_1_std_data_types_basic
+Table=t2_1_multi_lingual_data_types
+Table=t3_1_long_data_types
+Table=t4_1_non_std_data_types_1
+Table to be dropped=t4_1_non_std_data_types_1
+Alert message:Do you really want drop the TABLE 't4_1_non_std_data_types_1'?
+No of html tbl rows: 3
+Number of tables after dropping: 3

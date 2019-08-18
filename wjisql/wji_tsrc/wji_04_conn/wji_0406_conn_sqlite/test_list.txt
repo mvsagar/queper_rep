@@ -1,0 +1,6 @@
+wji_040601_succ_conn_disconn
+# The following test does not work currently. Test it manually
+#wji_040602_succ_conn_with_chosen_db_file
+wji_040603_unsucc_conn_with_inv_prefix_in_url
+wji_040604_unsucc_conn_with_inv_dbname_in_url
+wji_040605_unsucc_conn_with_inv_db_file

@@ -1,0 +1,48 @@
+-------------------------- TC 06/7.4.1/1 ----------------------
+Tests execution of SQL script.
+
+sqlstmt=-- The following SQL statements are used to test the following features:
+--     1. Execution of SQL statements in a script file.
+--     2. Execution of one or more contiguous statements by selecting 
+--        them in the text box of field SQL Statement(s).
+-- 
+DROP TABLE IF EXISTS ts1;
+CREATE TABLE ts1(c1 INT NOT NULL PRIMARY KEY, c2 VARCHAR(100));
+INSERT INTO ts1 VALUES(1, 'one');
+INSERT INTO ts1 VALUES(2, 'two');
+INSERT INTO ts1 VALUES(3, 'three');
+SELECT * FROM ts1;
+SELECT * FROM ts1 WHERE c1 = 2;
+DROP TABLE IF EXISTS ts1;
+SQL stmt:DROP TABLE IF EXISTS ts1
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:CREATE TABLE ts1(c1 INT NOT NULL PRIMARY KEY, c2 VARCHAR(100))
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO ts1 VALUES(1, 'one')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO ts1 VALUES(2, 'two')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO ts1 VALUES(3, 'three')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:SELECT * FROM ts1
+No of html table columns: 4
+No of html table rows: 3
+,	c1,	c2
+1,	1,	one
+2,	2,	two
+3,	3,	three
+SQL stmt:SELECT * FROM ts1 WHERE c1 = 2
+No of html table columns: 4
+No of html table rows: 1
+,	c1,	c2
+1,	2,	two

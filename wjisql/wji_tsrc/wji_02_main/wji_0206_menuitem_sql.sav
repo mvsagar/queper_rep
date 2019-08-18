@@ -1,0 +1,15 @@
+
+Test functionality of clicking of SQL link on main screen
+
+SQL link click passed
+Navigation menu items test passed
+Left pane test passed
+SQL Statements pane test passed
+Field type, name and values of the SQL Statements pane:
+	button::Execute
+	button::Cancel
+	button::Clear
+	button::Help
+	hidden:sqlstmt:
+	file:script_files:
+Right data pane test passed

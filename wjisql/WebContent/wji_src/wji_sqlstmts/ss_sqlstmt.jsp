@@ -178,7 +178,7 @@ function read_script_file() {
     // W_B_20170711_75 BEGIN: 2017-10-04: SQL Script loading second time fails. 
     reader.onload = function(){
       	document.getElementById("user_sqlstmt").value = reader.result;;
-       };    
+    };    
     // W_B_20170711_75 END
     reader.readAsText(files[0]);
 }

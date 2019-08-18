@@ -29,6 +29,7 @@
  ---				available to the web server you use.
  -->
 
+<%@page import="java.net.URLDecoder"%>
 <HTML>
 <HEAD>
 <TITLE>Login</TITLE>
@@ -82,7 +83,7 @@
    final String sqliteJDBCDriverURLLinux =  sqliteJDBCDriverURLPrefix + OsEnv.getHomeDir() + "/testdb";
    // W_20161213_43 END: Browse for database file
 	// W_B_20161221_52: URL formats on the login screen are incomplete.
-   final String sqliteJDBCDriverURLFmt     =  sqliteJDBCDriverURLPrefix + "<database file with path>";
+   final String sqliteJDBCDriverURLFmt     =  URLEncoder.encode(sqliteJDBCDriverURLPrefix + "<database file with path>", "UTF-8");
    // W_B_20180911_86:END:2018-09-11.
 
 
@@ -142,7 +143,7 @@
 			dbURLFmt = sqliteJDBCDriverURLFmt;
 		}
 	}
-	// W_B_20161221_52 END
+   // W_B_20161221_52 END
    // W_B_20161221_51 END
    String userIdStrs[] = request.getParameterValues("userid"); 
    String userId = new String("");
@@ -225,8 +226,11 @@
 		READONLY DISABLED STYLE="FONT-STYLE:ITALIC;BORDER-STYLE:NONE;">
 </TD>		
 <TD>
+<!-- W_B_20190817_95: URL format when displayed after first time is in encoded format.
+  -- Converted back to unencoded form using URLDecoder to fix the issue.
+  -->
 <INPUT TYPE=TEXT NAME="dburlfmt" 
-	VALUE="<%=(jDriverClass.equals(mysqlJDBCDriverClass) ? dbURLFmt + "?useUnicode=true&characterEncoding=UTF-8" : dbURLFmt)%>"  
+	VALUE="<%=URLDecoder.decode((jDriverClass.equals(mysqlJDBCDriverClass) ? dbURLFmt + "?useUnicode=true&characterEncoding=UTF-8" : dbURLFmt), "UTF-8")%>"  
 	READONLY DISABLED SIZE="50" STYLE="FONT-STYLE:ITALIC;BORDER-STYLE:NONE;">
 </TD>
 </TR>
@@ -284,7 +288,7 @@ if (jDriverClass.equals(sqliteJDBCDriverClass)) {
     </TR>
 
     <TD ALIGN=CENTER COLSPAN=2 >
-    <INPUT TYPE=SUBMIT VALUE="Login" STYLE="BACKGROUND:AQUA;" ONCLICK="react_submit(this.form)">
+    <INPUT TYPE=SUBMIT ID="login" NAME="login" VALUE="Login" STYLE="BACKGROUND:AQUA;" ONCLICK="react_submit(this.form)">
     </TD>
     </TR>
    	<!-- W_20161213_43 END: Browse for database file -->

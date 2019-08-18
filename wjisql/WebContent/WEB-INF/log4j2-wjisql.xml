@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} WJISQL [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <Syslog name="syslog" format="RFC5424" host="localhost" port="514"
+            protocol="UDP" appName="WJISQL" mdcId="WJISQL" facility="LOCAL0">
+	    <PatternLayout pattern="%d{HH:mm:ss.SSS} WJISQL [%t] %-5level %logger{36} - %msg%n"/>
+    </Syslog>	 	
+  </Appenders>	
+  <Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="syslog" />
+      <!-- Enable the following appender, if required,  to log messages 
+	   to console. -->
+      <!-- 
+      <AppenderRef ref="Console" />
+      -->
+    </Root>
+  </Loggers>
+</Configuration>

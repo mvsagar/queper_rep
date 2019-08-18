@@ -1,5 +1,5 @@
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2018 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -32,6 +32,6 @@
   -- b - build number (increase by 1 for each build)
   -- Final responsibility of changing these lies with admin developer.
  -->
-<TD VALIGN=MIDDLE STYLE="FONT-SIZE:20pt;FONT-WEIGHT:BOLD;">wjISQL 1.20.4(456)</TD>
+<TD VALIGN=MIDDLE STYLE="FONT-SIZE:18pt;FONT-WEIGHT:BOLD;">wjISQL 1.21.9(502)</TD>
 </TR>
 </TABLE>

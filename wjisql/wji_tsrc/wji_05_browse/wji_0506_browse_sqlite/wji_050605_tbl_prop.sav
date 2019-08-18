@@ -1,0 +1,27 @@
+-------------------------- TC 05/7.4.1/1,2 ----------------------
+Tests Table properties
+
+Table=t1_1_std_data_types_basic
+No of table properies: 22
+No of table columns: 13
+1)	Column name: char_col,		Column type: CHAR(30),		Column size: 2000000000
+2)	Column name: vchar_col,		Column type: VARCHAR(50),		Column size: 2000000000
+3)	Column name: sint_col,		Column type: SMALLINT,		Column size: 2000000000
+4)	Column name: int_col,		Column type: INTEGER,		Column size: 2000000000
+5)	Column name: dec_col,		Column type: DECIMAL(10,2),		Column size: 2000000000
+6)	Column name: num_col,		Column type: NUMERIC(10,2),		Column size: 2000000000
+7)	Column name: real_col,		Column type: REAL,		Column size: 2000000000
+8)	Column name: float_col,		Column type: FLOAT,		Column size: 2000000000
+9)	Column name: dbl_col,		Column type: DOUBLE PRECISION,		Column size: 2000000000
+10)	Column name: date_col,		Column type: DATE,		Column size: 2000000000
+11)	Column name: time_col,		Column type: TIME,		Column size: 2000000000
+12)	Column name: ts_col,		Column type: TIMESTAMP,		Column size: 2000000000
+13)	Column name: bool_col,		Column type: BOOLEAN,		Column size: 2000000000
+Table=t2_1_multi_lingual_data_types
+No of table properies: 22
+No of table columns: 5
+1)	Column name: int_col,		Column type: INTEGER,		Column size: 2000000000
+2)	Column name: char_col,		Column type: CHAR(250),		Column size: 2000000000
+3)	Column name: vchar_col,		Column type: VARCHAR(250),		Column size: 2000000000
+4)	Column name: nchar_col,		Column type: CHAR(250),		Column size: 2000000000
+5)	Column name: nvchar_col,		Column type: VARCHAR(250),		Column size: 2000000000

@@ -1,0 +1,14 @@
+
+Tests link 'Home' after link 'SQL' is clicked
+
+SQL: SQL Statements frame test passed
+Field type, name and values of the SQL Statements pane:
+	button::Execute
+	button::Cancel
+	button::Clear
+	button::Help
+	hidden:sqlstmt:
+	file:script_files:
+Home: Navigation frame test passed
+Home: Left data frame test passed
+Home: Right data frame test passed

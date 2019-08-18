@@ -1,0 +1,6 @@
+wji_090100_setup_db
+wji_090101_all_tbls
+wji_090102_missing_and_extra_columns
+wji_090103_fail_on_no_dest_tbl
+wji_090104_fail_on_constraint_violation
+wji_090105_back_to_home_screen

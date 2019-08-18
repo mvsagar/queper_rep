@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -142,13 +142,15 @@
         <SPAN STYLE="FONT-SIZE:10pt;FONT-WEIGHT:BOLD;">Columns:</SPAN>
 <% } %>
 
-<TABLE ALIGN="LEFT"  class="sortable resizable" >
-<tr STYLE="BACKGROUND:SEAGREEN;">
+<TABLE ALIGN="LEFT"  class="sortable resizable" id="tbl-dbtblcols">
+  <THEAD>
+  <tr STYLE="BACKGROUND:SEAGREEN;">
 <% try {
      rs = md.getColumns(null, schemaName, tableName, null);
      rsmd = rs.getMetaData(); 
      int nCols = rsmd.getColumnCount(); 
 %>    
+
      <TH class="sortfirstasc" >
 	    <!-- W_20160104_36 -->
 	    <INPUT TYPE="TEXT" NAME= "vsnor0c0" VALUE="SNO" SIZE=4 READONLY
@@ -162,6 +164,8 @@
 		</TH>
      <% } %>
 	</tr>
+  </THEAD>
+  <TBODY>
     <%-- Print Columns of the given table. --%>
     <% 
     	nRows = 0;
@@ -195,6 +199,7 @@
         return;
    }	  
 %>
+  </TBODY>
 </TABLE>
 
 <BR CLEAR=LEFT>

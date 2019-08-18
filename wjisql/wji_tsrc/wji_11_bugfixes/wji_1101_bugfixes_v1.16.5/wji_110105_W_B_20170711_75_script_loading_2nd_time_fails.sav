@@ -1,0 +1,24 @@
+-------------------------- TC 11/2.4/2 ----------------------
+Tests fix for the bug W_B_20170711_75 - script loading second time fails after clearing stmt area.
+
+
+Last select stmt results:
+Number of html table columns: 6
+Number of html table rows: 4
+,	,	int_col,	tint_col,	mint_col,	datetime_col
+(row value color:background: seagreen;) ,	1,	1,	123,	1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	2,	2,	-123,	-1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	3,	3,	123,	1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	4,	4,	(NULL),	(NULL),	(NULL)
+
+Cleared user_sqlstmt field.
+
+Last select stmt results after reloading of script:
+Number of html table columns: 6
+Number of html table rows: 4
+,	,	int_col,	tint_col,	mint_col,	datetime_col
+(row value color:background: seagreen;) ,	1,	1,	123,	1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	2,	2,	-123,	-1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	3,	3,	123,	1234567,	2014-03-19 18:30:20.0
+(row value color:background: seagreen;) ,	4,	4,	(NULL),	(NULL),	(NULL)
+Success: There is no next html result table tbl-rs-4; 

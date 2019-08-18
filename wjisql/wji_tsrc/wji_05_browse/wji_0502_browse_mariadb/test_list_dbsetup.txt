@@ -1,0 +1,3 @@
+wji_050201_db_setup_tables
+wji_050202_db_setup_procs
+wji_050203_db_setup_funcs

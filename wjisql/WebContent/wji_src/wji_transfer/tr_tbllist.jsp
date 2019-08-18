@@ -80,9 +80,9 @@
     <%@include file="../wji_common/cmn_js_funcs.jsp" %>
 </SCRIPT>
 <%
-   java.sql.PreparedStatement pStmt1;
-   java.sql.ResultSet rs, rs1;
-   java.sql.DatabaseMetaData md; 
+   java.sql.PreparedStatement pStmt1 = null;
+   java.sql.ResultSet rs = null, rs1 = null;
+   java.sql.DatabaseMetaData md = null; 
    int nRows1 = 0;
    int nRows2 = 0;
    int nRowsTbl = 0;
@@ -92,6 +92,13 @@
    String tblType = null;
    String schemaName1 = "";
    String schemaName2 = "";
+   // W_B_20190816_93:BEGIN:2019-08-16: wjISQL displays tables/procedures/functions owned by root user instead of current user.
+   String jdbcDriverName = null;
+   int driverMajorVersion = -1;
+   String dbProductName = null;
+   String dbName = null;
+   String stmtStr = null;
+   // W_B_20190816_92:END
 %>
 
 <FORM METHOD="POST" NAME="tbllist_form">
@@ -185,7 +192,11 @@
 <BR>
 <B>Source Table List</B>:
 <BR>
-<TABLE  ALIGN="LEFT" class="sortable resizable">
+<!--W_B_20190806_91: Removed class="sortable resizable" from table attributes as this is causing probem
+    in choosing checkboxes. 
+-->
+<TABLE  ALIGN="LEFT" id='src-tbl-list'>
+<THEAD>
 <TR STYLE="BACKGROUND:SEAGREEN;">
 <TH>SNO</TH>
 <TH>Table name</TH>
@@ -199,31 +210,67 @@ ONCLICK="toggle_all_for_transfer(this.form, 1)">
 ONCLICK="toggle_all_for_delete(this.form, 1)">
 </TH>
 </TR>	
+</THEAD>
+<TBODY>
 <% try {
     md = conn1.getMetaData(); 
-    rs = md.getTables(null, schemaName1, "%", null); 
+    // W_B_20190816_93:BEGIN:2019-08-16: wjISQL displays tables/procedures/functions owned by root user instead of current user.
+    jdbcDriverName = md.getDriverName();
+    driverMajorVersion = md.getDriverMajorVersion();
+    dbProductName = md.getDatabaseProductName();
+    dbName = null;
+    // out.println("product=" + dbProductName + ", driver=" + jdbcDriverName + ", ver=" + dbMajorVersion);
+    if (dbProductName.equalsIgnoreCase(DBMS_MYSQL)
+            && jdbcDriverName.contains(MYSQL_TERM)
+            && driverMajorVersion >= 8
+        ) {
+        stmtStr = "SELECT database()";
+        try {
+          pStmt1 = conn1.prepareStatement(stmtStr);
+          rs1 = pStmt1.executeQuery();
+          if (rs1 != null && rs1.next()) {
+              dbName = rs1.getString(1);
+          }
+        } catch (java.sql.SQLException se) { 
+        %>
+           <SCRIPT Language="JavaScript">
+               displayMessage("Error", "<%=se.getSQLState()%>", 
+                    "<%=StringOps.xForm4JS(se.getMessage())%>"); 
+           </SCRIPT>
+        <%
+        } finally {
+            if (rs1 != null) rs1.close();
+            if (pStmt1 != null) pStmt1.close();
+        }
+        rs = md.getTables(dbName, null, "%", null);    
+    } else {
+        rs = md.getTables(null, schemaName1, "%", null); 
+    }
+    // out.println("dbname=" + dbName);
+    // W_B_20190816_93:END 
+    
     while (rs.next()) { 
-             tblCatalog = rs.getString(1); 
+         tblCatalog = rs.getString(1); 
 	     if (rs.wasNull()) {
 	         tblCatalog = "";
 	     }
-             tblSchema = rs.getString(2); 
+         tblSchema = rs.getString(2); 
 	     if (rs.wasNull()) {
 	         tblSchema = "";
 	     }
-             tableName = rs.getString(3); 
-             tblType = rs.getString(4); 
+         tableName = rs.getString(3); 
+         tblType = rs.getString(4); 
 	     if (rs.wasNull()) {
 	         tblType = "";
 	     }
-             if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_SQLITE) == true) {
+         if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_SQLITE) == true) {
                  /* 2013-04-07: Fix to ignore all indexes coming as tables in SQLite */
                  if (tableName.startsWith("sqlite_autoindex") || tableName.startsWith("ix_") || 
                      tableName.contains("_idx_")) continue;
 	     } else if (md.getDatabaseProductName().equalsIgnoreCase(DBMS_POSTGRESQL) == true) {
-		 if (tblType.equalsIgnoreCase("INDEX") || tblType.equalsIgnoreCase("SEQUENCE")) 
+			 if (tblType.equalsIgnoreCase("INDEX") || tblType.equalsIgnoreCase("SEQUENCE")) 
 		         continue;
-             }	     
+         }	     
              /*
               * Added the following try/catch block to prevent stopping listing of tables 
               * if there is any error in getting row data. 
@@ -283,6 +330,7 @@ ONCLICK="toggle_all_for_delete(this.form, 1)">
      return;
    }	 
 %>
+</TBODY>
 </TABLE>
 <% } 
 %>
@@ -365,12 +413,50 @@ ONCLICK="toggle_all_for_delete(this.form, 1)">
 <BR>
 <B>Destination Table List</B>:
 <BR>
-<TABLE class="sortable resizable">
+<TABLE class="sortable resizable" id='dest-tbl-list'>
+<THEAD>
 <TR STYLE="BACKGROUND:SEAGREEN;">
-<TH>SNO</TH><TH>Table name</TH><TH>Rows</TH></TR>	
+<TH>SNO</TH><TH>Table name</TH><TH>Rows</TH>
+</TR>	
+</THEAD>
+<TBODY>
 <% try {
     md = conn2.getMetaData(); 
-    rs = md.getTables(null, schemaName2, "%", null); 
+    // W_B_20190816_93:BEGIN:2019-08-16: wjISQL displays tables/procedures/functions owned by root user instead of current user.
+    jdbcDriverName = md.getDriverName();
+    driverMajorVersion = md.getDriverMajorVersion();
+    dbProductName = md.getDatabaseProductName();
+    dbName = null;
+    // out.println("product=" + dbProductName + ", driver=" + jdbcDriverName + ", ver=" + dbMajorVersion);
+    if (dbProductName.equalsIgnoreCase(DBMS_MYSQL)
+            && jdbcDriverName.contains(MYSQL_TERM)
+            && driverMajorVersion >= 8
+        ) {
+        stmtStr = "SELECT database()";
+        try {
+          pStmt1 = conn2.prepareStatement(stmtStr);
+          rs1 = pStmt1.executeQuery();
+          if (rs1 != null && rs1.next()) {
+              dbName = rs1.getString(1);
+          }
+        } catch (java.sql.SQLException se) { 
+        %>
+           <SCRIPT Language="JavaScript">
+               displayMessage("Error", "<%=se.getSQLState()%>", 
+                    "<%=StringOps.xForm4JS(se.getMessage())%>"); 
+           </SCRIPT>
+        <%
+        } finally {
+            if (rs1 != null) rs1.close();
+            if (pStmt1 != null) pStmt1.close();
+        }
+        rs = md.getTables(dbName, null, "%", null);    
+    } else {
+        rs = md.getTables(null, schemaName2, "%", null); 
+    }
+    // out.println("dbname=" + dbName);
+    // W_B_20190816_93:END       
+    
     while (rs.next()) {
              tblCatalog = rs.getString(1); 
 	     if (rs.wasNull()) {
@@ -442,6 +528,7 @@ ONCLICK="toggle_all_for_delete(this.form, 1)">
      return;
    }	 
 %>
+</TBODY>
 </TABLE>
 <% 
     } 
@@ -459,7 +546,6 @@ ONCLICK="toggle_all_for_delete(this.form, 1)">
 <%
 	}
 %>
-
 </TABLE>
 
 <SCRIPT LANGUAGE="JavaScript">

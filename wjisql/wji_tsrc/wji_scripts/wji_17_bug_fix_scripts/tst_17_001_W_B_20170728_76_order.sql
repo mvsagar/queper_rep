@@ -3,7 +3,7 @@
 --     2. Execution of one or more contiguous statements by selecting 
 --        them in the text box of field SQL Statement(s).
 -- 
-DROP TABLE tord1;
+DROP TABLE IF EXISTS tord1;
 CREATE TABLE tord1(c1 INT NOT NULL PRIMARY KEY, c2 VARCHAR(20));
 INSERT INTO tord1 VALUES(1, 'one');
 INSERT INTO tord1 VALUES(2, 'two');

@@ -1,0 +1,27 @@
+-------------------------- TC 08/3.9.2/1 ----------------------
+Tests Cancellation of Delete All to delete all rows.
+
+Rows and columns highlighted in Red color before deletion:
+No of html tbl columns: 5
+No of html table rows: 6
+eno,	ename,	dno
+(row value color: red)1001,	Brahma,	1
+(row value color: red)1002,	Vishnu,	1
+(row value color: red)1003,	Narayana,	2
+(row value color: red)1004,	Krishna,	2
+(row value color: red)1005,	Narada,	3
+(row value color: red)1006,	Hanuman,	3
+Alert message:Action 'Delete All' will delete all rows from the table.
+Deleted data can not be retrieved once you confirm.
+
+Confirm or cancel the deletion.
+Rows and columns nont-highlighted in Red color after cancellation of deletion:
+No of html tbl columns: 5
+No of html table rows: 6
+eno,	ename,	dno
+(row value color:None) 1001(color:None),	Brahma(color:None),	1(color:None)
+(row value color:None) 1002(color:None),	Vishnu(color:None),	1(color:None)
+(row value color:None) 1003(color:None),	Narayana(color:None),	2(color:None)
+(row value color:None) 1004(color:None),	Krishna(color:None),	2(color:None)
+(row value color:None) 1005(color:None),	Narada(color:None),	3(color:None)
+(row value color:None) 1006(color:None),	Hanuman(color:None),	3(color:None)

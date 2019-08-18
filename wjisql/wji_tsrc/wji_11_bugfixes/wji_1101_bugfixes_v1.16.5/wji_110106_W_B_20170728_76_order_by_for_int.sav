@@ -1,0 +1,37 @@
+-------------------------- TC 11/2.5/1 ----------------------
+Tests fix for the bug W_B_20170728_76 - resultset rows are not as per order by clause, for int columns
+
+
+Table data:
+Number of html table columns: 4
+Number of html table rows: 12
+,	,	c1,	c2
+(row value color:background: seagreen;) ,	1,	1,	one
+(row value color:background: seagreen;) ,	2,	2,	two
+(row value color:background: seagreen;) ,	3,	3,	three
+(row value color:background: seagreen;) ,	4,	4,	four
+(row value color:background: seagreen;) ,	5,	5,	five
+(row value color:background: seagreen;) ,	6,	6,	six
+(row value color:background: seagreen;) ,	7,	7,	seven
+(row value color:background: seagreen;) ,	8,	8,	eight
+(row value color:background: seagreen;) ,	9,	9,	nine
+(row value color:background: seagreen;) ,	10,	10,	ten
+(row value color:background: seagreen;) ,	11,	11,	eleven
+(row value color:background: seagreen;) ,	12,	12,	twelve
+
+Data in the order of int column c1:
+Number of html table columns: 4
+Number of html table rows: 12
+,	,	c1,	c2
+(row value color:background: seagreen;) ,	1,	1,	one
+(row value color:background: seagreen;) ,	2,	2,	two
+(row value color:background: seagreen;) ,	3,	3,	three
+(row value color:background: seagreen;) ,	4,	4,	four
+(row value color:background: seagreen;) ,	5,	5,	five
+(row value color:background: seagreen;) ,	6,	6,	six
+(row value color:background: seagreen;) ,	7,	7,	seven
+(row value color:background: seagreen;) ,	8,	8,	eight
+(row value color:background: seagreen;) ,	9,	9,	nine
+(row value color:background: seagreen;) ,	10,	10,	ten
+(row value color:background: seagreen;) ,	11,	11,	eleven
+(row value color:background: seagreen;) ,	12,	12,	twelve

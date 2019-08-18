@@ -1,0 +1,59 @@
+-------------------------- TC 09/7.3.1/3 ----------------------
+Tests transfer of data to table with some missing and some extra columns
+
+Source table list:
+Number of html table columns: 5
+Number of html table rows: 6
+SNO,	Table name,	Rows,	Transfer ?,	Delete ?
+1,	dept,	3,	,	
+2,	emp,	6,	,	
+3,	t1_1_std_data_types_basic,	4,	,	
+4,	t2_1_multi_lingual_data_types,	6,	,	
+5,	t3_1_long_data_types,	6,	,	
+6,	t4_1_non_std_data_types_1,	4,	,	
+
+Destination tables before transfer:
+Number of html table columns: 3
+Number of html table rows: 5
+SNO,	Table name,	Rows
+1,	emp,	0
+2,	t1_1_std_data_types_basic,	4
+3,	t2_1_multi_lingual_data_types,	6
+4,	t3_1_long_data_types,	6
+5,	t4_1_non_std_data_types_1,	4
+Alert message:Please confirm for the data transfer.
+
+Destination tables after transfer:
+Number of html table columns: 3
+Number of html table rows: 5
+SNO,	Table name,	Rows
+1,	emp,	6
+2,	t1_1_std_data_types_basic,	4
+3,	t2_1_multi_lingual_data_types,	6
+4,	t3_1_long_data_types,	6
+5,	t4_1_non_std_data_types_1,	4
+Data of destination table 'emp:'
+Number of html table columns: 6
+Number of html table rows: 6
+,	,	eno,	ename,	edob,	eexp
+,	1,	1001,	Brahma,	(NULL),	0
+,	2,	1002,	Vishnu,	(NULL),	0
+,	3,	1003,	Narayana,	(NULL),	0
+,	4,	1004,	Krishna,	(NULL),	0
+,	5,	1005,	Narada,	(NULL),	0
+,	6,	1006,	Hanuman,	(NULL),	0
+
+Information on transfer of data:
+Number of html table columns: 7
+Number of html table rows: 6
+SNO,	Table,	# Rows Read,	# Rows Wrote,	# Read Errors,	# Write Errors,	Other Errors/Warnings
+1,	dept,	0,	0,	,	,	
+2,	emp,	6,	6,	,	,	1) Number of columns in source (3) and destination table (4) are not equal.
+2) Destination table has the following columns not in the source table:
+edob, eexp
+NULLs or default values are inserted into the above columns.
+3) Data of only the following columns is transferred - eno, ename.
+3,	t1_1_std_data_types_basic,	0,	0,	,	,	
+4,	t2_1_multi_lingual_data_types,	0,	0,	,	,	
+5,	t3_1_long_data_types,	0,	0,	,	,	
+6,	t4_1_non_std_data_types_1,	0,	0,	,	,	

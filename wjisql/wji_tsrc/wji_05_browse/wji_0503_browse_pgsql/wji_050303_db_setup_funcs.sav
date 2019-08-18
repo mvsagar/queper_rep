@@ -1,0 +1,366 @@
+-------------------------- TC 05/4.2/3 ----------------------
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Drop Stored Functions.
+ */
+
+DROP FUNCTION IF EXISTS func_1_1_no_args();
+DROP FUNCTION IF EXISTS func_2_1_no_args_with_results();
+DROP FUNCTION IF EXISTS func_3_1_in_args(in_arg IN INTEGER,
+	char_arg IN CHAR);
+DROP FUNCTION IF EXISTS func_4_1_in_out_args(in_arg IN INTEGER,
+   	out_arg OUT CHAR);
+DROP FUNCTION IF EXISTS func_4_2_in_out_inout_args(in_arg IN INTEGER,
+   	out_arg OUT SMALLINT,
+        inout_arg IN OUT INTEGER);
+DROP FUNCTION IF EXISTS func_5_1_multi_stmt(in_int_arg IN INTEGER,
+   	out_char_arg OUT CHAR(30), 
+   	out_dec_arg OUT DECIMAL(10,2),
+   	out_sint_arg OUT SMALLINT
+);
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+/**
+ * Function #-01: A function without any arguments and without any results;
+ */
+CREATE FUNCTION func_1_1_no_args()
+RETURNS VOID AS $$
+BEGIN
+ 	UPDATE t1_1_std_data_types_basic SET char_col ='from procedure' WHERE int_col=1;  
+END;
+$$ LANGUAGE plpgsql;
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+/**
+ * Function #-02: A function without any arguments but with result set.
+ */
+CREATE FUNCTION func_2_1_no_args_with_results() 
+RETURNS TABLE (col1 INTEGER, col2 CHAR)AS $$
+BEGIN
+	RETURN QUERY (SELECT int_col, char_col FROM t1_1_std_data_types_basic);	
+END;
+$$ LANGUAGE plpgsql;
+
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+
+/**
+ * Function #-03: A function with only input arguments.
+ */
+CREATE FUNCTION func_3_1_in_args(
+	in_arg IN INTEGER,
+	char_arg IN CHAR) 
+RETURNS VOID AS $$
+BEGIN
+    UPDATE t1_1_std_data_types_basic SET char_col = char_arg 
+    WHERE int_col = in_arg;
+END;
+$$ LANGUAGE plpgsql;
+
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+
+/**
+ * Function # 4-1: A function with input and output arguments.
+ */
+CREATE FUNCTION func_4_1_in_out_args(
+	in_arg IN INTEGER,
+   	out_arg OUT CHAR) 
+  AS $$
+BEGIN
+    SELECT char_col INTO out_arg 
+         FROM t1_1_std_data_types_basic
+         WHERE int_col=in_arg;  
+     
+END;
+$$ LANGUAGE plpgsql;
+
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+
+/**
+ * Function # 4-2: A function with input, output and input-output arguments.
+ */
+CREATE FUNCTION func_4_2_in_out_inout_args(
+	in_arg IN INTEGER,
+   	out_arg OUT SMALLINT,
+        inout_arg IN OUT INTEGER) AS $$
+BEGIN
+    SELECT sint_col INTO out_arg 
+         FROM t1_1_std_data_types_basic
+         WHERE int_col=in_arg;   
+    inout_arg := inout_arg * out_arg;
+END;
+$$ LANGUAGE plpgsql;
+
+
+sqlstmt=/* 
+     Copyright 2014 M. Vidyasagar
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Test Stored Functions for PostgreSQL.
+ *
+ * Note that a CREATE PROCEDURE or FUNCTION command should not be in a batch of 
+ * commands unless it is the last one in the batch to be executed in wjISQL.
+ *
+ */
+
+
+/**
+ * Procedure # 5-1: A procedure with multiple statements in its body.
+ */
+
+CREATE FUNCTION func_5_1_multi_stmt(
+	in_int_arg IN INTEGER,
+   	out_char_arg OUT CHAR(30), 
+   	out_dec_arg OUT DECIMAL(10,2),
+   	out_sint_arg OUT SMALLINT
+) AS $$
+BEGIN
+    SELECT char_col, dec_col INTO out_char_arg, out_dec_arg 
+         FROM t1_1_std_data_types_basic
+         WHERE int_col=in_int_arg;   
+    SELECT sint_col INTO out_sint_arg 
+         FROM t1_1_std_data_types_basic
+         WHERE int_col=in_int_arg;   
+END;
+$$ LANGUAGE plpgsql;
+
+
+sqlstmt=/* 
+     Copyright 2006-2017 QuePer
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+
+/* *************************************************** */
+
+/* 
+ * Tests for Stored Functions of PostgreSQL.
+ */
+
+/**
+ * Function #-01: A function without any arguments and without any results;
+ */
+SELECT func_1_1_no_args();
+
+
+/**
+ * Function #-02: A function without any arguments but with result set.
+ */
+SELECT * FROM  func_2_1_no_args_with_results();
+
+
+/**
+ * Function #-03: A function with only input arguments.
+ */
+SELECT func_3_1_in_args(1, 'char argument');
+
+
+/**
+ * Function # 4-1: A function with input and output arguments.
+ */
+SELECT * FROM func_4_1_in_out_args(1);
+
+
+/**
+ * Function # 4-2: A function with input, output and input-output arguments.
+ */
+SELECT * FROM func_4_2_in_out_inout_args(1,5);
+
+
+
+/**
+ * Procedure # 5-1: A procedure with multiple statements in its body.
+ */
+SELECT * FROM func_5_1_multi_stmt(1);
+
+
+
+
+
+List of Stored Functions:
+No of cols are : 5
+No of rows are : 6
+Name=func_1_1_no_args, func/func=FUNCTION
+Name=func_2_1_no_args_with_results, func/func=FUNCTION
+Name=func_3_1_in_args, func/func=FUNCTION
+Name=func_4_1_in_out_args, func/func=FUNCTION
+Name=func_4_2_in_out_inout_args, func/func=FUNCTION
+Name=func_5_1_multi_stmt, func/func=FUNCTION

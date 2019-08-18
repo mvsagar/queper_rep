@@ -1,0 +1,8 @@
+-------------------------- TC 06/3.3.1/2 ----------------------
+Tests execution of a procedure.
+
+sqlstmt=CALL proc_4_1_in_out_args(1, ?);
+No of html table columns: 3
+No of html table rows: 1
+Type,	Value
+OUT,	from procedure

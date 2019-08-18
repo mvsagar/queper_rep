@@ -1,0 +1,26 @@
+-------------------------- TC 11/2.6/1 ----------------------
+Tests fix for the bug W_B_20171009_79: Stored procedure and function creation fails in MariaDB.
+
+
+List of procedures:
+Number of html table columns: 5
+Number of html table rows: 8
+SNO,	Procedure/
+Function Name,	Type,	Schema,	Catalog
+(row value color:background: ivory;) 1,	func_1_1_compute_tax,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 2,	proc_1_1_no_args_no_results,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 3,	proc_2_1_no_args_with_results,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 4,	proc_3_1_in_args,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 5,	proc_4_1_in_out_args,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 6,	proc_5_1_multi_stmt,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 7,	test_func,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 8,	test_proc,	PROCEDURE,	,	mariadb
+Success if procedure test_proc is in the above list.
+
+List of procedures:
+Number of html table columns: 5
+Number of html table rows: 2
+SNO,	Function Name,	Type,	Schema,	Catalog
+(row value color:background: ivory;) 1,	func_1_1_compute_tax,	FUNCTION,	,	mariadb
+(row value color:background: ivory;) 2,	test_func,	FUNCTION,	,	mariadb
+Success if function test_func is in the above list.

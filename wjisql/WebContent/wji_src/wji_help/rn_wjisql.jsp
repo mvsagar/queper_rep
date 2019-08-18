@@ -32,8 +32,8 @@
 <H1>wjISQL</H1>
 </CENTER> 
 
-<H2>wjISQL 1.20.4(456)<H2>
-<H3>(Sep 12, 2018)</H3>
+<H2>wjISQL 1.21.9(502)<H2>
+<H3>(Aug 19, 2019)</H3>
 <P>
 This version has enhancements and important bug fixes.
 </P>
@@ -53,7 +53,10 @@ This version has enhancements and important bug fixes.
 <OL>
 <LI><B>W_F_20171201_84</B>: Made script execution to stop on first error to avoid user keep on
 closing error message windows displayed for each error on executing SQL statements of the 
-script.
+script.</LI>
+<LI><B>W_F_20190714_89</B>: Provided log4j2 support to log messages to syslog on Linux systems.
+Look for file <B>WEB-INF/log4j2-wjisql.xml</B> to change logging level. 
+This feature is meant for developers.</LI>
 </OL>
 
 <H4> List of Bugs Fixed:</H4>
@@ -66,6 +69,13 @@ before creating functions.
 <LI><B>W_B_20180911_87</B>: Switching to "Procedures" in MariaDB results in error 
 "Out of range value for column 'REMARKS': value is not Short range".
 <LI><B>W_B_20180911_88</B>: Table list scroll position disturbs even  when a SELECT statement is executed.
+<LI><B>W_B_20190806_91</B>: Clicking of check boxes in table header of source table list in  Data Transfer screen is problematic.
+<LI><B>W_B_20190816_92</B>: wjISQL connection to MySQL 8.x fails. 
+<LI><B>W_B_20190816_93</B>: wjISQL displays tables/procedures/functions owned by root user instead of current user when used 
+with MySQL 8.x.
+<LI><B>W_B_20190817_94</B>: wjISQL adds unexpected zeros to the end of BLOB columns.
+<LI><B>W_B_20190817_95</B>: URL format in Login screen when displayed after first time due to a login failure 
+is not in plain format but in encoded format.</LI>
 </OL>
 
 <H4> List of Major Known Issues:</H4>
@@ -238,7 +248,7 @@ is not displayed when SQLite JDBC driver is selected in the <B>Login</B> screen.
 <LI><B>W_B_20161219_49</B>: After disconnection, left side frame contains information about wjISQL instead of menu items.</LI>
 <LI><B>W_B_20161219_50</B>: When login fails, control does not come back to login screen and info entered 
 by the user not restored.</LI>
-<LI><B>W_B_20161221_51</B>: URL format shown for MySql on Login screen is incorrect after a connection 
+<LI><B>W_B_20161221_51</B>: URL format shown for MySQL on Login screen is incorrect after a connection 
 failure.</LI>
 <LI><B>W_B_20161221_52</B>: URL formats on the login screen are incomplete.</LI>
 <LI><B>W_B_20161222_53</B>: Insertion into a table with single column fails if the insertion is done 

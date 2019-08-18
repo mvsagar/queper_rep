@@ -1,0 +1,55 @@
+-------------------------- TC 09/4.2.1/2 ----------------------
+Tests transfer of all tables of a pgsql db to mariadb db.
+
+Source table list:
+Number of html table columns: 5
+Number of html table rows: 4
+SNO,	Table name,	Rows,	Transfer ?,	Delete ?
+1,	t1_1_std_data_types_basic,	4,	,	
+2,	t2_1_multi_lingual_data_types,	6,	,	
+3,	t3_1_long_data_types,	6,	,	
+4,	t4_1_non_std_data_types_1,	4,	,	
+
+Destination tables before transfer:
+Number of html table columns: 3
+Number of html table rows: 4
+SNO,	Table name,	Rows
+1,	t1_1_std_data_types_basic,	0
+2,	t2_1_multi_lingual_data_types,	0
+3,	t3_1_long_data_types,	0
+4,	t4_1_non_std_data_types_1,	0
+Alert message:Please confirm for the data transfer.
+
+Destination tables after transfer:
+Number of html table columns: 3
+Number of html table rows: 4
+SNO,	Table name,	Rows
+1,	t1_1_std_data_types_basic,	4
+2,	t2_1_multi_lingual_data_types,	6
+3,	t3_1_long_data_types,	6
+4,	t4_1_non_std_data_types_1,	4
+Data of destination table 't2_1_multi_lingual_data_types:'
+Number of html table columns: 5
+Number of html table rows: 6
+,	,	int_col,	char_col,	vchar_col
+,	1,	1,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.
+,	2,	2,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।
+,	3,	3,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.
+,	4,	4,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.
+,	5,	5,	,	
+,	6,	6,	(NULL),	(NULL)
+
+Information on transfer of data:
+Number of html table columns: 7
+Number of html table rows: 4
+SNO,	Table,	# Rows Read,	# Rows Wrote,	# Read Errors,	# Write Errors,	Other Errors/Warnings
+1,	t1_1_std_data_types_basic,	4,	4,	,	,	1) Number of columns in source (13) and destination table (15) are not equal.
+2) Destination table has the following columns not in the source table:
+flt_col, bin_col, vbin_col
+NULLs or default values are inserted into the above columns.
+3) Data of only the following columns is transferred - char_col, vchar_col, sint_col, int_col, bint_col, dec_col, num_col, real_col, dbl_col, date_col, time_col, ts_col.
+2,	t2_1_multi_lingual_data_types,	6,	6,	,	,	
+3,	t3_1_long_data_types,	6,	6,	,	,	
+4,	t4_1_non_std_data_types_1,	4,	4,	,	,	1) Destination table has the following columns not in the source table:
+tint_col, mint_col, datetime_col
+NULLs or default values are inserted into the above columns.

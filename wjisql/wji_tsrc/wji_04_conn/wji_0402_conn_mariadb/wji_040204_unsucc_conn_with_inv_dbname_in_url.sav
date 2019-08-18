@@ -1,0 +1,11 @@
+
+Tests Unsuccessful connection with invalid db name in url
+
+Alert error message:
+Error: Connection to database URL 'jdbc:mariadb://localhost/xyzdb' failed.
+
+42000:Access denied for user 'mariausr'@'%' to database 'xyzdb'
+
+Try again with correct connection information after making sure your database server is running.
+
+Connect: Unsuccessful login with invalid database name in url test passed.

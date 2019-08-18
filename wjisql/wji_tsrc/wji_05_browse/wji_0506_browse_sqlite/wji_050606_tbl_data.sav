@@ -1,0 +1,44 @@
+-------------------------- TC 05/7.5.1/1,2,3 ----------------------
+Tests table button Data
+
+Table=t1_1_std_data_types_basic
+No of html tbl columns: 15
+No of html table rows: 4
+1,	Praveen,	Kumar,	12345,	1,	12345.67,	12345.67,	123456.78,	1234567890.12345,	1234567890.12345,	2014-03-07,	10:30:20,	2014-03-07 15:01:30,	1
+
+2,	Shyam,	Sunder,	-12345,	2,	-12345.67,	-12345.67,	-123456.78,	-1234567890.12345,	-1234567890.12345,	2014-03-07,	10:30:20,	2014-03-07 15:01:30,	0
+
+3,	,	,	0,	3,	0,	0,	0.0,	0.0,	0.0,	2014-03-07,	10:30:20,	2014-03-07 15:01:30,	0
+
+4,	(NULL),	(NULL),	(NULL),	4,	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL)
+
+Table=t2_1_multi_lingual_data_types
+No of html tbl columns: 7
+No of html table rows: 6
+1,	1,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.
+
+2,	2,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।
+
+3,	3,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.
+
+4,	4,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.
+
+5,	5,	,	,	,	
+
+6,	6,	(NULL),	(NULL),	(NULL),	(NULL)
+
+Table=t3_1_long_data_types
+No of html tbl columns: 5
+No of html table rows: 6
+1,	1,	wjISQL is an Internet browser based interactive SQL tool that can be used to execute SQL statements and browse data in tables of databases managed by relational database management systems. The tool can be used with any database management system that has a JDBC driver. It can work with any WebServer that supports Java Server Page(JSP)s and any browser that supports JavaScript.,	0123456789ABCDEF
+
+2,	2,	For the latest updates on wjISQL, please refer to Release Notes.,	0123456789ABCDEF
+
+3,	3,	For license information, please refer to License.,	0123456789ABCDEF
+
+4,	4,	Actions you can perform on this page are as follows,	0123456789ABCDEF
+
+5,	5,	,	01
+
+6,	6,	(NULL),	(NULL)
+

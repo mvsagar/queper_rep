@@ -1,0 +1,13 @@
+-------------------------- TC 05/4.10.1/1 ----------------------
+Tests Procedure/Function Properties
+
+
+Properties of Function: func_4_2_in_out_inout_args
+Number of html table columns:   18
+Number of html table rows:      3
+Number of function parameters:  3
+Parameters and properties:
+SNO	COLUMN_NAME	COLUMN_TYPE	TYPE_NAME
+1	in_arg	IN parameter	int4
+2	out_arg	OUT parameter	int2
+3	inout_arg	IN and OUT parameter	int4

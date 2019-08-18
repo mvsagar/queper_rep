@@ -1,0 +1,9 @@
+-------------------------- TC 05/3.11.1/2 ----------------------
+Tests procedure/functions properties button 'Drop' for functions
+
+No of html tbl rows: 1
+Number of functions before dropping: 1
+Found the function 'func_1_1_compute_tax' to be dropped
+Alert message:Do you really want drop the FUNCTION 'func_1_1_compute_tax'?
+No of html tbl rows: 0
+Number of functions after dropping: 0

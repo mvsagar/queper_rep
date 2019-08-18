@@ -1,0 +1,4 @@
+-------------------------- TC 08/3.3.1/2 ----------------------
+Tests failure of insertion of data
+
+Alert error message: Error java.lang.NumberFormatException: For input string: "xyz"

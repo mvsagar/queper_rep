@@ -1,0 +1,22 @@
+
+Test functionality of clicking of Connect, login and Home links on main screen
+
+Connect: Navigation frame test passed
+Connect: Left data frame test passed
+Connect: Right data frame test passed
+Login: Navigation frame test passed
+Login: Left data frame test passed
+Login: SQL Statements frame test passed
+Field type, name and values of the SQL Statements pane:
+	button::Execute
+	button::Cancel
+	button::Clear
+	button::Help
+	hidden:sqlstmt:
+	file:script_files:
+Field type, name and values of the right data frame:
+	No fields found.
+Login: Right data frame test passed
+Home: Navigation frame test passed
+Home: Left data frame test passed
+Home: Right data frame test passed

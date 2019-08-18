@@ -1,0 +1,5 @@
+-------------------------- TC 08/3.5.2/2 ----------------------
+Tests cancelation of deletion of data
+
+No rows before deletion: 3
+No rows after deletion failure: 3

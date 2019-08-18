@@ -1,0 +1,25 @@
+-------------------------- TC 05/3.10.1/1,2,3 ----------------------
+Tests Procedure/Function Properties
+
+Properties of Procedure: proc_1_1_no_args_no_results
+The procedure has no parameters
+
+Properties of Procedure: proc_5_1_multi_stmt
+Number of html table columns:   18
+Number of html table rows:      4
+Number of procedure parameters: 4
+Parameters and properties:
+SNO	COLUMN_NAME	COLUMN_TYPE	TYPE_NAME
+1	in_int_arg	IN parameter	INT
+2	out_char_arg	OUT parameter	CHAR
+3	out_flt_arg	OUT parameter	CHAR
+4	out_sint_arg	OUT parameter	CHAR
+
+Properties of Function: func_1_1_compute_tax
+Number of html table columns:   18
+Number of html table rows:      2
+Number of function parameters:  2
+Parameters and properties:
+SNO	COLUMN_NAME	COLUMN_TYPE	TYPE_NAME
+1		RETURN column	INT
+2	in_arg	IN parameter	INT

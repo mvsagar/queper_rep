@@ -1,0 +1,11 @@
+
+Tests link 'Home' after link 'transfer' is clicked
+
+Transfer: Navi frame test passed
+Transfer: Left data frame 1 test passed
+Transfer: Left data frame 2 test passed
+Transfer: Right data frame 1 test passed
+Transfer: Right data frame 2 test passed
+Home: Navigation frame test passed
+Home: Left data frame test passed
+Home: Right data frame test passed

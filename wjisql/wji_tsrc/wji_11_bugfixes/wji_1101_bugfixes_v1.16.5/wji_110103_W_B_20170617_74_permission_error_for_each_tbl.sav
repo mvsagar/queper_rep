@@ -1,0 +1,17 @@
+-------------------------- TC 11/2.3/1 ----------------------
+Tests fix for the bug W_B_20170617_74 - pgsql gives permission error for each table.
+
+Alert error message: Error 42501.
+
+org.postgresql.util.PSQLException: ERROR: permission denied for relation t1_1_std_data_types_basic;
+
+ Could not get details of table data.
+
+Table list with colors:
+Number of html table columns: 6
+Number of html table rows: 4
+SNO,	Table Name,	Rows,	Type,	Schema,	Catalog
+(row value color:background: red;) 1,	t1_1_std_data_types_basic,	?,	TABLE,	public,	
+(row value color:background: red;) 2,	t2_1_multi_lingual_data_types,	?,	TABLE,	public,	
+(row value color:background: red;) 3,	t3_1_long_data_types,	?,	TABLE,	public,	
+(row value color:background: red;) 4,	t4_1_non_std_data_types_1,	?,	TABLE,	public,	

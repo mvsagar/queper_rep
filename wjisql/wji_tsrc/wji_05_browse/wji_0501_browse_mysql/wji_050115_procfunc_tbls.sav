@@ -1,0 +1,14 @@
+-------------------------- TC 05/3.13.1/1 ----------------------
+Tests button 'Tables' in procedure/function list frame.
+
+List of Stored Procedures:
+No of Stored Procedures : 4
+Name=proc_1_1_no_args_no_results,	proc/func=PROCEDURE
+Name=proc_2_1_no_args_with_results,	proc/func=PROCEDURE
+Name=proc_3_1_in_args,	proc/func=PROCEDURE
+Name=proc_4_1_in_out_args,	proc/func=PROCEDURE
+List of Tables:
+No of Tables: 3
+Name=t1_1_std_data_types_basic,	Rows=4
+Name=t2_1_multi_lingual_data_types,	Rows=6
+Name=t3_1_long_data_types,	Rows=3

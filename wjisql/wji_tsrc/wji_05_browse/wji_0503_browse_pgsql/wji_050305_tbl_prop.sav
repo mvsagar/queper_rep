@@ -1,0 +1,25 @@
+-------------------------- TC 05/3.4.1/1,2 ----------------------
+Tests Table properties
+
+Table=t1_1_std_data_types_basic
+No of table properies: 22
+No of table columns: 13
+1)	Column name: char_col,		Column type: bpchar,		Column size: 30
+2)	Column name: vchar_col,		Column type: varchar,		Column size: 50
+3)	Column name: sint_col,		Column type: int2,		Column size: 5
+4)	Column name: int_col,		Column type: int4,		Column size: 10
+5)	Column name: bint_col,		Column type: int8,		Column size: 19
+6)	Column name: dec_col,		Column type: numeric,		Column size: 10
+7)	Column name: num_col,		Column type: numeric,		Column size: 10
+8)	Column name: real_col,		Column type: float4,		Column size: 8
+9)	Column name: dbl_col,		Column type: float8,		Column size: 17
+10)	Column name: date_col,		Column type: date,		Column size: 13
+11)	Column name: time_col,		Column type: time,		Column size: 15
+12)	Column name: ts_col,		Column type: timestamp,		Column size: 29
+13)	Column name: bool_col,		Column type: bool,		Column size: 1
+Table=t2_1_multi_lingual_data_types
+No of table properies: 22
+No of table columns: 3
+1)	Column name: int_col,		Column type: int4,		Column size: 10
+2)	Column name: char_col,		Column type: bpchar,		Column size: 250
+3)	Column name: vchar_col,		Column type: varchar,		Column size: 250

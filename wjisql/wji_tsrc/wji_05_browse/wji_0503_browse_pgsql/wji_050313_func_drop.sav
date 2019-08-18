@@ -1,0 +1,8 @@
+-------------------------- TC 05/4.11.1/1 ----------------------
+Tests procedure/functions properties button 'Drop' for functions
+
+No of html tbl rows: 6
+Number of functions before dropping: 6
+Alert message:Do you really want drop the FUNCTION 'func_5_1_multi_stmt'?
+No of html tbl rows: 5
+Number of functions after dropping: 5

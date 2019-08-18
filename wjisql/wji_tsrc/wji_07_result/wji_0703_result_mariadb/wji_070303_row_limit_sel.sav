@@ -1,0 +1,26 @@
+-------------------------- TC 07/3.2.1/3 ----------------------
+Tests limiting of rows to be displayed using SELECT button in result frame.
+
+sqlstmt=SELECT * FROM emp;
+No of html table columns: 5
+No of html table rows: 6
+1,	1001,	Brahma,	1
+
+2,	1002,	Vishnu,	1
+
+3,	1003,	Narayana,	2
+
+4,	1004,	Krishna,	2
+
+5,	1005,	Narada,	3
+
+6,	1006,	Hanuman,	3
+
+Max row limit set: 2
+Alertmessage: Warning: There are more rows than retrived in the resultset of the table/SQL statement. Increase maximum row limit if you want to retrive more rows. 
+No of html table columns: 5
+No of html table rows: 2
+1,	1001,	Brahma,	1
+
+2,	1002,	Vishnu,	1
+

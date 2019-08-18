@@ -1,0 +1,14 @@
+export WJI_JDBC_DRIVER_NAME="MariaDB JDBC Driver"
+export WJI_JDBC_URL="jdbc:mariadb://localhost:3306/mariadb"
+export WJI_USER_ID=mariausr
+export WJI_USER_PASSWD=maria123
+
+export WJI_DEST_SUPER_JDBC_DRIVER_NAME="MariaDB JDBC Driver"
+export WJI_DEST_SUPER_JDBC_URL="jdbc:mariadb://localhost:3306/mysql"
+export WJI_DEST_SUPER_USER_ID=root
+export WJI_DEST_SUPER_USER_PASSWD=root123
+
+export WJI_DEST_JDBC_DRIVER_NAME="MariaDB JDBC Driver"
+export WJI_DEST_JDBC_URL="jdbc:mariadb://localhost:3306/destdb"
+export WJI_DEST_USER_ID=destusr
+export WJI_DEST_USER_PASSWD=dest123

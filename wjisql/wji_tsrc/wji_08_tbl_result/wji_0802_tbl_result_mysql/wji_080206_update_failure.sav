@@ -1,0 +1,5 @@
+-------------------------- TC 08/3.4.1/2 ----------------------
+Tests failure of update of data
+
+qtn_complexity before updating: 3
+Alert error message: Error java.lang.NumberFormatException: For input string: "A"

@@ -1,0 +1,12 @@
+-------------------------- TC 05/4.9.1/1 ----------------------
+Tests Procedures & Functions button
+
+
+List of Stored Functions:
+No of Stored Functions: 6
+Name=func_1_1_no_args,	proc/func=FUNCTION
+Name=func_2_1_no_args_with_results,	proc/func=FUNCTION
+Name=func_3_1_in_args,	proc/func=FUNCTION
+Name=func_4_1_in_out_args,	proc/func=FUNCTION
+Name=func_4_2_in_out_inout_args,	proc/func=FUNCTION
+Name=func_5_1_multi_stmt,	proc/func=FUNCTION

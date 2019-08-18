@@ -1,0 +1,9 @@
+
+Test functionality of clicking of Connect and Home link on main screen
+
+Connect: Navigation frame test passed
+Connect: Left data frame test passed
+Connect: Right data frame test passed
+Home: Navigation frame test passed
+Home: Left data frame test passed
+Home: Right data frame test passed

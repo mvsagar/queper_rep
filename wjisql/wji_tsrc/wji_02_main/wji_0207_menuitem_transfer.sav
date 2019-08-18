@@ -1,0 +1,42 @@
+
+Test functionality of clicking of Transfer link on main screen
+
+Transfer link click passed
+Navigation menu items test passed
+Left pane 1 test passed
+Field type, name and values of left data frame 1:
+	button::Transfer
+	button::Refresh
+	button::Help
+Left pane 2 test passed
+Field type, name and values of left data pane 2:
+	button::Refresh
+	button::Help
+Right data pane 1 text passed
+Field type, name and values of right data pane 1:
+	button::Login
+	button::Reset URL
+	button::Help
+	text:jdriver_class:
+	text:dburl:
+	text::URL Format
+	text:dburlfmt:
+	hidden:db_folder:
+	hidden:db_file:
+	text:userid:
+	password:password:
+	submit:login:Login
+Right data pane 2 text passed
+Field type, name and values of right data pane 2:
+	button::Login
+	button::Reset URL
+	button::Help
+	text:jdriver_class:
+	text:dburl:
+	text::URL Format
+	text:dburlfmt:
+	hidden:db_folder:
+	hidden:db_file:
+	text:userid:
+	password:password:
+	submit:login:Login

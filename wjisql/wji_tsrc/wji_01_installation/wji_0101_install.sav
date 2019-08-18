@@ -1,0 +1,6 @@
+
+ Test successful installation of wjISQL
+
+Copied wjisq.jar to webapps...
+Tomcat started.
+---pass if tomcat is started after copying new wjisql.jar

@@ -1,0 +1,38 @@
+-------------------------- TC 08/3.10.1/3 ----------------------
+Tests Cancellation of Update operation.
+
+Rows before clicking Update button...
+Number of html tbl columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:None) 1001(color:None),	Brahma(color:None),	1(color:None)
+(row value color:None) 1002(color:None),	Vishnu(color:None),	1(color:None)
+(row value color:None) 1003(color:None),	Narayana(color:None),	2(color:None)
+(row value color:None) 1004(color:None),	Krishna(color:None),	2(color:None)
+(row value color:None) 1005(color:None),	Narada(color:None),	3(color:None)
+(row value color:None) 1006(color:None),	Hanuman(color:None),	3(color:None)
+
+Rows after updating 3rd row on the screen...
+Number of html tbl columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:None) (color:None),	Brahma(color:None),	(color:None)
+(row value color:None) (color:None),	Vishnu(color:None),	(color:None)
+(row value color:None) (color:None),	Narayana(color:None),	(color:None)
+(row value color:None) (color:None),	Krishna(color:None),	(color:None)
+(row value color:None) (color:None),	Narada(color:None),	(color:None)
+(row value color:None) (color:None),	Hanuman(color:None),	(color:None)
+Alert message:Warning: All your changes will be lost if you cancel.
+
+Please confirm
+
+Rows after clicking Cancel button...
+Number of html tbl columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:None) 1001(color:None),	Brahma(color:None),	1(color:None)
+(row value color:None) 1002(color:None),	Vishnu(color:None),	1(color:None)
+(row value color:None) 1003(color:None),	Narayana(color:None),	2(color:None)
+(row value color:None) 1004(color:None),	Krishna(color:None),	2(color:None)
+(row value color:None) 1005(color:None),	Narada(color:None),	3(color:None)
+(row value color:None) 1006(color:None),	Hanuman(color:None),	3(color:None)

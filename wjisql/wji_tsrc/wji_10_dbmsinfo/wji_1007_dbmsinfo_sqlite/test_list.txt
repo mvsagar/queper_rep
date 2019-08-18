@@ -1,0 +1,2 @@
+wji_100701_dbmsinfo
+wji_100702_dbmsinfo_failure

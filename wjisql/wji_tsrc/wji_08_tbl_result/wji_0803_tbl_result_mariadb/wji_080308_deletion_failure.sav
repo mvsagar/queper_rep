@@ -1,0 +1,6 @@
+-------------------------- TC 08/3.5.2/1 ----------------------
+Tests failure of deletion of data
+
+No rows before deletion: 3
+Alert message:Error: You have not selected any row for deletion.
+No rows after deletion failure: 3

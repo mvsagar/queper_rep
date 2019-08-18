@@ -1,0 +1,38 @@
+-------------------------- TC 05/3.5.1/1,2,3 ----------------------
+Tests table button Data
+
+Table=t1_1_std_data_types_basic
+No of html tbl columns: 17
+No of html table rows: 4
+1,	from procedure,	Kumar,	12345,	1,	123456789012345,	12345.67,	12345.67,	123457,	1234567890.12345,	1234567890.12345,	2014-03-07,	15:01:30,	2014-03-07 15:01:30.0,	A1B2000000000000000000000000000000000000,	ABCDEF
+
+2,	Shyam,	Sunder,	-12345,	2,	-123456789012345,	-12345.67,	-12345.67,	-123457,	-1234567890.12345,	-1234567890.12345,	2014-03-07,	15:01:30,	2014-03-07 15:01:30.0,	A1B2000000000000000000000000000000000000,	ABCDEF
+
+3,	,	,	0,	3,	0,	0.00,	0.00,	0,	0,	0,	2014-03-07,	15:01:30,	2014-03-07 15:01:30.0,	0000000000000000000000000000000000000000,	
+
+4,	(NULL),	(NULL),	(NULL),	4,	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL),	(NULL)
+
+Table=t2_1_multi_lingual_data_types
+No of html tbl columns: 5
+No of html table rows: 6
+1,	1,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.,	Paris s'ouvre à vos envies. Paris, l'une des plus belles villes au monde, séduit d'abord par son exceptionnel patrimoine architectural et culturel. Un patrimoine vivant, qui se modernise et s'enrichit sans cesse.
+
+2,	2,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।,	युवा पत्रकार उमेश चतुर्वेदी की यह पुस्तक मीडिया के बदलते स्वरूप पर जहां एक ओर चिंता जाहिर करती है, वहीं दूसरी ओर सकारात्मक बदलाव के प्रति उम्मीद भी जगाती है।
+
+3,	3,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.,	సాహితీ సమరాంగణ సార్వభౌముడిగా ప్రఖ్యాతి వహించిన విజయనగర చక్రవర్తి శ్రీ కృష్ణదేవరాయలు రచించిన తెలుగు ప్రబంధం ఈ "ఆముక్తమాల్యద" గ్రంథం. దీనికే "విష్ణుచిత్తీయం" అని మరోపేరు.
+
+4,	4,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.,	ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಸಣ್ಣ ಕತೆಗೊಂದು ಮಹತ್ವ ತಂದಕೊಟ್ಟವರಲ್ಲಿ ಆನಂದ ಕೂಡ ಒಬ್ಬರು. ೧೯೩೦ರ ಸಂದರ್ಭದಲ್ಲೇ ಕಥಾಲಹರಿ ಹರಿಸಿದ್ದ ಆನಂದರ ನಿಜ ಹೆಸರು ಅಜ್ಜಂಪುರದ ಸೀತಾರಾಮ. 'ನಾನು ಕೊಂದ ಹುಡುಗಿ' ಅವರ ಜನಪ್ರಿಯತೆಗೆ ಸಾಕ್ಷಿಯಾದ ಕತೆ.
+
+5,	5,	,	
+
+6,	6,	(NULL),	(NULL)
+
+Table=t3_1_long_data_types
+No of html tbl columns: 5
+No of html table rows: 3
+1,	1,	wjISQL is an easy to use web based interactive SQL tool. This can be used with any database system that has a JDBC driver and can work with any WebServer that supports Java Server Page(JSP)s and any browser that supports JavaScript. wjISQL is similar to mysql of MySQL, SQL*PLUS of Oracle and sqlcmd of Microsoft SQL Server but it is a webapp. You can execute any SQL statements that your database server allows for the authorization scheme you use with the database server.,	0123456789ABCDEF
+
+2,	2,	,	
+
+3,	3,	(NULL),	(NULL)
+

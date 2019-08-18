@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -184,9 +184,10 @@
    }
    %>
 
-<TABLE BORDER=1 STYLE="FONT-SIZE:10pt;">
+<TABLE BORDER=1 STYLE="FONT-SIZE:10pt;" ID='tbl-procfunc-details'>
+<TBODY>
 <TR>
-<TD>Procedure/Function name: <SPAN STYLE="FONT-WEIGHT:BOLD;"><%=procName%></SPAN></TD>
+<TD>Procedure/Function name: <SPAN STYLE="FONT-WEIGHT:BOLD;" ID='procfunc-name'><%=procName%></SPAN></TD>
 <TD>Catalog: <SPAN STYLE="FONT-WEIGHT:BOLD;"><%=(procCatalog == null ? "(Not applicable)" : procCatalog)%></SPAN></TD>
 <TD>Schema/Owner: <SPAN STYLE="FONT-WEIGHT:BOLD;"><%=(procSchema == null ? "(Not applicable)" : procSchema)%></SPAN></TD>
 </TR>
@@ -195,12 +196,14 @@
 <%=(procRemarks == null ? "(No remarks exist for the procedure)" : procRemarks)%>
 </TD>
 </TR>
+</TBODY>
 </TABLE>
 
 <H3>Parameters and/or Resultset Colums</H3>
 </TABLE>
 
-<TABLE ALIGN="LEFT" class="sortable resizable">
+<TABLE ALIGN="LEFT" class="sortable resizable" ID='tbl-procfunc-params'>
+<THEAD>
 <tr STYLE="BACKGROUND:SEAGREEN;">
 <%
     rs = md.getProcedureColumns(null, schemaName, procName, "%"); 
@@ -225,6 +228,8 @@
     } 
 %>
 	</tr>
+	</THEAD>
+	<TBODY>
 <%
 	nRows = 0;
     // Print Columns of the given procedure. 
@@ -276,6 +281,7 @@
              <% } %>
 	</TR>
      <% } %>
+     </TBODY>
 </TABLE>
 
 <BR CLEAR=LEFT>

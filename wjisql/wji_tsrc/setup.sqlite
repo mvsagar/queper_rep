@@ -1,0 +1,4 @@
+export WJI_JDBC_DRIVER_NAME="SQLite JDBC Driver"
+export WJI_JDBC_URL="jdbc:sqlite:/tmp/sqlitedb"
+export WJI_USER_ID=
+export WJI_USER_PASSWD=

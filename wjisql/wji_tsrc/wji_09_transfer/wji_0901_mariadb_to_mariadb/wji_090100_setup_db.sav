@@ -1,0 +1,10 @@
+-------------------------- TC 09/3.2.1/1 ----------------------
+Sets up db.
+
+No of html table columns: 6
+No of html table rows: 4
+
+1,	t1_1_std_data_types_basic,	0
+2,	t2_1_multi_lingual_data_types,	0
+3,	t3_1_long_data_types,	0
+4,	t4_1_non_std_data_types_1,	0

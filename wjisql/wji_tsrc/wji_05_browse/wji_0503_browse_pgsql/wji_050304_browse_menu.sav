@@ -1,0 +1,9 @@
+-------------------------- TC 05/4.4.1/1,2 ----------------------
+Tests Browse menu item
+
+No of cols are : 6
+No of rows are : 4
+Table=t1_1_std_data_types_basic, Numrows=4
+Table=t2_1_multi_lingual_data_types, Numrows=6
+Table=t3_1_long_data_types, Numrows=6
+Table=t4_1_non_std_data_types_1, Numrows=4

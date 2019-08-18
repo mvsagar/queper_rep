@@ -149,7 +149,7 @@
     }
 %>
 
-<H2>Status of Data Transfer</H2>
+<H2>Data Transfer Status</H2>
 <TABLE BORDER=1>
 <TR>
 <TH></TH><TH>Database</TH><TH>User</TH><TH>Schema</TH>
@@ -210,7 +210,7 @@
     conn2.setAutoCommit(false);
 
     /* v1.9.1:2014-07-21: Initialize the vars so that errors get printed if control
-    * breaks in the for-loop after the following initializaing for-loop.
+    * breaks in the for-loop after the following initializing for-loop.
     */
     // W_20160510_29:BEGIN
     for (i = 0; i < nRows1; ++i) {
@@ -866,11 +866,14 @@
 
 %>
 
-<TABLE BORDER=1>
-<TR>
-<TH>SNO</TH><TH>Table</TH><TH># Rows Read</TH><TH> # Rows Wrote</TH><TH># Read Errors</TH><TH> # Write Errors</TH>
+<TABLE BORDER=1 id='tbl-xfr-status'>
+    <THEAD>
+        <TR>      
+            <TH>SNO</TH><TH>Table</TH><TH># Rows Read</TH><TH> # Rows Wrote</TH><TH># Read Errors</TH><TH> # Write Errors</TH>
 <TH>Other Errors/Warnings</TH>
-</TR>
+        </TR>
+    </THEAD>
+    <TBODY>
 
 <%
     for (i = 0; i < nRows1; ++i) {
@@ -912,7 +915,7 @@
         out.print("</TR>");
     }
 %>
-
+    </TBODY>
 </TABLE>
 
 </FORM>

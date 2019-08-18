@@ -21,60 +21,62 @@
 <TABLE>
 <TR STYLE="BACKGROUND:LIGHTSEAGREEN;">
 <TD>
-<INPUT TYPE=BUTTON VALUE="Select" STYLE="BACKGROUND:AQUA" ONCLICK="select_rows(this.form, 0)">
+<INPUT TYPE=BUTTON ID="btn-select-<%=stmtNo%>" VALUE="Select" STYLE="BACKGROUND:AQUA" 
+       ONCLICK="select_rows(this.form, 0)">
 </TD>
 
 <% 
     if (tableName != null) { // Came from table list 
 %>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Insert" STYLE="BACKGROUND:AQUA" 
+<INPUT TYPE=BUTTON ID="btn-insert-<%=stmtNo%>"  VALUE="Insert" STYLE="BACKGROUND:AQUA" 
     <%=(!oper.equals("select")  ? " DISABLED " : " " )%>
 	ONCLICK="insert_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Update" STYLE="BACKGROUND:AQUA" 
+<INPUT TYPE=BUTTON ID="btn-update-<%=stmtNo%>" VALUE="Update" STYLE="BACKGROUND:AQUA" 
     <%=(!oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="update_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Delete" STYLE="BACKGROUND:ORANGERED;" 
+<INPUT TYPE=BUTTON ID="btn-delete-<%=stmtNo%>" VALUE="Delete" STYLE="BACKGROUND:ORANGERED;COLOR:WHITE;" 
     <%=(!oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="delete_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Delete All" STYLE="BACKGROUND:RED;" 
+<INPUT TYPE=BUTTON ID="btn-deleteall-<%=stmtNo%>" VALUE="Delete All" STYLE="BACKGROUND:RED;COLOR:WHITE;" 
     <%=(!oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="delete_all_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Confirm" STYLE="BACKGROUND:AQUA" 
+<INPUT TYPE=BUTTON ID="btn-confirm-<%=stmtNo%>"  VALUE="Confirm" STYLE="BACKGROUND:AQUA" 
     <%=(oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="save_rows(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Cancel" STYLE="BACKGROUND:ORANGERED;" 
+<INPUT TYPE=BUTTON ID="btn-cancel-<%=stmtNo%>" VALUE="Cancel" STYLE="BACKGROUND:ORANGERED;COLOR:WHITE;" 
     <%=(oper.equals("select") ? " DISABLED " : " " )%>
 	ONCLICK="cancel_rows(this.form)">
 </TD>
 <!-- 
 <TD>
-<INPUT TYPE=BUTTON VALUE="Clear rows" STYLE="BACKGROUND:WHITE" 
+<INPUT TYPE=BUTTON ID="btn-clear-<%=stmtNo%>"  VALUE="Clear rows" STYLE="BACKGROUND:WHITE" 
 	ONCLICK="clear_form(this.form)">
 </TD>
 -->
 <TD>
-<INPUT TYPE=BUTTON VALUE="Clear row selection" STYLE="BACKGROUND:WHITE" 
+<INPUT TYPE=BUTTON ID="btn-clearrowsel-<%=stmtNo%>"  VALUE="Clear row selection" STYLE="BACKGROUND:WHITE" 
 	ONCLICK="clear_selection(this.form)">
 </TD>
 <TD>
-<INPUT TYPE=BUTTON VALUE="Back" STYLE="BACKGROUND:WHEAT" 
+<INPUT TYPE=BUTTON ID="btn-back-<%=stmtNo%>" VALUE="Back" STYLE="BACKGROUND:WHEAT" 
 	ONCLICK="go_back(this.form)">
 </TD>
 <% } %>
 
 <TD>
-<INPUT TYPE=BUTTON VALUE="Help" STYLE="BACKGROUND:YELLOW" ONCLICK="display_help(this.form)">
+<INPUT TYPE=BUTTON ID="btn-help-<%=stmtNo%>"  VALUE="Help" STYLE="BACKGROUND:YELLOW" 
+       ONCLICK="display_help(this.form)">
 </TD>
 </TR>
 </TABLE>

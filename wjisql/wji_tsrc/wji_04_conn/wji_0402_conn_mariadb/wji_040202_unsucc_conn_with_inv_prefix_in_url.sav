@@ -1,0 +1,11 @@
+
+Tests Unsuccessful connection with invalid url prefix
+
+Alert error message:
+Error: Connection to database URL 'xyz:mariadb://localhost/mariadb' failed.
+
+08001:No suitable driver found for xyz:mariadb://localhost/mariadb
+
+Try again with correct connection information after making sure your database server is running.
+
+Connect: Unsuccessful login with invalid url prefix test passed.

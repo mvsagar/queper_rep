@@ -1,0 +1,11 @@
+
+Tests Unsuccessful connection with invalid host in url
+
+Alert error message:
+Error: Connection to database URL 'jdbc:postgresql://xyz/pgsqldb' failed.
+
+08001:The connection attempt failed.
+
+Try again with correct connection information after making sure your database server is running.
+
+Connect: Unsuccessful login with invalid host in url test passed.

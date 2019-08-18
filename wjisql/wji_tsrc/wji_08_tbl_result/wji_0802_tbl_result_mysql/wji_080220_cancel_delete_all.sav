@@ -1,0 +1,40 @@
+-------------------------- TC 08/3.10.1/6 ----------------------
+Tests Cancellation of Delete All operation.
+
+Rows before clicking Delete All button...
+Number of html table columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:None) 1001,	Brahma,	1
+(row value color:None) 1002,	Vishnu,	1
+(row value color:None) 1003,	Narayana,	2
+(row value color:None) 1004,	Krishna,	2
+(row value color:None) 1005,	Narada,	3
+(row value color:None) 1006,	Hanuman,	3
+
+Rows after clicking Delete All...
+3rd row must be in  'red' color.
+Number of html table columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1001,	Brahma,	1
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1002,	Vishnu,	1
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1003,	Narayana,	2
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1004,	Krishna,	2
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1005,	Narada,	3
+(row value color:background: seagreen none repeat scroll 0% 0%; font-style: italic; color: red;) 1006,	Hanuman,	3
+Alert message:Warning: All your changes will be lost if you cancel.
+
+Please confirm
+
+Rows after clicking Cancel button...
+3rd row should not have any color as others.
+Number of html table columns: 5
+Number of html table rows: 6
+eno,	ename,	dno
+(row value color:None) 1001,	Brahma,	1
+(row value color:None) 1002,	Vishnu,	1
+(row value color:None) 1003,	Narayana,	2
+(row value color:None) 1004,	Krishna,	2
+(row value color:None) 1005,	Narada,	3
+(row value color:None) 1006,	Hanuman,	3

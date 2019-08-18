@@ -1,5 +1,5 @@
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -35,7 +35,9 @@
 <H2><U>Table Properties</U></H2>
 
 <P>
-This window displays <B>column properties</B> of selected table. 
+This window displays <B>properties</B> of selected table. The table properties include 
+properties such as columns and properties of the columns. Properties keys and indexes 
+and related properties can be viewed using button 'Keys'.  
 </P>
 
 <P>

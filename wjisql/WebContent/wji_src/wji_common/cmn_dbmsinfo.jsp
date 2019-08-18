@@ -24,7 +24,6 @@
 <%@page import="com.queper.util.db.*"%>
 <%@include file="../wji_login/dbconnect.jsp" %>
 
-
 <%
   final int fld_size = 50;
   final String fld_style = "FONT:BOLD;";
@@ -41,14 +40,16 @@
 <P STYLE="<%=fld_style%>FONT-SIZE:14pt">Database Management System Information</P>
 
 <B>Brief Information</B>
-<TABLE BORDER="2" WIDTH="100%">
-
+<TABLE BORDER="2" WIDTH="100%" ID='tbl-brief-info'>
+<THEAD>
 <TR>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">Information type</TD>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">Value</TD>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">DatabaseMetaData method()</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt">Information type</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt">Value</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt">DatabaseMetaData method()</TD>
 </TR>
+</THEAD>
 
+<TBODY>
 <TR>
 <TD>Database Product Name:</TD>
 <TD><B><%=dbmd.getDatabaseProductName()%></B></TD>
@@ -72,19 +73,21 @@
 <TD><B><%=dbmd.getDriverVersion()%></B></TD>
 <TD>getDriverVersion()</TD>
 </TR>
+</TBODY>
 </TABLE>
 
 <BR>
 <B>More Information</B>
-<TABLE BORDER="2" WIDTH="100%">
-
+<TABLE BORDER="2" WIDTH="100%" ID='tbl-more-info'>
+<THEAD>
 <TR>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">SNO</TD>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">Information type</TD>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt;">Value</TD>
-<TD STYLE="<%=fld_style%>FONT-SIZE:14pt">DatabaseMetaData method()</TD>
+<TH STYLE="<%=fld_style%>FONT-SIore-info'ZE:14pt">SNO</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt">Information type</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt;">Value</TD>
+<TH STYLE="<%=fld_style%>FONT-SIZE:14pt">DatabaseMetaData method()</TD>
 </TR>
-
+</THEAD>
+<TBODY>
 <TR>
 <TD><%=++sno%></TD>
 <TD>Are all procedures callable?:</TD>
@@ -956,21 +959,7 @@
 <TD><B><%=dbmd.supportsStatementPooling()%></B></TD>
 <TD>supportsStatementPooling()</TD>
 </TR>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</TBODY>
 <TABLE>
 
 </CENTER>

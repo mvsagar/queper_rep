@@ -1,0 +1,49 @@
+-------------------------- TC 09/3.4.2/2 ----------------------
+Tests failure of transfer on constraint violation
+
+Source table list:
+Number of html table columns: 5
+Number of html table rows: 4
+SNO,	Table name,	Rows,	Transfer ?,	Delete ?
+1,	t1_1_std_data_types_basic,	4,	,	
+2,	t2_1_multi_lingual_data_types,	6,	,	
+3,	t3_1_long_data_types,	3,	,	
+4,	t4_1_non_std_data_types_1,	4,	,	
+
+Destination tables before transfer:
+Number of html table columns: 3
+Number of html table rows: 5
+SNO,	Table name,	Rows
+1,	emp,	6
+2,	t1_1_std_data_types_basic,	4
+3,	t2_1_multi_lingual_data_types,	6
+4,	t3_1_long_data_types,	3
+5,	t4_1_non_std_data_types_1,	4
+Alert message:Please confirm for the data transfer.
+
+Destination tables after transfer:
+Number of html table columns: 3
+Number of html table rows: 5
+SNO,	Table name,	Rows
+1,	emp,	6
+2,	t1_1_std_data_types_basic,	4
+3,	t2_1_multi_lingual_data_types,	6
+4,	t3_1_long_data_types,	3
+5,	t4_1_non_std_data_types_1,	4
+
+Information on transfer of data with error message on table table t1_1_std_data_types_basic:
+Number of html table columns: 7
+Number of html table rows: 4
+SNO,	Table,	# Rows Read,	# Rows Wrote,	# Read Errors,	# Write Errors,	Other Errors/Warnings
+1,	t1_1_std_data_types_basic,	4,	0,	,	ERROR[1]: Write ERROR for ins stmt exec: [t1_1_std_data_types_basic]: org.sqlite.SQLiteException: [SQLITE_CONSTRAINT] Abort due to constraint violation (UNIQUE constraint failed: t1_1_std_data_types_basic.int_col)
+ERROR[2]: Write ERROR for ins stmt exec: [t1_1_std_data_types_basic]: org.sqlite.SQLiteException: [SQLITE_CONSTRAINT] Abort due to constraint violation (UNIQUE constraint failed: t1_1_std_data_types_basic.int_col)
+ERROR[3]: Write ERROR for ins stmt exec: [t1_1_std_data_types_basic]: org.sqlite.SQLiteException: [SQLITE_CONSTRAINT] Abort due to constraint violation (UNIQUE constraint failed: t1_1_std_data_types_basic.int_col)
+ERROR[4]: Write ERROR for ins stmt exec: [t1_1_std_data_types_basic]: org.sqlite.SQLiteException: [SQLITE_CONSTRAINT] Abort due to constraint violation (UNIQUE constraint failed: t1_1_std_data_types_basic.int_col)
+Note:- Not all errors are shown.,	1) Number of columns in source (15) and destination table (13) are not equal.
+2) Destination table has the following columns not in the source table:
+float_col, bool_col
+NULLs or default values are inserted into the above columns.
+3) Data of only the following columns is transferred - char_col, vchar_col, sint_col, int_col, dec_col, num_col, real_col, dbl_col, date_col, time_col, ts_col.
+2,	t2_1_multi_lingual_data_types,	0,	0,	,	,	
+3,	t3_1_long_data_types,	0,	0,	,	,	
+4,	t4_1_non_std_data_types_1,	0,	0,	,	,	

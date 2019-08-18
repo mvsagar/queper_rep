@@ -1,0 +1,33 @@
+-------------------------- TC 11/2.6/3 ----------------------
+Tests fix for the bug W_B_20180911_87: error on switching to procedures/functions.
+
+List of tables:
+Number of html table columns: 6
+Number of html table rows: 4
+SNO,	Table Name,	Rows,	Type,	Schema,	Catalog
+(row value color:background: ivory;) 1,	t1_1_std_data_types_basic,	4,	TABLE,	,	mariadb
+(row value color:background: ivory;) 2,	t2_1_multi_lingual_data_types,	6,	TABLE,	,	mariadb
+(row value color:background: ivory;) 3,	t3_1_long_data_types,	3,	TABLE,	,	mariadb
+(row value color:background: ivory;) 4,	t4_1_non_std_data_types_1,	4,	TABLE,	,	mariadb
+
+Switching to procedures/functions:
+
+List of procedures:
+Number of html table columns: 5
+Number of html table rows: 6
+SNO,	Procedure/
+Function Name,	Type,	Schema,	Catalog
+(row value color:background: ivory;) 1,	func_1_1_compute_tax,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 2,	proc_1_1_no_args_no_results,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 3,	proc_2_1_no_args_with_results,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 4,	proc_3_1_in_args,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 5,	proc_4_1_in_out_args,	PROCEDURE,	,	mariadb
+(row value color:background: ivory;) 6,	proc_5_1_multi_stmt,	PROCEDURE,	,	mariadb
+Success if procedure test_proc is in the above list.
+
+List of functions:
+Number of html table columns: 5
+Number of html table rows: 1
+SNO,	Function Name,	Type,	Schema,	Catalog
+(row value color:background: ivory;) 1,	func_1_1_compute_tax,	FUNCTION,	,	mariadb
+Success if function test_func is in the above list.

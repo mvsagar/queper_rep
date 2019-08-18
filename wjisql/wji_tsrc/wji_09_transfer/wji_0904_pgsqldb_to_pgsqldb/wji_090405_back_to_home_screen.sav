@@ -1,0 +1,23 @@
+-------------------------- TC 09/4.1.3/1 ----------------------
+Tests control going back to home screen from transfer screen.
+
+Source table list:
+Number of html table columns: 5
+Number of html table rows: 4
+SNO,	Table name,	Rows,	Transfer ?,	Delete ?
+1,	t1_1_std_data_types_basic,	4,	,	
+2,	t2_1_multi_lingual_data_types,	6,	,	
+3,	t3_1_long_data_types,	6,	,	
+4,	t4_1_non_std_data_types_1,	4,	,	
+
+Destination tables:
+Number of html table columns: 3
+Number of html table rows: 5
+SNO,	Table name,	Rows
+1,	emp,	6
+2,	t1_1_std_data_types_basic,	4
+3,	t2_1_multi_lingual_data_types,	6
+4,	t3_1_long_data_types,	6
+5,	t4_1_non_std_data_types_1,	4
+
+Successfully reached home screen.

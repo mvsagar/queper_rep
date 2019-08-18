@@ -1,0 +1,9 @@
+
+Tests Unsuccessful connection with invalid db file
+
+Alert error message:
+Error null.
+
+org.sqlite.SQLiteException: [SQLITE_NOTADB]  File opened that is not a database file (file is not a database)
+
+Connect: Unsuccessful login with invalid db file test passed.

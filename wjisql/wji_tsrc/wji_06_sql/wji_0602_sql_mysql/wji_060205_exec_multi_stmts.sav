@@ -1,0 +1,74 @@
+-------------------------- TC 06/3.3.1/4 ----------------------
+Tests execution of a multiple statements.
+
+sqlstmt= DROP TABLE IF EXISTS emp;  DROP TABLE IF EXISTS dept;  CREATE TABLE dept (dno INT NOT NULL PRIMARY KEY  , dname VARCHAR(20));  CREATE TABLE emp(eno INT NOT NULL PRIMARY KEY  , ename VARCHAR(20), dno INT REFERENCES dept(dno));  INSERT INTO dept(dno, dname) VALUES(1, 'Research');  INSERT INTO dept(dno, dname)  VALUES(2, 'Development');  INSERT INTO dept(dno, dname)  VALUES(3, 'Marketing');  INSERT INTO emp VALUES(1001, 'Brahma', 1);  INSERT INTO emp VALUES(1002, 'Vishnu', 1);  INSERT INTO emp VALUES(1003, 'Narayana', 2);  INSERT INTO emp VALUES(1004, 'Krishna', 2);  INSERT INTO emp VALUES(1005, 'Narada', 3);  INSERT INTO emp VALUES(1006, 'Hanuman', 3);  SELECT * FROM dept;  SELECT * from emp; DROP TABLE IF EXISTS emp;  DROP TABLE IF EXISTS dept;
+SQL stmt:DROP TABLE IF EXISTS emp
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:DROP TABLE IF EXISTS dept
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:CREATE TABLE dept (dno INT NOT NULL PRIMARY KEY  , dname VARCHAR(20))
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:CREATE TABLE emp(eno INT NOT NULL PRIMARY KEY  , ename VARCHAR(20), dno INT REFERENCES dept(dno))
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO dept(dno, dname) VALUES(1, 'Research')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO dept(dno, dname)  VALUES(2, 'Development')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO dept(dno, dname)  VALUES(3, 'Marketing')
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1001, 'Brahma', 1)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1002, 'Vishnu', 1)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1003, 'Narayana', 2)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1004, 'Krishna', 2)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1005, 'Narada', 3)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:INSERT INTO emp VALUES(1006, 'Hanuman', 3)
+No of html table columns: 0
+No of html table rows: 0
+
+SQL stmt:SELECT * FROM dept
+No of html table columns: 4
+No of html table rows: 3
+,	dno,	dname
+1,	1,	Research
+2,	2,	Development
+3,	3,	Marketing
+SQL stmt:SELECT * from emp
+No of html table columns: 5
+No of html table rows: 6
+,	eno,	ename,	dno
+1,	1001,	Brahma,	1
+2,	1002,	Vishnu,	1
+3,	1003,	Narayana,	2
+4,	1004,	Krishna,	2
+5,	1005,	Narada,	3
+6,	1006,	Hanuman,	3
+sqlstmt= DROP TABLE IF EXISTS emp;  DROP TABLE IF EXISTS dept;

@@ -1,6 +1,6 @@
 <HTML>
 <!-- 
-     Copyright 2006-2017 Vidyasagar Mundroy
+     Copyright 2006-2019 Vidyasagar Mundroy
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -95,12 +95,15 @@
                 // column name and key sequence.
                 out.print("<TR><TD><B>Primary key columns:</B></TD></TR>");
                 out.print("<TR><TD>"); // outer most table row
-                out.print("<TABLE BORDER=1 ALIGN=LEFT>");
+                out.print("<TABLE BORDER=1 ALIGN=LEFT ID='tbl-pkey'>");
+                out.print("<THEAD>");
                 out.print("<TR>");
                 for (int i = 4; i <= 5; i++) { 
                     out.print("<TH>" + rsmd.getColumnLabel(i) + "</TH>");
                 } // for 
                 out.print("</TR>");
+                out.print("</THEAD>");
+                out.print("<TBODY>");
             } // if 
 
             // Print key column info.
@@ -115,6 +118,7 @@
         if (nRows == 0) { 
             out.print("<TR><TD><P>There is no primary key on the table.</P></TD></TR>");
         } else {
+        out.print("</TBODY>");
         out.print("</TABLE>");
         out.print("</TD></TR>"); // outer most table row
         }
@@ -128,9 +132,9 @@
         nRows = 0; 
         while (rs.next()) { 
             /*
-	    * Note the name of the primery key name from the first row.
-            * Also print titles of the result columns.
-            */	
+		     * Note the name of the primery key name from the first row.
+             * Also print titles of the result columns.
+             */	
             isIndexUnique = rs.getBoolean(4); 
             indexQualifier = rs.getString(5) == null ? 
     		         "(No specific index qualifier)" : rs.getString(5);
@@ -141,15 +145,15 @@
 	        continue;
             switch(rs.getInt(7)) {
                case java.sql.DatabaseMetaData.tableIndexStatistic: 
-	          isTableStatistics = true; break;
-	       case java.sql.DatabaseMetaData.tableIndexClustered:
-	          indexOrganization = "Clustered"; break;
-	       case java.sql.DatabaseMetaData.tableIndexHashed:
-	          indexOrganization = "Hashed"; break;
-	       case java.sql.DatabaseMetaData.tableIndexOther:
-	          indexOrganization = "(Other than Clustered or Hashed)"; break;
-	       default:
-	          indexOrganization = "(Unknown)"; 
+		          isTableStatistics = true; break;
+		       case java.sql.DatabaseMetaData.tableIndexClustered:
+		          indexOrganization = "Clustered"; break;
+		       case java.sql.DatabaseMetaData.tableIndexHashed:
+		          indexOrganization = "Hashed"; break;
+		       case java.sql.DatabaseMetaData.tableIndexOther:
+		          indexOrganization = "(Other than Clustered or Hashed)"; break;
+		       default:
+		          indexOrganization = "(Unknown)"; 
             } // switch.
             ordinalPosition = rs.getInt(8);
             cardinality = rs.getInt(11);
@@ -169,26 +173,30 @@
                 continue;
             }        
 
-	    if (indexName.equals(prevIndexName) == false) {
+		    if (indexName.equals(prevIndexName) == false) {
                 ++nIndexes;
 
-	        // Heading for all indexes
+		        // Heading for all indexes
                 if (nIndexes == 1) out.print("<TR><TD><BR><P STYLE=\"FONT-SIZE:12pt;FONT-WEIGHT:BOLD;\"><U>Indexes</U></P></TD></TR>");
 
-	        // Terminate previous table.
+		        // Terminate previous table.
                 if (nIndexes > 1) out.print("</TABLE>");
 
-                out.print("<TR><TD><BR><BR><B>" + nIndexes + ". Index Name: " + indexName + "</B><BR></TD></TR>");
+                out.print("<TR><TD ID='td-idxname" + nIndexes + "'><BR><BR><B>" + nIndexes + ". Index Name: " + indexName + "</B><BR></TD></TR>");
                 out.print("<TR><TD><BR><B>Index Properties:</B></TD></TR>");
                 out.print("<TR><TD>"); // outer most table row.
-                out.print("<TABLE BORDER=1>");
+                out.print("<TABLE BORDER=1 ID='tbl-idxprops" + nIndexes +"'>");
+                out.print("<THEAD>");
                 out.print("<TR><TH>Name</TH><TH>Value</TH></TR>");
+                out.print("</THEAD>");
+                out.print("<TBODY>");
                 out.print("<TR><TD>Qualifier:</TD><TD>" + indexQualifier + "</TD></TR>");
                 out.print("<TR><TD>Is unique?:</TD><TD>" + isIndexUnique + "</TD></TR>");       
                 out.print("<TR><TD>Organization?:</TD><TD>" + indexOrganization + "</TD></TR>");       
                 out.print("<TR><TD>Unique values:</TD><TD>" + cardinality + "</TD></TR>");
                 out.print("<TR><TD>Number of pages:</TD><TD>" + nPages + "</TD></TR>");
                 out.print("<TR><TD>Filter Condition:</TD><TD>" + filterCondition + "</TD></TR>");
+                out.print("</TBODY>");
                 out.print("</TABLE>");    
                 out.print("</TR></TD>"); // outer most table row.
 
@@ -200,17 +208,17 @@
                 out.print("</TR></TD>"); // outer most table row.
 
                 out.print("<TR><TD>"); // outer most table row.
-                out.print("<TABLE BORDER=1 ALIGN=LEFT>");
+                out.print("<TABLE BORDER=1 ALIGN=LEFT ID='tbl-idxcols" + nIndexes +"' >");
                 rsmd = rs.getMetaData();
-                out.print("<TR>");
+                out.print("<TR><THEAD>");
                 for (int i = 8; i <= 10; i++) { 
                     out.print("<TH>" + rsmd.getColumnLabel(i) + "</TH>");
                 } 
-                out.print("</TR>");
+                out.print("</THEAD></TR><TBODY>");
             } // if 
             prevIndexName = new String(indexName);
             out.print("<TR>"); 
-	    for (int i = 8; i <= 10; i++) { 
+		    for (int i = 8; i <= 10; i++) { 
                 out.print("<TD>" + rs.getString(i) + "</TD>");
             }
             out.print("</TR>");
@@ -220,7 +228,7 @@
         if (nRows == 0) { 
              out.print("<TR><TD><BR><P>There are no indexes on the table.</P></TD></TR>");
         } else {
-            out.print("</TABLE>");
+            out.print("</TBODY></TABLE>");
         } 
     } catch (java.sql.SQLException se) { 
 %>

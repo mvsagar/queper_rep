@@ -1,0 +1,22 @@
+-------------------------- TC 11/2.6/5 ----------------------
+Tests fix for the bug W_B_20190806_91: Clicking of transfer check box in table header of source table list in Data Transfer screen is problematic.
+
+Source table list:
+Number of html table columns: 5
+Number of html table rows: 4
+SNO,	Table name,	Rows,	Transfer ?not-selected,	Delete ?not-selected
+1,	t1_1_std_data_types_basic,	4,	not-selected,	not-selected
+2,	t2_1_multi_lingual_data_types,	6,	not-selected,	not-selected
+3,	t3_1_long_data_types,	3,	not-selected,	not-selected
+4,	t4_1_non_std_data_types_1,	4,	not-selected,	not-selected
+
+Clicking transfer check box in table list header:
+
+Source tables with check box on all tables:
+Number of html table columns: 5
+Number of html table rows: 4
+SNO,	Table name,	Rows,	Transfer ?selected,	Delete ?not-selected
+1,	t1_1_std_data_types_basic,	4,	selected,	not-selected
+2,	t2_1_multi_lingual_data_types,	6,	selected,	not-selected
+3,	t3_1_long_data_types,	3,	selected,	not-selected
+4,	t4_1_non_std_data_types_1,	4,	selected,	not-selected

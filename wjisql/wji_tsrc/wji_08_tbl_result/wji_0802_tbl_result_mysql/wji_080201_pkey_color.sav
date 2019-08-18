@@ -1,0 +1,12 @@
+-------------------------- TC 08/3.2.1/1 ----------------------
+Tests  primary key column color.
+
+No of html tbl columns: 5
+No of html table rows: 6
+eno
+(1001,orange)
+(1002,orange)
+(1003,orange)
+(1004,orange)
+(1005,orange)
+(1006,orange)

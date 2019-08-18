@@ -2,8 +2,8 @@
 -- from SQL statement window of wjISQL.
 
 -- Drop tables.
-DROP TABLE emp;
-DROP TABLE dept;
+DROP TABLE IF EXISTS emp;
+DROP TABLE IF EXISTS dept;
 
 -- Create tables.
 CREATE TABLE dept (dno INT NOT NULL PRIMARY KEY
@@ -15,6 +15,7 @@ CREATE TABLE emp(eno INT NOT NULL PRIMARY KEY
 INSERT INTO dept(dno, dname) VALUES(1, 'Research');
 INSERT INTO dept(dno, dname)  VALUES(2, 'Development');
 INSERT INTO dept(dno, dname)  VALUES(3, 'Marketing');
+
 INSERT INTO emp VALUES(1001, 'Brahma', 1);
 INSERT INTO emp VALUES(1002, 'Vishnu', 1);
 INSERT INTO emp VALUES(1003, 'Narayana', 2);

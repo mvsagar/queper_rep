@@ -1,0 +1,19 @@
+
+Tests Successful connection and disconnection
+
+Connect: Navigation frame test passed
+Connect: Left data frame test passed
+Connect: SQL Statements frame test passed
+Field type, name and values of the SQL Statements pane:
+	button::Execute
+	button::Cancel
+	button::Clear
+	button::Help
+	hidden:sqlstmt:
+	file:script_files:
+Field type, name and values of the right data frame:
+	No fields found.
+Connect: Right data frame test passed
+Disconnect: Navigation frame test passed
+Disconnect: Left data frame test passed
+Disconnect: Right data frame test passed
