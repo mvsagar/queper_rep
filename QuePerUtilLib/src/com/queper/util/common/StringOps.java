@@ -1714,6 +1714,25 @@ public class StringOps
         }
         return new String(hexChars);
     }
+    
+    // W_B_20190817_94:BEGIN:2019-08-17:wjISQL adds 0s to the end of BLOB columns.
+    /**
+     * Convert only nbytes of input byte array to hex.
+     * 
+     * @param bytes
+     * @param nbytes
+     * @return
+     */
+    public static String bytesToHex(byte[] bytes, int nbytes) {
+        char[] hexChars = new char[nbytes * 2];
+        for (int j = 0; j < nbytes; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
+    }    
+    // W_B_20190817_94:END:
 
     public static byte[] hexToBytes(String s) {
         int len = s.length();

@@ -1,5 +1,5 @@
-export QUEPER_UTIL_LIB_HOME=$HOME/projects/eclipse-ws/QuePerUtilLib
-export QUEPER_EXTERNAL_LIB_HOME=$HOME/projects/eclipse-ws/QuePerExtLib/lib
+export QUEPER_UTIL_LIB_HOME=$HOME/projects/git/repos/queper_rep/QuePerUtilLib
+export QUEPER_EXTERNAL_LIB_HOME=$HOME/projects/git/report/queper_rep/QuePerUtilLib/lib_ext
 export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$QUEPER_EXTERNAL_LIB_HOME/servlet-api.jar:$QUEPER_EXTERNAL_LIB_HOME/commons-fileupload-1.3.jar:$QUEPER_EXTERNAL_LIB_HOME/commons-io-2.4.jar:$CLASSPATH:$QUEPER_UTIL_LIB_HOME/bin
 
 find $QUEPER_UTIL_LIB_HOME/bin -name "*.class" | xargs rm -vf
